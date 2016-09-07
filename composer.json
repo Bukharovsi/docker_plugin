@@ -1,0 +1,19 @@
+{
+  "name": "bukharovsi/docker_plugin",
+  "type": "composer-plugin",
+  "description": "This is plugin for building docker images with composer",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Sergey Bukharov",
+      "email": "Bukharovsi@gmail.com"
+    }
+  ],
+  "require": {
+    "composer-plugin-api": "^1.1"
+  },
+  "extra": {
+    "class": "Bukharovsi\\DockerPlugin\\DockerPlugin"
+  }
+}
