@@ -13,6 +13,11 @@
   "require": {
     "composer-plugin-api": "^1.1"
   },
+  "autoload": {
+    "psr-4": {
+      "Bukharovsi\\DockerPlugin\\": "src/"
+    }
+  },
   "extra": {
     "class": "Bukharovsi\\DockerPlugin\\DockerPlugin"
   }
