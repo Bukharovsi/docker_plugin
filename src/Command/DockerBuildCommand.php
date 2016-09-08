@@ -4,16 +4,23 @@ namespace Bukharovsi\DockerPlugin\Command;
 
 
 use Bukharovsi\DockerPlugin\Command\Exceptions\DockerExecutionException;
+use Bukharovsi\DockerPlugin\Docker\DockerCommandBuilder;
 use Composer\Command\BaseCommand;
-use Composer\Util\Filesystem;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class DockerBuildCommand extends BaseCommand
 {
+
+    /**
+     * @var DockerCommandBuilder
+     */
+    private $dockerCommandBuilder;
+
     protected function configure()
     {
         $this->setName('docker:build');
+        $this->dockerCommandBuilder = new DockerCommandBuilder();
         parent::configure();
     }
 
@@ -21,11 +28,9 @@ class DockerBuildCommand extends BaseCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $output->writeln($this->getComposer()->getPackage()->getFullPrettyVersion());
-        $output->writeln("Project Root Directory is " . $this->getProjectRootPath(), OutputInterface::VERBOSITY_VERBOSE);
 
 
-
-        $command = $this->createExecutableCommand();
+        $command = $this->dockerCommandBuilder->buildCommand();
         $output->writeln('executing command is "'.$command.'"', OutputInterface::VERBOSITY_VERBOSE);
 
         $exitCode = null;
