@@ -9,6 +9,7 @@
 namespace Bukharovsi\DockerPlugin\Docker;
 
 
+use Bukharovsi\DockerPlugin\Docker\Tag\Dockerfile;
 use Bukharovsi\DockerPlugin\Docker\Tag\Tag;
 use Composer\Util\Filesystem;
 
@@ -25,20 +26,28 @@ class DockerCommandBuilder
     private $tags = [];
 
     /**
+     *
+     * dockerfile name
+     * @var string
+     */
+    private $dockerfile;
+
+
+    /**
      * DockerCommandBuilder constructor.
      */
     public function __construct()
     {
         $this->useDefaultWorkingDirectory();
+        $this->useDefaultDockerfile();
     }
 
-
+    /**
+     * Build a docker command for building iamge
+     *
+     * @return string
+     */
     public function buildCommand()
-    {
-        return $this->createExecutableCommand();
-    }
-
-    protected function createExecutableCommand()
     {
         $command = 'docker build ';
 
@@ -46,11 +55,18 @@ class DockerCommandBuilder
             $command .= "-t$tag ";
         }
 
+        if ($this->isNeedSpecifyDockerfile()) {
+            $command .= "-f$this->dockerfile";
+        }
+
         $command .= $this->getWorkingDirectory();
         return $command;
     }
 
+
     /**
+     * Add a tag to docker image
+     *
      * @param Tag $tag docker image tag. format name:[version]
      * @return $this
      */
@@ -66,6 +82,39 @@ class DockerCommandBuilder
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Specify dockerfile if it is need to use not default (Dockerfile)
+     *
+     * @param string $dockerfileName
+     * @return $this
+     */
+    public function specifyDockerfile($dockerfileName)
+    {
+        $this->dockerfile = $dockerfileName;
+        return $this;
+    }
+
+    /**
+     * use default dockerfile
+     *
+     * @return $this
+     */
+    public function useDefaultDockerfile()
+    {
+        $this->dockerfile = Dockerfile::DEFAULT_DOCKER_FILE;
+        return $this;
+    }
+
+    protected function isNeedSpecifyDockerfile()
+    {
+        return $this->dockerfile !== Dockerfile::DEFAULT_DOCKER_FILE;
+    }
+
+    public function getDockerfile()
+    {
+        return $this->dockerfile;
     }
 
     /**
@@ -86,6 +135,11 @@ class DockerCommandBuilder
         return $this;
     }
 
+    /**
+     * Use project root as default working directory
+     *
+     * @return $this
+     */
     public function useDefaultWorkingDirectory()
     {
         $this->workingDirectory = $this->getProjectRootPath();

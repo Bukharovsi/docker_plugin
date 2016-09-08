@@ -50,4 +50,14 @@ class DockerCommandBuilderTest extends \PHPUnit_Framework_TestCase
 
         static::assertStringStartsWith('docker build -tmy_project:latest -tmy_project:9.0', $dockerCommand);
     }
+
+    public function testSpecifyDockerfileTags()
+    {
+        $builder = new DockerCommandBuilder();
+        $dockerCommand = $builder
+            ->specifyDockerfile('Dockerfile.dev')
+            ->buildCommand();
+
+        static::assertStringStartsWith('docker build -fDockerfile.dev', $dockerCommand);
+    }
 }
