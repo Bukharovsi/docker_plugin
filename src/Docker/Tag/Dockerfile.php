@@ -8,7 +8,11 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\Tag;
 
-
+/**
+ * Class Dockerfile
+ *
+ * @package Bukharovsi\DockerPlugin\Docker\Tag
+ */
 class Dockerfile
 {
     const DEFAULT_DOCKER_FILE='Dockerfile';

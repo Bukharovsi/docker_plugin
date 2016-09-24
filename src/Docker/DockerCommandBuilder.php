@@ -8,11 +8,15 @@
 
 namespace Bukharovsi\DockerPlugin\Docker;
 
-
 use Bukharovsi\DockerPlugin\Docker\Tag\Dockerfile;
 use Bukharovsi\DockerPlugin\Docker\Tag\Tag;
 use Composer\Util\Filesystem;
 
+/**
+ * Class DockerCommandBuilder
+ *
+ * @package Bukharovsi\DockerPlugin\Docker
+ */
 class DockerCommandBuilder
 {
     /**
@@ -26,8 +30,8 @@ class DockerCommandBuilder
     private $tags = [];
 
     /**
+     * docker file name
      *
-     * dockerfile name
      * @var string
      */
     private $dockerfile;
@@ -52,17 +56,17 @@ class DockerCommandBuilder
         $command = 'docker build ';
 
         foreach ($this->tags as $tag) {
-            $command .= "-t$tag ";
+            $command .= "-t $tag ";
         }
 
         if ($this->isNeedSpecifyDockerfile()) {
-            $command .= "-f$this->dockerfile";
+            $command .= "-f $this->dockerfile";
         }
 
         $command .= $this->getWorkingDirectory();
+
         return $command;
     }
-
 
     /**
      * Add a tag to docker image
@@ -73,6 +77,7 @@ class DockerCommandBuilder
     public function addTag(Tag $tag)
     {
         array_push($this->tags, $tag);
+
         return $this;
     }
 
@@ -93,6 +98,7 @@ class DockerCommandBuilder
     public function specifyDockerfile($dockerfileName)
     {
         $this->dockerfile = $dockerfileName;
+
         return $this;
     }
 
@@ -104,6 +110,7 @@ class DockerCommandBuilder
     public function useDefaultDockerfile()
     {
         $this->dockerfile = Dockerfile::DEFAULT_DOCKER_FILE;
+
         return $this;
     }
 
@@ -132,6 +139,7 @@ class DockerCommandBuilder
     public function specifyWorkingDirectory($workingDirectory)
     {
         $this->workingDirectory = $workingDirectory;
+
         return $this;
     }
 
@@ -143,6 +151,7 @@ class DockerCommandBuilder
     public function useDefaultWorkingDirectory()
     {
         $this->workingDirectory = $this->getProjectRootPath();
+
         return $this;
     }
 
@@ -150,8 +159,7 @@ class DockerCommandBuilder
     {
         $filesystem = new Filesystem();
         $basePath = $filesystem->normalizePath(realpath(getcwd()));
+
         return $basePath;
     }
-
-
 }

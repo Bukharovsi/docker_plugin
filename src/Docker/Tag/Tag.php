@@ -8,7 +8,6 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\Tag;
 
-
 /**
  * Class Tag
  *
@@ -18,8 +17,14 @@ namespace Bukharovsi\DockerPlugin\Docker\Tag;
  */
 class Tag
 {
+    /**
+     * @var string name of docker images
+     */
     private $name;
 
+    /**
+     * @var string|null tag for docker images
+     */
     private $version;
 
     public function __construct($name, $version = null)
@@ -49,17 +54,14 @@ class Tag
      *
      * @return string
      */
-    function __toString()
+    public function __toString()
     {
         $stringTag = $this->name;
 
         if (!empty($this->version)) {
-            $stringTag .= ':'.$this->version;
+            $stringTag .= ':' . $this->version;
         }
 
         return $stringTag;
-
     }
-
-
 }
