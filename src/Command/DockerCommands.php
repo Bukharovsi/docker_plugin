@@ -9,7 +9,8 @@
 namespace Bukharovsi\DockerPlugin\Command;
 
 use Bukharovsi\DockerPlugin\Command\Exceptions\DockerExecutionException;
-use Bukharovsi\DockerPlugin\Docker\DockerConfig;
+use Bukharovsi\DockerPlugin\Docker\Config\DockerConfig;
+use Bukharovsi\DockerPlugin\Docker\DockerConfigBuilder;
 use Composer\Command\BaseCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -35,8 +36,6 @@ abstract class DockerCommands extends BaseCommand
      */
     abstract protected function getCommandName();
 
-//    abstract protected function executeCommand();
-
     protected function configure()
     {
         $commandName = $this->getCommandName();
@@ -52,77 +51,21 @@ abstract class DockerCommands extends BaseCommand
         parent::configure();
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
-    {
-        $buildName = $input->getArguments()['buildName'];
-        $dockerBuildConfig = $this->getDockerBuildConfig($buildName);
-
-        $name = array_key_exists('name', $dockerBuildConfig) ?
-            $dockerBuildConfig['name'] :
-            $this->getComposer()->getPackage()->getPrettyName();
-
-        $version = array_key_exists('version', $dockerBuildConfig) ?
-            $this->getVersionForImage($dockerBuildConfig['version']) :
-            'latest';
-
-
-    }
-
     /**
-     * return params for docker build
+     * return params for docker
      *
      * @param InputInterface $input
      *
      * @throws DockerExecutionException
-     * @return array
+     * @return DockerConfig
      */
-    protected function getDockerBuildConfig(InputInterface $input)
+    protected function getDockerConfig(InputInterface $input)
     {
-        $buildName = $input->getArguments()['buildName'];
-        $extra = $this->getComposer()->getPackage()->getExtra();
-        if (!array_key_exists('docker', $extra)) {
-            throw DockerExecutionException::installPluginError();
-        }
+        $dockerConfigBuilder = new DockerConfigBuilder(
+            $input,
+            $this->getComposer()->getPackage()
+        );
 
-        $dockerBuilds = $extra['docker'];
-        if (!array_key_exists($buildName, $dockerBuilds)) {
-            throw DockerExecutionException::buildSectionNameError();
-        }
-
-        return $dockerBuilds[$buildName];
-    }
-
-    protected function getVersionForImage($configVersion)
-    {
-        if (is_string($configVersion) && $configVersion != '@vcs') {
-            return $configVersion;
-        }
-
-        // todo. считаем, что версия = @vcs ?
-        $branchName = str_replace('dev-', '', $this->getComposer()->getPackage()->getFullPrettyVersion());
-
-        return $branchName;
-    }
-
-    /**
-     * Return name for docker image
-     *
-     * @param array $dockerBuildConfig
-     *
-     * @return string
-     */
-    protected function getImageName($dockerBuildConfig)
-    {
-        return array_key_exists('name', $dockerBuildConfig) ?
-            $dockerBuildConfig['name'] :
-            $this->getComposer()->getPackage()->getPrettyName();
-    }
-
-
-    protected function getImageVersion($dockerBuildConfig)
-    {
-        return array_key_exists('version', $dockerBuildConfig) ?
-            $this->getVersionForImage($dockerBuildConfig['version']) :
-            'latest';
+        return $dockerConfigBuilder->buildDockerConfig();
     }
 }

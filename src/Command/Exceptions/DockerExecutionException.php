@@ -20,6 +20,9 @@ class DockerExecutionException extends \RuntimeException
         );
     }
 
+    /**
+     * @return DockerExecutionException
+     */
     public static function installPluginError()
     {
         return new static(

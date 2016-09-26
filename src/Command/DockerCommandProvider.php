@@ -13,6 +13,9 @@ class DockerCommandProvider implements CommandProvider
 {
     public function getCommands()
     {
-        return [new DockerBuildCommand()];
+        return [
+            new DockerBuildCommand(),
+            new DockerPushCommand()
+        ];
     }
 }

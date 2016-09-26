@@ -4,10 +4,7 @@ namespace Bukharovsi\DockerPlugin\Command;
 use Bukharovsi\DockerPlugin\Command\Exceptions\DockerExecutionException;
 use Bukharovsi\DockerPlugin\Docker\DockerCommandBuilder;
 use Bukharovsi\DockerPlugin\Docker\Tag\Tag;
-use Composer\Command\BaseCommand;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -27,24 +24,22 @@ class DockerBuildCommand extends DockerCommands
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $dockerBuildConfig = $this->getDockerBuildConfig($input);
-
-        $name = $this->getImageName($dockerBuildConfig);
-        $version = $this->getImageVersion($dockerBuildConfig);
+        $dockerBuildConfig = $this->getDockerConfig($input);
 
         $commandBuilder = new DockerCommandBuilder();
-        $commandBuilder->addTag(new Tag($name, $version));
+        $commandBuilder->addTag(new Tag(
+            $dockerBuildConfig->getImageName(),
+            $dockerBuildConfig->getImageTag()
+        ));
 
-        if (array_key_exists('dockerfile', $dockerBuildConfig)) {
-            $commandBuilder->specifyDockerfile($dockerBuildConfig['dockerfile']);
+        if ($dockerBuildConfig->getDockerfile()) {
+            $commandBuilder->specifyDockerfile($dockerBuildConfig->getDockerfile());
         }
-
-        if (array_key_exists('workingDirectory', $dockerBuildConfig)) {
-            $commandBuilder->specifyWorkingDirectory($dockerBuildConfig['workingDirectory']);
+        if ($dockerBuildConfig->getWorkingDirectory()) {
+            $commandBuilder->specifyWorkingDirectory($dockerBuildConfig->getWorkingDirectory());
         }
 
         $command = $commandBuilder->buildCommand();
-//        $output->writeln('executing command is "'.$command.'"', OutputInterface::VERBOSITY_VERBOSE);
 
         $exitCode = null;
         $execOutput = [];

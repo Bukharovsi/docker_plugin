@@ -60,7 +60,7 @@ class DockerCommandBuilder
         }
 
         if ($this->isNeedSpecifyDockerfile()) {
-            $command .= "-f $this->dockerfile";
+            $command .= "-f $this->dockerfile ";
         }
 
         $command .= $this->getWorkingDirectory();

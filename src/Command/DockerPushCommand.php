@@ -8,6 +8,8 @@
 
 namespace Bukharovsi\DockerPlugin\Command;
 
+use Bukharovsi\DockerPlugin\Docker\DockerCommandPush;
+use Bukharovsi\DockerPlugin\Command\Exceptions\DockerExecutionException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -25,7 +27,20 @@ class DockerPushCommand extends DockerCommands
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $buildName = $input->getArguments()['buildName'];
-        $dockerBuildConfig = $this->getDockerBuildConfig($buildName);
+        $dockerBuildConfig = $this->getDockerConfig($input);
+
+        $dockerPushCommand = new DockerCommandPush();
+        $dockerPushCommand->setImageName($dockerBuildConfig->getImageName());
+        $command = $dockerPushCommand->buildCommand();
+
+        $exitCode = null;
+        $execOutput = [];
+        exec($command, $execOutput, $exitCode);
+
+        if (0 !== $exitCode) {
+            throw DockerExecutionException::commandIsExecutedWithError($command, $exitCode);
+        }
+
+        $output->writeln("docker image has successfully push");
     }
 }
