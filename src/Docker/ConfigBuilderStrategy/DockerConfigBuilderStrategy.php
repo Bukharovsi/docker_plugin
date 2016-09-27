@@ -21,6 +21,8 @@ use Symfony\Component\Console\Input\InputInterface;
 /**
  * Class DockerConfigBuilderStrategy
  *
+ * todo НИ одного теста! по крайней мере стратегии нужно бы покрыть тестами и билдер статегий.
+ *
  * @package Bukharovsi\DockerPlugin\Docker\ConfigBuilderStrategy
  */
 class DockerConfigBuilderStrategy
@@ -97,6 +99,10 @@ class DockerConfigBuilderStrategy
     /**
      * Build config params
      *
+     * todo  с трудом понял, что тут такое происходит. Ессли уж такой жесткий свитч-кейс, проще создать несколько методов:
+     * todo chooseDockerfileCommand
+     * todo chooseImageTags
+     *
      * @param $param
      *
      * @return mixed|string
@@ -129,11 +135,19 @@ class DockerConfigBuilderStrategy
     /**
      * Return docker config from composer json
      *
+     * todo название фукции абстрактное, по аргументам не понятно что она делает, что возвращает
+     *
      * @return array
      */
     private function getDockerConfigFromComposer()
     {
+        // todo а что делать, если buildName не указали?
         $buildName = $this->input->getArguments()['buildName'];
+
+        // todo ты ведь знаешь как бесит когда ты поставил какое-то ПО, запускаешь его, а оно тебе "нихера работать не буду". укажите в конфиге параметр такой то
+        // todo ты указал, запускаешь, а он тебе про другой параметр опять.
+        // todo давай сделаем что эта хрень может работать если ни в коандной строке, ни в конфиге ничего не указано. Ведь можно использовать параметры по умолчанию
+        // todo название взять из имени проекта, докерфайл поискать в корне проекта и пр. Давай хоть раз напишем то, чем приятно пользоваться
         $extra = $this->packageInfo->getExtra();
         if (!array_key_exists('docker', $extra)) {
             throw DockerExecutionException::installPluginError();

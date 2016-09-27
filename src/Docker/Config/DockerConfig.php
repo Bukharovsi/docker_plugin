@@ -11,6 +11,10 @@ namespace Bukharovsi\DockerPlugin\Docker\Config;
 /**
  * Class DockerConfig
  *
+ * todo сейчас это просто DataTransferObject, ты берешь DockerConfigBuilderStrategy, конфигуриешь и говоришь запихни в Config параметры, которые ты магически выбрал
+ * todo дальше, ты из этого DTO просто получаешь данные. В данном случае DTO кажется излишним, так как в него запихиваются параметры только их одного класса. Но
+ * если пихать параметры будут в DTO несколько классов - он будет кстати. Так что не мог решить хорошо это или нет. оставить эту прослойку или ну нафиг.
+ *
  * @package Bukharovsi\DockerPlugin\Docker\Config
  */
 class DockerConfig

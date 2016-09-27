@@ -15,6 +15,17 @@ use Symfony\Component\Console\Input\InputInterface;
 /**
  * Class Dockerfile
  *
+ * todo что дает это название? класс Докерфай? что он представляет? содержит докерфайл?
+ * todo примеры:
+ * DockerfileChoosingStrategyUseDefault
+ * DockerfileChoosingStrategyPreferFromComposerJSONConfig
+ * DockerfileChoosingStrategyPreferFromUserInput
+ * DockerfileChoosingStrategyUseFromComposerJSONConfigAndUserInput
+ *
+ * todo и какраз в этих стратегиях должно быть четко прописано, что по умолчания, если ничего не указано мы ищем dockerfile в корне
+ * к примеру если используем DockerfileChoosingStrategyUseDefault - то не смотрим ни на какие параметры, тупо докерфайл юзаем
+ * DockerfileChoosingStrategyPreferFromComposerJSONConfig - тут берем по умолчанию, и если задан в конфиге - перетираем значение по умолчанию
+ *
  * @package Bukharovsi\DockerPlugin\Docker\ConfigBuilderStrategy\ConfigParamsStrategy
  */
 class Dockerfile implements DockerConfigParamInterface
@@ -23,6 +34,8 @@ class Dockerfile implements DockerConfigParamInterface
      * @param array                $dockerConfig
      * @param RootPackageInterface $packageInfo
      * @param InputInterface       $input
+     *
+     * todo что возвращает эта функция? что это за стринг?
      *
      * @return string
      */

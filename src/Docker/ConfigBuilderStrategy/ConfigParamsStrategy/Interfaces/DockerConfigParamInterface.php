@@ -14,6 +14,8 @@ use Symfony\Component\Console\Input\InputInterface;
 /**
  * Interface DockerConfigParamInterface
  *
+ * todo Interface DockerExecutionParamsChoosingStrategy
+ *
  * @package Bukharovsi\DockerPlugin\Docker\ConfigBuilderStrategy\ConfigParamsStrategy\Interfaces
  */
 interface DockerConfigParamInterface

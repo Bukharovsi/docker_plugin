@@ -15,6 +15,7 @@ namespace Bukharovsi\DockerPlugin\Docker\Config;
  */
 class DockerConfigParameters
 {
+    //todo было бы неплохо уазать что это за константы в комментарии
     CONST IMAGE_NAME = 'imageName';
     CONST IMAGE_TAG = 'imageTag';
     CONST DOCKERFILE = 'dockerfile';
