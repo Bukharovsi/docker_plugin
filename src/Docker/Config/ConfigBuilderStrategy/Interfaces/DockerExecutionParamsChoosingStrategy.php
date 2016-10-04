@@ -6,19 +6,17 @@
  * Time: 12:23
  */
 
-namespace Bukharovsi\DockerPlugin\Docker\ConfigBuilderStrategy\ConfigParamsStrategy\Interfaces;
+namespace Bukharovsi\DockerPlugin\Docker\Config\ConfigBuilderStrategy\Interfaces;
 
 use Composer\Package\RootPackageInterface;
 use Symfony\Component\Console\Input\InputInterface;
 
 /**
- * Interface DockerConfigParamInterface
+ * Interface DockerExecutionParamsChoosingStrategy
  *
- * todo Interface DockerExecutionParamsChoosingStrategy
- *
- * @package Bukharovsi\DockerPlugin\Docker\ConfigBuilderStrategy\ConfigParamsStrategy\Interfaces
+ * @package Bukharovsi\DockerPlugin\Docker\Config\ConfigBuilderStrategy\Interfaces
  */
-interface DockerConfigParamInterface
+interface DockerExecutionParamsChoosingStrategy
 {
     /**
      * @param array                $dockerConfig

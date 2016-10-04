@@ -6,19 +6,24 @@
  * Time: 15:45
  */
 
-namespace Bukharovsi\DockerPlugin\Docker\ConfigBuilderStrategy\ConfigParamsStrategy;
+namespace Bukharovsi\DockerPlugin\Docker\Config\ConfigBuilderStrategy;
 
-use Bukharovsi\DockerPlugin\Docker\ConfigBuilderStrategy\ConfigParamsStrategy\Interfaces\DockerConfigParamInterface;
+use Bukharovsi\DockerPlugin\Docker\Config\ConfigBuilderStrategy\Interfaces\DockerExecutionParamsChoosingStrategy;
 use Composer\Package\RootPackageInterface;
 use Symfony\Component\Console\Input\InputInterface;
 
 /**
- * Class ImageTag
+ * Class ImageTagStrategy
  *
- * @package Bukharovsi\DockerPlugin\Docker\ConfigBuilderStrategy\ConfigParamsStrategy
+ * @package Bukharovsi\DockerPlugin\Docker\Config\ConfigBuilderStrategy
  */
-class ImageTag implements DockerConfigParamInterface
+class ImageTagStrategy implements DockerExecutionParamsChoosingStrategy
 {
+    /**
+     * {@inheritdoc}
+     *
+     * @return string
+     */
     public function build(array $dockerConfig, RootPackageInterface $packageInfo, InputInterface $input)
     {
         if (isset($input->getOptions()['tag'])

@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  *
  * @package Bukharovsi\DockerPlugin\Command
  */
-class DockerBuildCommand extends DockerCommands
+class DockerBuildCommand extends BaseDockerCommand
 {
     /**
      * @return string
@@ -24,19 +24,19 @@ class DockerBuildCommand extends DockerCommands
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $dockerBuildConfig = $this->getDockerConfig($input);
+        $dockerConfig = $this->getDockerConfig($input);
 
         $commandBuilder = new DockerCommandBuilder();
         $commandBuilder->addTag(new Tag(
-            $dockerBuildConfig->getImageName(),
-            $dockerBuildConfig->getImageTag()
+            $dockerConfig->getImageName(),
+            $dockerConfig->getImageTag()
         ));
 
-        if ($dockerBuildConfig->getDockerfile()) {
-            $commandBuilder->specifyDockerfile($dockerBuildConfig->getDockerfile());
+        if ($dockerConfig->getDockerfile()) {
+            $commandBuilder->specifyDockerfile($dockerConfig->getDockerfile());
         }
-        if ($dockerBuildConfig->getWorkingDirectory()) {
-            $commandBuilder->specifyWorkingDirectory($dockerBuildConfig->getWorkingDirectory());
+        if ($dockerConfig->getWorkingDirectory()) {
+            $commandBuilder->specifyWorkingDirectory($dockerConfig->getWorkingDirectory());
         }
 
         $command = $commandBuilder->buildCommand();

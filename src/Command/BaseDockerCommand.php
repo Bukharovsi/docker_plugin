@@ -18,20 +18,12 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Class DockerCommands
+ * Class BaseDockerCommand
  *
  * @package Bukharovsi\DockerPlugin\Command
- *
- * todo название должно быть другое типа BaseDockerCommand
  */
-abstract class DockerCommands extends BaseCommand
+abstract class BaseDockerCommand extends BaseCommand
 {
-    /**
-     * @var DockerConfig
-     * todo не вижу где используется
-     */
-    protected $dockerConfig;
-
     /**
      * Return command name
      *
@@ -39,9 +31,9 @@ abstract class DockerCommands extends BaseCommand
      */
     abstract protected function getCommandName();
 
-    //todo где докблок?
-    //todo что-то мне подсказывает что эти2  метода должы жить в разных местах.
-    //todo getDockerConfig - нужен всем командам. а configure задает команду с 2мя параметрами. Name и tag. а если параметры будут другими мы не ссможем воспользоваться этим классом уже
+    /**
+     * {@inheritdoc}
+     */
     protected function configure()
     {
         $commandName = $this->getCommandName();
@@ -58,10 +50,9 @@ abstract class DockerCommands extends BaseCommand
     }
 
     /**
-     * return params for docker
-     *
-     * TODO здесь нужно поронее расписать что это параметры уже смерженые и из командной строки и из конфигурационного файла
-     * todo и возможно даже дефолтные. get params for docker слишком асбтрактно
+     * return docker params as object.
+     * params merge from default settings, command line
+     * and configuration json file
      *
      * @param InputInterface $input
      *

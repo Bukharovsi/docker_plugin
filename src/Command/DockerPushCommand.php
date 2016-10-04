@@ -18,19 +18,22 @@ use Symfony\Component\Console\Output\OutputInterface;
  *
  * @package Bukharovsi\DockerPlugin\Command
  */
-class DockerPushCommand extends DockerCommands
+class DockerPushCommand extends BaseDockerCommand
 {
     protected function getCommandName()
     {
         return 'docker:push';
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $dockerBuildConfig = $this->getDockerConfig($input);
+        $dockerConfig = $this->getDockerConfig($input);
 
         $dockerPushCommand = new DockerCommandPush();
-        $dockerPushCommand->setImageName($dockerBuildConfig->getImageName());
+        $dockerPushCommand->setImageName($dockerConfig->getImageName());
         $command = $dockerPushCommand->buildCommand();
 
         $exitCode = null;
