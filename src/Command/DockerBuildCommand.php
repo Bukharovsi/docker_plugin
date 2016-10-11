@@ -49,6 +49,9 @@ class DockerBuildCommand extends BaseDockerCommand
             throw DockerExecutionException::commandIsExecutedWithError($command, $exitCode);
         }
 
+        $output->writeln("##teamcity[setParameter name='env.BuildTag' value='" .
+            $dockerConfig->getImageTag() .
+            "']");
         $output->writeln("docker image has successfully built");
     }
 }
