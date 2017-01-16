@@ -52,6 +52,6 @@ class DockerBuildCommand extends BaseDockerCommand
         $output->writeln("##teamcity[setParameter name='env.BuildTag' value='" .
             $dockerConfig->getImageTag() .
             "']");
-        $output->writeln("docker image has successfully built");
+        $output->writeln('docker image has "'.$dockerConfig->getImageTag() .'" successfully built');
     }
 }

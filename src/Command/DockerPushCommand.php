@@ -44,6 +44,6 @@ class DockerPushCommand extends BaseDockerCommand
             throw DockerExecutionException::commandIsExecutedWithError($command, $exitCode);
         }
 
-        $output->writeln("docker image has successfully push");
+        $output->writeln('docker image has \"'.$dockerConfig->getImageTag() .'\"  successfully pushed');
     }
 }
