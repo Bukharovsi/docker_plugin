@@ -9,10 +9,10 @@
 namespace Docker\Configuration;
 
 
-use Bukharovsi\DockerPlugin\Docker\Configuration\CommandParameters;
+use Bukharovsi\DockerPlugin\Docker\Configuration\AbstractCommandParameters;
 use Composer\Package\RootPackageInterface;
 
-class ComposerDefaultParameters extends CommandParameters
+class ComposerDefaultParameters extends AbstractCommandParameters
 {
 
     /**
@@ -21,6 +21,8 @@ class ComposerDefaultParameters extends CommandParameters
      */
     public function __construct(RootPackageInterface $rootPackage)
     {
+        parent::__construct();
+
         $this->imageName = $rootPackage->getName();
         $this->imageTag = $rootPackage->getVersion();
     }

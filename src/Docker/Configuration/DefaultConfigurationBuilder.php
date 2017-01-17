@@ -21,13 +21,12 @@ class DefaultConfigurationBuilder
      */
     public function build(InputInterface $input, RootPackageInterface $packageInfo) {
         $composerDefaultParameters = new ComposerDefaultParameters($packageInfo);
-        $composerJsonParameters = new ComposerJsonParameters($packageInfo);
+        $composerJsonParameters = new ComposerJsonParameters($packageInfo->getExtra());
         $cmdParameters = new InputCommandParameters($input);
 
         $composerJsonParameters->override($composerDefaultParameters);
         $cmdParameters->override($composerJsonParameters);
 
-        $packageInfo->getInstallationSource()
 
         return $cmdParameters;
     }

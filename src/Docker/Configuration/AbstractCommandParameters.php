@@ -25,6 +25,14 @@ abstract class AbstractCommandParameters implements ICommandParameters
      */
     protected $overridedConfig;
 
+    /**
+     * AbstractCommandParameters constructor.
+     */
+    public function __construct() {
+        $this->overridedConfig = new DefaultCommandParameters();
+    }
+
+
     public function override(ICommandParameters $parameters) {
         $this->overridedConfig = $parameters;
     }
