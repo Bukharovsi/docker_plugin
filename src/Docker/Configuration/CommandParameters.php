@@ -21,10 +21,10 @@ class CommandParameters extends AbstractCommandParameters
      * @param $workingDirectory
      */
     public function __construct($imageName = null, $imageTag = null, $dockerFilePath = null, $workingDirectory = null) {
-       $this->overridedConfig = new DefaultCommandParameters();
+       $this->overridenConfig = new DefaultCommandParameters();
 
         $this->imageName = $imageName;
-        $this->imageTag = $imageTag;
+        $this->setTags($imageTag);
         $this->dockerFilePath = $dockerFilePath;
         $this->workingDirectory = $workingDirectory;
     }

@@ -13,7 +13,7 @@ interface ICommandParameters
 
     public function imageName();
 
-    public function imageTag();
+    public function imageTags();
 
     public function dockerFilePath();
 

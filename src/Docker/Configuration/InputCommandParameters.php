@@ -32,7 +32,7 @@ class InputCommandParameters extends AbstractCommandParameters
     public function __construct(InputInterface $input) {
         parent::__construct();
 
-        $this->imageTag = $input->getOption(static::TAG);
+        $this->imageTags = $input->getOption(static::TAG);
         $this->imageName = $input->getOption(static::NAME);
         $this->dockerFilePath = $input->getOption(static::DOCKERFILE);
         $this->workingDirectory = $input->getOption(static::WORKING_DIRECTORY);

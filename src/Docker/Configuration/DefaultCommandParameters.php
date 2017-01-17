@@ -23,9 +23,9 @@ class DefaultCommandParameters implements ICommandParameters
         throw DefaultCommandParametersOverridingException::noDefaultValue('image name');
     }
 
-    public function imageTag()
+    public function imageTags()
     {
-        return 'latest';
+        return ['latest'];
     }
 
     public function dockerFilePath()

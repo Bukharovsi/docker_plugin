@@ -11,6 +11,7 @@ namespace Bukharovsi\DockerPlugin\Docker\Configuration;
 
 use Composer\Package\RootPackageInterface;
 use Docker\Configuration\ComposerDefaultParameters;
+use Symfony\Component\Console\Input\InputInterface;
 
 class DefaultConfigurationBuilder
 {
@@ -26,8 +27,7 @@ class DefaultConfigurationBuilder
 
         $composerJsonParameters->override($composerDefaultParameters);
         $cmdParameters->override($composerJsonParameters);
-
-
+        
         return $cmdParameters;
     }
 }

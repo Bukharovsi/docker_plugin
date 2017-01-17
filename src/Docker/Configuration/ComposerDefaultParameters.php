@@ -24,6 +24,6 @@ class ComposerDefaultParameters extends AbstractCommandParameters
         parent::__construct();
 
         $this->imageName = $rootPackage->getName();
-        $this->imageTag = $rootPackage->getVersion();
+        $this->addTag($rootPackage->getVersion());
     }
 }

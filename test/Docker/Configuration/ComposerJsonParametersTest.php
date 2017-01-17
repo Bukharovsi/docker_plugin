@@ -25,7 +25,7 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
 
         $this->expectException(DefaultCommandParametersOverridingException::class);
         $this->assertEquals($default->imageName(), $param->imageName());
-        $this->assertEquals($default->imageTag(), $param->imageTag());
+        $this->assertEquals($default->imageTags(), $param->imageTags());
         $this->assertEquals($default->dockerFilePath(), $param->dockerFilePath());
         $this->assertEquals($default->workingDirectory(), $param->workingDirectory());
     }
@@ -40,7 +40,7 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
         $param = new ComposerJsonParameters($jsonConfig);
 
         $this->assertEquals('nginx', $param->imageName());
-        $this->assertEquals($default->imageTag(), $param->imageTag());
+        $this->assertEquals($default->imageTags(), $param->imageTags());
         $this->assertEquals($default->dockerFilePath(), $param->dockerFilePath());
         $this->assertEquals($default->workingDirectory(), $param->workingDirectory());
     }
@@ -56,7 +56,7 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
         $param = new ComposerJsonParameters($jsonConfig);
 
         $this->assertEquals('nginx', $param->imageName());
-        $this->assertEquals('1.0', $param->imageTag());
+        $this->assertEquals(['1.0'], $param->imageTags());
         $this->assertEquals($default->dockerFilePath(), $param->dockerFilePath());
         $this->assertEquals($default->workingDirectory(), $param->workingDirectory());
     }
@@ -73,7 +73,7 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
         $param = new ComposerJsonParameters($jsonConfig);
 
         $this->assertEquals('nginx', $param->imageName());
-        $this->assertEquals('1.0', $param->imageTag());
+        $this->assertEquals(['1.0'], $param->imageTags());
         $this->assertEquals('docker_override', $param->dockerFilePath());
         $this->assertEquals($default->workingDirectory(), $param->workingDirectory());
     }
@@ -90,8 +90,21 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
         $param = new ComposerJsonParameters($jsonConfig);
 
         $this->assertEquals('nginx', $param->imageName());
-        $this->assertEquals('1.0', $param->imageTag());
+        $this->assertEquals(['1.0'], $param->imageTags());
         $this->assertEquals('docker_override', $param->dockerFilePath());
         $this->assertEquals('/tmp', $param->workingDirectory());
+    }
+
+    public function testTagAsArray() {
+        $jsonConfig = [
+            'docker' => [
+                'name' => 'nginx',
+                'tag' => ['1.0', 'latest'],
+            ]
+        ];
+        $param = new ComposerJsonParameters($jsonConfig);
+
+        $this->assertEquals('nginx', $param->imageName());
+        $this->assertSame(['1.0', 'latest'], $param->imageTags());
     }
 }

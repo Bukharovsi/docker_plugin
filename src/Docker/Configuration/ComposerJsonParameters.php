@@ -47,12 +47,17 @@ class ComposerJsonParameters extends AbstractCommandParameters
         return parent::imageName();
     }
 
-    public function imageTag()
+    public function imageTags()
     {
         if (array_key_exists(static::IMAGE_TAG, $this->extraDockerConfig)) {
-            $this->imageTag = $this->extraDockerConfig[static::IMAGE_TAG];
+            $tags = $this->extraDockerConfig[static::IMAGE_TAG];
+            if (!is_array($tags)) {
+                $tags = [$tags];
+            }
+
+            $this->imageTags = $tags;
         }
-        return parent::imageTag();
+        return parent::imageTags();
     }
 
     public function dockerFilePath()

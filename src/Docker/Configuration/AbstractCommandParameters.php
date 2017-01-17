@@ -12,56 +12,86 @@ namespace Bukharovsi\DockerPlugin\Docker\Configuration;
 abstract class AbstractCommandParameters implements ICommandParameters
 {
 
+    /**
+     * @var string
+     */
     protected $imageName;
 
-    protected $imageTag;
+    /**
+     * @var string[]
+     */
+    protected $imageTags;
 
+    /**
+     * @var string
+     */
     protected $dockerFilePath;
 
+    /**
+     * @var string
+     */
     protected $workingDirectory;
 
     /**
      * @var ICommandParameters;
      */
-    protected $overridedConfig;
+    protected $overridenConfig;
 
     /**
      * AbstractCommandParameters constructor.
      */
     public function __construct() {
-        $this->overridedConfig = new DefaultCommandParameters();
+        $this->overridenConfig = new DefaultCommandParameters();
     }
 
 
     public function override(ICommandParameters $parameters) {
-        $this->overridedConfig = $parameters;
+        $this->overridenConfig = $parameters;
     }
 
     public function imageName() {
         if (null != $this->imageName) {
             $imageName = $this->imageName;
         } else {
-            $imageName = $this->overridedConfig->imageName();
+            $imageName = $this->overridenConfig->imageName();
         }
 
         return $imageName;
     }
 
-    public function imageTag() {
-        if (null != $this->imageTag) {
-            $imageTag = $this->imageTag;
+    public function imageTags() {
+        if (null != $this->imageTags) {
+            $imageTag = $this->imageTags;
         } else {
-            $imageTag = $this->overridedConfig->imageTag();
+            $imageTag = $this->overridenConfig->imageTags();
         }
 
         return $imageTag;
+    }
+
+    protected function addTag($tag) {
+        if (null == $this->imageTags) {
+            $this->imageTags = [];
+        }
+
+        $this->imageTags[$tag];
+    }
+
+    /**
+     * @param string[]|string $tags
+     */
+    protected function setTags($tags) {
+        if (!(null == $tags ||is_array($tags))) {
+            $tags = [$tags];
+        }
+        $this->imageTags = $tags;
     }
 
     public function dockerFilePath() {
         if (null != $this->dockerFilePath) {
             $dockerfile = $this->dockerFilePath;
         } else {
-            $dockerfile = $this->overridedConfig->dockerFilePath();
+            $dockerfile = $this->overridenConfig->dockerFilePath();
         }
 
         return $dockerfile;
@@ -71,7 +101,7 @@ abstract class AbstractCommandParameters implements ICommandParameters
         if (null != $this->workingDirectory) {
             $wd = $this->workingDirectory;
         } else {
-            $wd = $this->overridedConfig->workingDirectory();
+            $wd = $this->overridenConfig->workingDirectory();
         }
 
         return $wd;

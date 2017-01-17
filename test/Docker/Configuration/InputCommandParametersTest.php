@@ -32,7 +32,7 @@ class InputCommandParametersTest extends \PHPUnit_Framework_TestCase
 
         $defaultParameters = new DefaultCommandParameters();
         $this->assertEquals("nginx", $cmdParams->imageName());
-        $this->assertEquals($defaultParameters->imageTag(), $cmdParams->imageTag());
+        $this->assertEquals($defaultParameters->imageTags(), $cmdParams->imageTags());
     }
 
     public function testOverridingImageTag() {
@@ -42,7 +42,7 @@ class InputCommandParametersTest extends \PHPUnit_Framework_TestCase
 
         $defaultParameters = new DefaultCommandParameters();
         $this->assertEquals("nginx", $cmdParams->imageName());
-        $this->assertEquals(['latest'], $cmdParams->imageTag());
+        $this->assertEquals(['latest'], $cmdParams->imageTags());
         $this->assertEquals($defaultParameters->dockerFilePath(), $cmdParams->dockerFilePath());
     }
 
@@ -53,7 +53,7 @@ class InputCommandParametersTest extends \PHPUnit_Framework_TestCase
 
         $defaultParameters = new DefaultCommandParameters();
         $this->assertEquals('nginx', $cmdParams->imageName());
-        $this->assertEquals(['latest'], $cmdParams->imageTag());
+        $this->assertEquals(['latest'], $cmdParams->imageTags());
         $this->assertEquals('Dockerfile_new', $cmdParams->dockerFilePath());
         $this->assertEquals($defaultParameters->workingDirectory(), $cmdParams->workingDirectory());
     }
@@ -64,7 +64,7 @@ class InputCommandParametersTest extends \PHPUnit_Framework_TestCase
         $cmdParams = new InputCommandParameters($input);
 
         $this->assertEquals("nginx", $cmdParams->imageName());
-        $this->assertEquals(["latest"], $cmdParams->imageTag());
+        $this->assertEquals(["latest"], $cmdParams->imageTags());
         $this->assertEquals("Dockerfile_new", $cmdParams->dockerFilePath());
         $this->assertEquals('/tmp', $cmdParams->workingDirectory());
     }
