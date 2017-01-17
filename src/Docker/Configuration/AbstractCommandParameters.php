@@ -70,11 +70,15 @@ abstract class AbstractCommandParameters implements ICommandParameters
     }
 
     protected function addTag($tag) {
+        if (null == $tag) {
+            return;
+        }
+
         if (null == $this->imageTags) {
             $this->imageTags = [];
         }
 
-        $this->imageTags[$tag];
+        $this->imageTags[] = $tag;
     }
 
     /**

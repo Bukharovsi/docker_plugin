@@ -6,12 +6,16 @@
  * Time: 0:34
  */
 
-namespace Docker\Configuration;
+namespace Bukharovsi\DockerPlugin\Docker\Configuration;
 
 
 use Bukharovsi\DockerPlugin\Docker\Configuration\AbstractCommandParameters;
 use Composer\Package\RootPackageInterface;
 
+/**
+ * Class ComposerDefaultParameters
+ * @package Docker\Configuration
+ */
 class ComposerDefaultParameters extends AbstractCommandParameters
 {
 
