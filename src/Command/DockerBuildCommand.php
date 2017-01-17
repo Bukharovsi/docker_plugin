@@ -24,34 +24,6 @@ class DockerBuildCommand extends BaseDockerCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $dockerConfig = $this->getDockerConfig($input);
 
-        $commandBuilder = new DockerCommandBuilder();
-        $commandBuilder->addTag(new Tag(
-            $dockerConfig->getImageName(),
-            $dockerConfig->getImageTag()
-        ));
-
-        if ($dockerConfig->getDockerfile()) {
-            $commandBuilder->specifyDockerfile($dockerConfig->getDockerfile());
-        }
-        if ($dockerConfig->getWorkingDirectory()) {
-            $commandBuilder->specifyWorkingDirectory($dockerConfig->getWorkingDirectory());
-        }
-
-        $command = $commandBuilder->buildCommand();
-
-        $exitCode = null;
-        $execOutput = [];
-        exec($command, $execOutput, $exitCode);
-
-        if (0 !== $exitCode) {
-            throw DockerExecutionException::commandIsExecutedWithError($command, $exitCode);
-        }
-
-        $output->writeln("##teamcity[setParameter name='env.BuildTag' value='" .
-            $dockerConfig->getImageTag() .
-            "']");
-        $output->writeln('docker image has "'.$dockerConfig->getImageTag() .'" successfully built');
     }
 }

@@ -48,24 +48,4 @@ abstract class BaseDockerCommand extends BaseCommand
 
         parent::configure();
     }
-
-    /**
-     * return docker params as object.
-     * params merge from default settings, command line
-     * and configuration json file
-     *
-     * @param InputInterface $input
-     *
-     * @throws DockerExecutionException
-     * @return DockerConfig
-     */
-    protected function getDockerConfig(InputInterface $input)
-    {
-        $dockerConfigBuilder = new DockerConfigBuilder(
-            $input,
-            $this->getComposer()->getPackage()
-        );
-
-        return $dockerConfigBuilder->buildDockerConfig();
-    }
 }
