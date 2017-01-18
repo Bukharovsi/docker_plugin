@@ -17,7 +17,7 @@ use Symfony\Component\Console\Input\InputOption;
  * Class InputCommandParameters
  * @package Bukharovsi\DockerPlugin\Docker\Configuration
  */
-class InputCommandParameters extends AbstractCommandParameters
+class ConsoleInputConfiguration extends AbstractConfiguration
 {
 
     const TAG = 'tag';

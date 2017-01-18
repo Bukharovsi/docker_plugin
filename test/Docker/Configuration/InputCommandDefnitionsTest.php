@@ -9,7 +9,7 @@
 namespace Bukharovsi\DockerPlugin\Test\Docker\Configuration;
 
 
-use Bukharovsi\DockerPlugin\Docker\Configuration\InputCommandParameters;
+use Bukharovsi\DockerPlugin\Docker\Configuration\ConsoleInputConfiguration;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputOption;
@@ -19,7 +19,7 @@ class InputCommandDefnitionsTest extends \PHPUnit_Framework_TestCase
 {
     public function testDefinitions() {
         $input = new StringInput('--name nginx --tag latest --dockerfile dockerfile --workingdirectory /tmp');
-        $input->bind(InputCommandParameters::createInputDefinition());
+        $input->bind(ConsoleInputConfiguration::createInputDefinition());
 
         $this->assertEquals('nginx', $input->getOption('name'));
         $this->assertSame(['latest'], $input->getOption('tag'));

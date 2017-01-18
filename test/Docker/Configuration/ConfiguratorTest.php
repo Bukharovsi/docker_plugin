@@ -9,20 +9,20 @@
 namespace Bukharovsi\DockerPlugin\Test\Docker\Configuration;
 
 
-use Bukharovsi\DockerPlugin\Docker\Configuration\DefaultConfigurationBuilder;
-use Bukharovsi\DockerPlugin\Docker\Configuration\InputCommandParameters;
+use Bukharovsi\DockerPlugin\Docker\Configuration\Configurator;
+use Bukharovsi\DockerPlugin\Docker\Configuration\ConsoleInputConfiguration;
 use Composer\Package\RootPackageInterface;
 use Symfony\Component\Console\Input\StringInput;
 
-class DefaultConfigurationBuilderTest extends \PHPUnit_Framework_TestCase
+class ConfiguratorTest extends \PHPUnit_Framework_TestCase
 {
     public function testDefaultBuilder() {
         $input = new StringInput('--name nginx --tag latest --dockerfile Dockerfile_new');
-        $input->bind(InputCommandParameters::createInputDefinition());
+        $input->bind(ConsoleInputConfiguration::createInputDefinition());
 
         $package = $this->getRootPackageMock('nginx', '1.0', []);
-        $builder = new DefaultConfigurationBuilder();
-        $configuration = $builder->build($input, $package);
+        $builder = new Configurator($input, $package);
+        $configuration = $builder->makeConfiguration();
 
         $this->assertEquals('nginx', $configuration->imageName(), 'image name is provided by command line. Hegher order');
         $this->assertEquals(['latest'], $configuration->imageTags());

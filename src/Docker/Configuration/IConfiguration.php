@@ -7,9 +7,13 @@
  */
 namespace Bukharovsi\DockerPlugin\Docker\Configuration;
 
-interface ICommandParameters
+/**
+ * Interface IConfiguration
+ * @package Bukharovsi\DockerPlugin\Docker\Configuration
+ */
+interface IConfiguration
 {
-    public function override(ICommandParameters $parameters);
+    public function override(IConfiguration $parameters);
 
     public function imageName();
 

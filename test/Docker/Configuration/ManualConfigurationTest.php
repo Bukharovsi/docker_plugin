@@ -8,45 +8,45 @@
 
 namespace Bukharovsi\DockerPlugin\Test\Docker\Configuration;
 
-use Bukharovsi\DockerPlugin\Docker\Configuration\CommandParameters;
-use Bukharovsi\DockerPlugin\Docker\Configuration\DefaultCommandParameters;
+use Bukharovsi\DockerPlugin\Docker\Configuration\ManualConfiguration;
+use Bukharovsi\DockerPlugin\Docker\Configuration\DefaultConfiguration;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Exceptions\DefaultCommandParametersOverridingException;
 
 /**
  * Class CommandParametersTest
  * @package Bukharovsi\DockerPlugin\Test\Docker\Configuration
  */
-class CommandParametersTest extends \PHPUnit_Framework_TestCase
+class ManualConfigurationTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testAllParamsAreDefaults() {
-        $cmdParams = new CommandParameters();
+        $cmdParams = new ManualConfiguration();
 
         $this->expectException(DefaultCommandParametersOverridingException::class);
         $cmdParams->imageName();
     }
 
     public function testOverridingImageName() {
-        $cmdParams = new CommandParameters('nginx');
+        $cmdParams = new ManualConfiguration('nginx');
 
-        $defaultParameters = new DefaultCommandParameters();
+        $defaultParameters = new DefaultConfiguration();
         $this->assertEquals("nginx", $cmdParams->imageName());
         $this->assertEquals($defaultParameters->imageTags(), $cmdParams->imageTags());
     }
 
     public function testOverridingImageTag() {
-        $cmdParams = new CommandParameters('nginx', 'latest');
+        $cmdParams = new ManualConfiguration('nginx', 'latest');
 
-        $defaultParameters = new DefaultCommandParameters();
+        $defaultParameters = new DefaultConfiguration();
         $this->assertEquals("nginx", $cmdParams->imageName());
         $this->assertEquals(['latest'], $cmdParams->imageTags());
         $this->assertEquals($defaultParameters->dockerFilePath(), $cmdParams->dockerFilePath());
     }
 
     public function testOverridingDockerFile() {
-        $cmdParams = new CommandParameters('nginx', 'latest', 'Dockerfile_new');
+        $cmdParams = new ManualConfiguration('nginx', 'latest', 'Dockerfile_new');
 
-        $defaultParameters = new DefaultCommandParameters();
+        $defaultParameters = new DefaultConfiguration();
         $this->assertEquals('nginx', $cmdParams->imageName());
         $this->assertEquals(['latest'], $cmdParams->imageTags());
         $this->assertEquals('Dockerfile_new', $cmdParams->dockerFilePath());
@@ -54,7 +54,7 @@ class CommandParametersTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testOverridingDefault() {
-        $cmdParams = new CommandParameters("nginx", "dev", "Dockerfile_new", '/tmp');
+        $cmdParams = new ManualConfiguration("nginx", "dev", "Dockerfile_new", '/tmp');
 
         $this->assertEquals("nginx", $cmdParams->imageName());
         $this->assertEquals(["dev"], $cmdParams->imageTags());

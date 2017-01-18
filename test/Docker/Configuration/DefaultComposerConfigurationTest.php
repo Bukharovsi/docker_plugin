@@ -9,20 +9,20 @@
 namespace Bukharovsi\DockerPlugin\Test\Docker\Configuration;
 
 
-use Bukharovsi\DockerPlugin\Docker\Configuration\ComposerDefaultParameters;
+use Bukharovsi\DockerPlugin\Docker\Configuration\DefaultComposerConfiguration;
 use Composer\Package\RootPackageInterface;
 
-class ComposerDefaultParametersTest extends \PHPUnit_Framework_TestCase
+class DefaultComposerConfigurationTest extends \PHPUnit_Framework_TestCase
 {
     public function testAllParams() {
-        $params = new ComposerDefaultParameters($this->getRootPackageMock('nginx', '1.0'));
+        $params = new DefaultComposerConfiguration($this->getRootPackageMock('nginx', '1.0'));
 
         $this->assertEquals('nginx', $params->imageName());
         $this->assertEquals(['1.0'], $params->imageTags());
     }
 
     public function testOnlyName() {
-        $params = new ComposerDefaultParameters($this->getRootPackageMock('nginx', null));
+        $params = new DefaultComposerConfiguration($this->getRootPackageMock('nginx', null));
 
         $this->assertEquals('nginx', $params->imageName());
         $this->assertEquals(['latest'], $params->imageTags());

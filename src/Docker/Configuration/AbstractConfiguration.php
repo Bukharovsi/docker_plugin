@@ -8,8 +8,12 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\Configuration;
 
-
-abstract class AbstractCommandParameters implements ICommandParameters
+/**
+ * Class AbstractConfiguration
+ *
+ * @package Bukharovsi\DockerPlugin\Docker\Configuration
+ */
+abstract class AbstractConfiguration implements IConfiguration
 {
 
     /**
@@ -33,7 +37,7 @@ abstract class AbstractCommandParameters implements ICommandParameters
     protected $workingDirectory;
 
     /**
-     * @var ICommandParameters;
+     * @var IConfiguration;
      */
     protected $overridenConfig;
 
@@ -41,11 +45,11 @@ abstract class AbstractCommandParameters implements ICommandParameters
      * AbstractCommandParameters constructor.
      */
     public function __construct() {
-        $this->overridenConfig = new DefaultCommandParameters();
+        $this->overridenConfig = new DefaultConfiguration();
     }
 
 
-    public function override(ICommandParameters $parameters) {
+    public function override(IConfiguration $parameters) {
         $this->overridenConfig = $parameters;
     }
 

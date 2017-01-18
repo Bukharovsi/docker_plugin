@@ -9,8 +9,8 @@
 namespace Bukharovsi\DockerPlugin\Test\Docker\Configuration;
 
 
-use Bukharovsi\DockerPlugin\Docker\Configuration\ComposerJsonParameters;
-use Bukharovsi\DockerPlugin\Docker\Configuration\DefaultCommandParameters;
+use Bukharovsi\DockerPlugin\Docker\Configuration\ComposerJsonConfiguration;
+use Bukharovsi\DockerPlugin\Docker\Configuration\DefaultConfiguration;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Exceptions\DefaultCommandParametersOverridingException;
 
 class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
@@ -20,8 +20,8 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
             'docker' => [
             ]
         ];
-        $default = new DefaultCommandParameters();
-        $param = new ComposerJsonParameters($jsonConfig);
+        $default = new DefaultConfiguration();
+        $param = new ComposerJsonConfiguration($jsonConfig);
 
         $this->expectException(DefaultCommandParametersOverridingException::class);
         $this->assertEquals($default->imageName(), $param->imageName());
@@ -36,8 +36,8 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
                 'name' => 'nginx'
             ]
         ];
-        $default = new DefaultCommandParameters();
-        $param = new ComposerJsonParameters($jsonConfig);
+        $default = new DefaultConfiguration();
+        $param = new ComposerJsonConfiguration($jsonConfig);
 
         $this->assertEquals('nginx', $param->imageName());
         $this->assertEquals($default->imageTags(), $param->imageTags());
@@ -52,8 +52,8 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
                 'tag' => '1.0'
             ]
         ];
-        $default = new DefaultCommandParameters();
-        $param = new ComposerJsonParameters($jsonConfig);
+        $default = new DefaultConfiguration();
+        $param = new ComposerJsonConfiguration($jsonConfig);
 
         $this->assertEquals('nginx', $param->imageName());
         $this->assertEquals(['1.0'], $param->imageTags());
@@ -69,8 +69,8 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
                 'dockerfile' => 'docker_override'
             ]
         ];
-        $default = new DefaultCommandParameters();
-        $param = new ComposerJsonParameters($jsonConfig);
+        $default = new DefaultConfiguration();
+        $param = new ComposerJsonConfiguration($jsonConfig);
 
         $this->assertEquals('nginx', $param->imageName());
         $this->assertEquals(['1.0'], $param->imageTags());
@@ -87,7 +87,7 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
                 'workingdirectory' => '/tmp'
             ]
         ];
-        $param = new ComposerJsonParameters($jsonConfig);
+        $param = new ComposerJsonConfiguration($jsonConfig);
 
         $this->assertEquals('nginx', $param->imageName());
         $this->assertEquals(['1.0'], $param->imageTags());
@@ -102,7 +102,7 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
                 'tag' => ['1.0', 'latest'],
             ]
         ];
-        $param = new ComposerJsonParameters($jsonConfig);
+        $param = new ComposerJsonConfiguration($jsonConfig);
 
         $this->assertEquals('nginx', $param->imageName());
         $this->assertSame(['1.0', 'latest'], $param->imageTags());

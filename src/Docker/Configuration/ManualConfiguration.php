@@ -9,7 +9,7 @@
 namespace Bukharovsi\DockerPlugin\Docker\Configuration;
 
 
-class CommandParameters extends AbstractCommandParameters
+class ManualConfiguration extends AbstractConfiguration
 {
 
 
@@ -21,7 +21,7 @@ class CommandParameters extends AbstractCommandParameters
      * @param $workingDirectory
      */
     public function __construct($imageName = null, $imageTag = null, $dockerFilePath = null, $workingDirectory = null) {
-       $this->overridenConfig = new DefaultCommandParameters();
+       $this->overridenConfig = new DefaultConfiguration();
 
         $this->imageName = $imageName;
         $this->setTags($imageTag);

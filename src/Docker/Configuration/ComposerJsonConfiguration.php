@@ -8,7 +8,16 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\Configuration;
 
-class ComposerJsonParameters extends AbstractCommandParameters
+/**
+ * Class ComposerJsonConfiguration
+ *
+ * Define configuration based on composer.json file
+ *
+ * to define configuration provide "extra" section
+ *
+ * @package Bukharovsi\DockerPlugin\Docker\Configuration
+ */
+class ComposerJsonConfiguration extends AbstractConfiguration
 {
 
     const DOCKER_PLUGIN_EXTRA_KEY = 'docker';

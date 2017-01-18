@@ -10,7 +10,7 @@ namespace Bukharovsi\DockerPlugin\Command;
 
 use Bukharovsi\DockerPlugin\Command\Exceptions\DockerExecutionException;
 use Bukharovsi\DockerPlugin\Docker\Config\DockerConfig;
-use Bukharovsi\DockerPlugin\Docker\Configuration\InputCommandParameters;
+use Bukharovsi\DockerPlugin\Docker\Configuration\ConsoleInputConfiguration;
 use Bukharovsi\DockerPlugin\Docker\DockerConfigBuilder;
 use Composer\Command\BaseCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -39,7 +39,7 @@ abstract class BaseDockerCommand extends BaseCommand
     {
         $commandName = $this->getCommandName();
         $this->setName($commandName);
-        $this->setDefinition(InputCommandParameters::createInputDefinition());
+        $this->setDefinition(ConsoleInputConfiguration::createInputDefinition());
 
         parent::configure();
     }

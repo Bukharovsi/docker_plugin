@@ -9,14 +9,17 @@
 namespace Bukharovsi\DockerPlugin\Docker\Configuration;
 
 
-use Bukharovsi\DockerPlugin\Docker\Configuration\AbstractCommandParameters;
+use Bukharovsi\DockerPlugin\Docker\Configuration\AbstractConfiguration;
 use Composer\Package\RootPackageInterface;
 
 /**
  * Class ComposerDefaultParameters
+ *
+ * define default configuration for all composer projects
+ *
  * @package Docker\Configuration
  */
-class ComposerDefaultParameters extends AbstractCommandParameters
+class DefaultComposerConfiguration extends AbstractConfiguration
 {
 
     /**
