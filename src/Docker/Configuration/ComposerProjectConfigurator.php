@@ -14,9 +14,12 @@ use Symfony\Component\Console\Input\InputInterface;
 
 /**
  * Class Configurator
+ *
+ * Configurator for composer projects
+ *
  * @package Bukharovsi\DockerPlugin\Docker\Configuration
  */
-class Configurator
+class ComposerProjectConfigurator implements IConfigurator
 {
 
     /**
@@ -42,8 +45,6 @@ class Configurator
 
 
     /**
-     * @param InputInterface $input
-     * @param RootPackageInterface $packageInfo
      * @return IConfiguration
      */
     public function makeConfiguration() {

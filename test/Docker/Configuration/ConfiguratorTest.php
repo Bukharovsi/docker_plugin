@@ -9,7 +9,7 @@
 namespace Bukharovsi\DockerPlugin\Test\Docker\Configuration;
 
 
-use Bukharovsi\DockerPlugin\Docker\Configuration\Configurator;
+use Bukharovsi\DockerPlugin\Docker\Configuration\ComposerProjectConfigurator;
 use Bukharovsi\DockerPlugin\Docker\Configuration\ConsoleInputConfiguration;
 use Composer\Package\RootPackageInterface;
 use Symfony\Component\Console\Input\StringInput;
@@ -21,7 +21,7 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
         $input->bind(ConsoleInputConfiguration::createInputDefinition());
 
         $package = $this->getRootPackageMock('nginx', '1.0', []);
-        $builder = new Configurator($input, $package);
+        $builder = new ComposerProjectConfigurator($input, $package);
         $configuration = $builder->makeConfiguration();
 
         $this->assertEquals('nginx', $configuration->imageName(), 'image name is provided by command line. Hegher order');
