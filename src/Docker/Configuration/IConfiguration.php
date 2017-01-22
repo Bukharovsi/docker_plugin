@@ -13,7 +13,7 @@ namespace Bukharovsi\DockerPlugin\Docker\Configuration;
  */
 interface IConfiguration
 {
-    public function override(IConfiguration $parameters);
+    public function override(IConfiguration $configuration);
 
     public function imageName();
 

@@ -18,7 +18,7 @@ use Bukharovsi\DockerPlugin\Docker\Configuration\Exceptions\DefaultCommandParame
  */
 class DefaultConfiguration implements IConfiguration
 {
-    public function override(IConfiguration $parameters)
+    public function override(IConfiguration $configuration)
     {
         throw DefaultCommandParametersOverridingException::cantOverrideDefaultParameters();
     }

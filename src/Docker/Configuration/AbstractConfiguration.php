@@ -49,8 +49,8 @@ abstract class AbstractConfiguration implements IConfiguration
     }
 
 
-    public function override(IConfiguration $parameters) {
-        $this->overridenConfig = $parameters;
+    public function override(IConfiguration $configuration) {
+        $this->overridenConfig = $configuration;
     }
 
     public function imageName() {
