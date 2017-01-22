@@ -69,6 +69,7 @@ class BuildImageCommand implements IExecutable, IBuildImageCommand
         foreach ($this->tags as $tag) {
             $cmd .= " -t $tag";
         }
+        $cmd .= ' -f '. $this->dockerfile;
         $cmd .= ' ' . $this->workingDirectory;
         return $cmd;
     }

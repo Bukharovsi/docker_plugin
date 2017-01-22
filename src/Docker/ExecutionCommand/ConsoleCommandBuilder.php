@@ -26,20 +26,23 @@ class ConsoleCommandBuilder implements ICommandBuilder
      * @param string $dockerfile
      * @param string $workingDirectory
      * @param Tag[] $tags
+     *
+     * @return IBuildImageCommand
      */
     public function createBuildImageCommand($dockerfile, $workingDirectory, array $tags)
     {
-
+        return new BuildImageCommand($dockerfile, $workingDirectory, $tags);
     }
 
     /**
      * Create push command
      *
-     * @param Tag[] $tags
+     * @param Tag $tag
+     * @return IPushImageCommand
      */
-    public function createPushImageCommand(array $tags)
+    public function createPushImageCommand(Tag $tag)
     {
-
+        return new PushImageCommand($tag);
     }
 
 }

@@ -24,7 +24,10 @@ class BuildImageCommandTest extends \PHPUnit_Framework_TestCase
         $exec = $this->getFunctionMock((new \ReflectionClass(BuildImageCommand::class))->getNamespaceName(), "exec");
         $exec->expects($this->once())->willReturnCallback(
             function ($command, &$output, &$return_var) {
-                $this->assertEquals("docker build -t nginx:latest .", $command);
+                static::assertStringStartsWith('docker build', $command);
+                static::assertContains('-t nginx:latest', $command);
+                static::assertContains('-f Dockerfile', $command);
+                static::assertStringEndsWith('.', $command);
                 $output = ["image was created"];
                 $return_var = 0;
             }
@@ -41,7 +44,8 @@ class BuildImageCommandTest extends \PHPUnit_Framework_TestCase
         $exec = $this->getFunctionMock((new \ReflectionClass(BuildImageCommand::class))->getNamespaceName(), "exec");
         $exec->expects($this->once())->willReturnCallback(
             function ($command, &$output, &$return_var) {
-                $this->assertEquals("docker build -t nginx:latest -t nginx:1.0 .", $command);
+                static::assertContains('-t nginx:latest', $command);
+                static::assertContains('-t nginx:1.0', $command);
                 $output = ["image was created"];
                 $return_var = 0;
             }

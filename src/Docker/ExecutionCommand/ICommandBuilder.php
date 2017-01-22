@@ -32,8 +32,8 @@ interface ICommandBuilder
     /**
      * Create push command
      *
-     * @param Tag[] $tags
+     * @param Tag $tag
      * @return IPushImageCommand
      */
-    public function createPushImageCommand(array $tags);
+    public function createPushImageCommand(Tag $tag);
 }
