@@ -40,6 +40,7 @@ class DockerImage
     /**
      * DockerImage constructor.
      * @param IConfiguration $configuration
+     * @param ICommandBuilder $commandBuilder
      */
     public function __construct(IConfiguration $configuration, ICommandBuilder $commandBuilder)
     {
