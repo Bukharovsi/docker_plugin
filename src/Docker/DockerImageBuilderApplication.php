@@ -13,6 +13,7 @@ use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ICommandBuilder;
 use Bukharovsi\DockerPlugin\Docker\Image\DockerImage;
 use Composer\Package\RootPackageInterface;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Class DockerImageBuilderApplication
@@ -45,30 +46,27 @@ class DockerImageBuilderApplication
         $this->commandBuilder = $commandBuilder;
     }
 
-    public function buildDockerImage(InputInterface $input)
-    {
-        $image = $this->createImage($input);
-        $image->build();
-    }
-
-    public function pushDockerImage(InputInterface $input)
-    {
-        $image = $this->createImage($input);
-        $image->push();
-    }
-
-    /**
-     * @param InputInterface $input
-     */
-    private function createImage(InputInterface $input)
+    public function buildDockerImage(InputInterface $input, OutputInterface $output)
     {
         $this->configurator = new ComposerProjectConfigurator($input, $this->packageInfo);
         $configuraton = $this->configurator->makeConfiguration();
 
         $image = new DockerImage($configuraton, $this->commandBuilder);
 
-        return $image;
+        $builtImage = $image->build();
+
+        $reports = new ReportCollection($builtImage, $configuraton, $output);
+        $reports->make();
     }
 
+    public function pushDockerImage(InputInterface $input)
+    {
+        $this->configurator = new ComposerProjectConfigurator($input, $this->packageInfo);
+        $configuraton = $this->configurator->makeConfiguration();
 
+        $image = new DockerImage($configuraton, $this->commandBuilder);
+
+        $image->push();
+    }
+    
 }

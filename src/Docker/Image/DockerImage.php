@@ -15,6 +15,13 @@ use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\IBuildImageCommand;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ICommandBuilder;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\PushImageCommand;
 
+/**
+ * Class DockerImage
+ *
+ * Represents a Docker Image built configuration
+ *
+ * @package Bukharovsi\DockerPlugin\Docker\Image
+ */
 class DockerImage
 {
     /**
@@ -62,6 +69,8 @@ class DockerImage
     {
         $buildCommand = $this->commandBuilder->createBuildImageCommand($this->dockerfile, $this->workingDirectory, $this->tags);
         $buildCommand->execute();
+
+        return new BuiltImage($this->tags);
     }
 
     public function push()

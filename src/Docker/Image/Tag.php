@@ -26,6 +26,12 @@ class Tag
         $this->version = $version;
     }
 
+    public function version()
+    {
+        return $this->version;
+    }
+
+
     public function __toString() {
         return $this->name.':'.$this->version;
     }

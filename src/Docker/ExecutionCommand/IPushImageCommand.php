@@ -17,7 +17,7 @@ interface IPushImageCommand extends IExecutable
 {
     /**
      * PushImageCommand constructor.
-     * @param Tag[] $tag
+     * @param Tag $tag
      */
     public function __construct(Tag $tag);
 

@@ -22,6 +22,6 @@ class DockerBuildCommand extends BaseDockerCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->dockerImageApplication->buildDockerImage($input);
+        $this->dockerImageApplication->buildDockerImage($input, $output);
     }
 }

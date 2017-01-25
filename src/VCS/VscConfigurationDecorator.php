@@ -50,6 +50,8 @@ class VscConfigurationDecorator implements IConfiguration
         $tags = $this->decorate->imageTags();
         if (in_array('@vcs', $tags)) {
             // todo return tags from VCS!
+        } else {
+            return $tags;
         }
     }
 
@@ -60,7 +62,7 @@ class VscConfigurationDecorator implements IConfiguration
 
     public function workingDirectory()
     {
-        return $this->workingDirectory();
+        return $this->decorate->workingDirectory();
     }
 
 }
