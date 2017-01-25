@@ -23,11 +23,12 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
         $default = new DefaultConfiguration();
         $param = new ComposerJsonConfiguration($jsonConfig);
 
-        $this->expectException(DefaultCommandParametersOverridingException::class);
-        $this->assertEquals($default->imageName(), $param->imageName());
-        $this->assertEquals($default->imageTags(), $param->imageTags());
-        $this->assertEquals($default->dockerFilePath(), $param->dockerFilePath());
-        $this->assertEquals($default->workingDirectory(), $param->workingDirectory());
+        static::expectException(DefaultCommandParametersOverridingException::class);
+        static::assertEquals($default->imageName(), $param->imageName());
+        static::assertEquals($default->imageTags(), $param->imageTags());
+        static::assertEquals($default->dockerFilePath(), $param->dockerFilePath());
+        static::assertEquals($default->workingDirectory(), $param->workingDirectory());
+        static::assertEquals($default->reports(), $param->reports());
     }
 
     public function testSetImageName() {
@@ -39,10 +40,11 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
         $default = new DefaultConfiguration();
         $param = new ComposerJsonConfiguration($jsonConfig);
 
-        $this->assertEquals('nginx', $param->imageName());
-        $this->assertEquals($default->imageTags(), $param->imageTags());
-        $this->assertEquals($default->dockerFilePath(), $param->dockerFilePath());
-        $this->assertEquals($default->workingDirectory(), $param->workingDirectory());
+        static::assertEquals('nginx', $param->imageName());
+        static::assertEquals($default->imageTags(), $param->imageTags());
+        static::assertEquals($default->dockerFilePath(), $param->dockerFilePath());
+        static::assertEquals($default->workingDirectory(), $param->workingDirectory());
+        static::assertEquals($default->reports(), $param->reports());
     }
 
     public function testSetImageTag() {
@@ -55,10 +57,11 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
         $default = new DefaultConfiguration();
         $param = new ComposerJsonConfiguration($jsonConfig);
 
-        $this->assertEquals('nginx', $param->imageName());
-        $this->assertEquals(['1.0'], $param->imageTags());
-        $this->assertEquals($default->dockerFilePath(), $param->dockerFilePath());
-        $this->assertEquals($default->workingDirectory(), $param->workingDirectory());
+        static::assertEquals('nginx', $param->imageName());
+        static::assertEquals(['1.0'], $param->imageTags());
+        static::assertEquals($default->dockerFilePath(), $param->dockerFilePath());
+        static::assertEquals($default->workingDirectory(), $param->workingDirectory());
+        static::assertEquals($default->reports(), $param->reports());
     }
 
     public function testSetDockerfile() {
@@ -72,10 +75,11 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
         $default = new DefaultConfiguration();
         $param = new ComposerJsonConfiguration($jsonConfig);
 
-        $this->assertEquals('nginx', $param->imageName());
-        $this->assertEquals(['1.0'], $param->imageTags());
-        $this->assertEquals('docker_override', $param->dockerFilePath());
-        $this->assertEquals($default->workingDirectory(), $param->workingDirectory());
+        static::assertEquals('nginx', $param->imageName());
+        static::assertEquals(['1.0'], $param->imageTags());
+        static::assertEquals('docker_override', $param->dockerFilePath());
+        static::assertEquals($default->workingDirectory(), $param->workingDirectory());
+        static::assertEquals($default->reports(), $param->reports());
     }
 
     public function testSetWorkdir() {
@@ -87,12 +91,28 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
                 'workingdirectory' => '/tmp'
             ]
         ];
+        $default = new DefaultConfiguration();
         $param = new ComposerJsonConfiguration($jsonConfig);
 
-        $this->assertEquals('nginx', $param->imageName());
-        $this->assertEquals(['1.0'], $param->imageTags());
-        $this->assertEquals('docker_override', $param->dockerFilePath());
-        $this->assertEquals('/tmp', $param->workingDirectory());
+        static::assertEquals('nginx', $param->imageName());
+        static::assertEquals(['1.0'], $param->imageTags());
+        static::assertEquals('docker_override', $param->dockerFilePath());
+        static::assertEquals('/tmp', $param->workingDirectory());
+        static::assertEquals($default->reports(), $param->reports());
+    }
+
+
+    public function testDefiningReports() {
+        $jsonConfig = [
+            'docker' => [
+                'name' => 'nginx',
+                'reports' => ['teamcity'],
+            ]
+        ];
+        $param = new ComposerJsonConfiguration($jsonConfig);
+
+        static::assertEquals(['teamcity'], $param->reports());
+
     }
 
     public function testTagAsArray() {
@@ -104,7 +124,7 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
         ];
         $param = new ComposerJsonConfiguration($jsonConfig);
 
-        $this->assertEquals('nginx', $param->imageName());
-        $this->assertSame(['1.0', 'latest'], $param->imageTags());
+        static::assertEquals('nginx', $param->imageName());
+        static::assertSame(['1.0', 'latest'], $param->imageTags());
     }
 }

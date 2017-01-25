@@ -30,6 +30,8 @@ class ComposerJsonConfiguration extends AbstractConfiguration
 
     const WORKING_DIRECTORY = 'workingdirectory';
 
+    const REPORTS = 'reports';
+
     private $extraDockerConfig = [];
 
 
@@ -83,6 +85,15 @@ class ComposerJsonConfiguration extends AbstractConfiguration
             $this->workingDirectory = $this->extraDockerConfig[static::WORKING_DIRECTORY];
         }
         return parent::workingDirectory();
+    }
+
+    public function reports()
+    {
+        if (array_key_exists(static::REPORTS, $this->extraDockerConfig)) {
+            $this->reports = $this->extraDockerConfig[static::REPORTS];
+        }
+
+        return parent::reports();
     }
 
 

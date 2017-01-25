@@ -19,14 +19,16 @@ class ManualConfiguration extends AbstractConfiguration
      * @param $imageTag
      * @param $dockerFilePath
      * @param $workingDirectory
+     * @param null $reports
      */
-    public function __construct($imageName = null, $imageTag = null, $dockerFilePath = null, $workingDirectory = null) {
+    public function __construct($imageName = null, $imageTag = null, $dockerFilePath = null, $workingDirectory = null, $reports = null) {
        $this->overridenConfig = new DefaultConfiguration();
 
         $this->imageName = $imageName;
         $this->setTags($imageTag);
         $this->dockerFilePath = $dockerFilePath;
         $this->workingDirectory = $workingDirectory;
+        $this->reports = $reports;
     }
 
 }

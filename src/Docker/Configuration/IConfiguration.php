@@ -22,4 +22,6 @@ interface IConfiguration
     public function dockerFilePath();
 
     public function workingDirectory();
+
+    public function reports();
 }

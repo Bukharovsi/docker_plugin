@@ -21,51 +21,53 @@ class ConsoleInputConfigurationTest extends \PHPUnit_Framework_TestCase
         $input->bind(ConsoleInputConfiguration::createInputDefinition());
         $cmdParams = new ConsoleInputConfiguration($input);
 
-        $this->expectException(DefaultCommandParametersOverridingException::class);
+        static::expectException(DefaultCommandParametersOverridingException::class);
         $cmdParams->imageName();
     }
 
-    public function testOverridingImageName() {
+    public function testDefiningImageName() {
         $input = new StringInput('--name nginx');
         $input->bind(ConsoleInputConfiguration::createInputDefinition());
         $cmdParams = new ConsoleInputConfiguration($input);
 
         $defaultParameters = new DefaultConfiguration();
-        $this->assertEquals("nginx", $cmdParams->imageName());
-        $this->assertEquals($defaultParameters->imageTags(), $cmdParams->imageTags());
+        static::assertEquals("nginx", $cmdParams->imageName());
+        static::assertEquals($defaultParameters->imageTags(), $cmdParams->imageTags());
     }
 
-    public function testOverridingImageTag() {
+    public function testDefiningImageTag() {
         $input = new StringInput('--name nginx --tag latest');
         $input->bind(ConsoleInputConfiguration::createInputDefinition());
         $cmdParams = new ConsoleInputConfiguration($input);
 
         $defaultParameters = new DefaultConfiguration();
-        $this->assertEquals("nginx", $cmdParams->imageName());
-        $this->assertEquals(['latest'], $cmdParams->imageTags());
-        $this->assertEquals($defaultParameters->dockerFilePath(), $cmdParams->dockerFilePath());
+        static::assertEquals("nginx", $cmdParams->imageName());
+        static::assertEquals(['latest'], $cmdParams->imageTags());
+        static::assertEquals($defaultParameters->dockerFilePath(), $cmdParams->dockerFilePath());
     }
 
-    public function testOverridingDockerFile() {
+    public function testDefiningDockerFile() {
         $input = new StringInput('--name nginx --tag latest --dockerfile Dockerfile_new');
         $input->bind(ConsoleInputConfiguration::createInputDefinition());
         $cmdParams = new ConsoleInputConfiguration($input);
 
         $defaultParameters = new DefaultConfiguration();
-        $this->assertEquals('nginx', $cmdParams->imageName());
-        $this->assertEquals(['latest'], $cmdParams->imageTags());
-        $this->assertEquals('Dockerfile_new', $cmdParams->dockerFilePath());
-        $this->assertEquals($defaultParameters->workingDirectory(), $cmdParams->workingDirectory());
+        static::assertEquals('nginx', $cmdParams->imageName());
+        static::assertEquals(['latest'], $cmdParams->imageTags());
+        static::assertEquals('Dockerfile_new', $cmdParams->dockerFilePath());
+        static::assertEquals($defaultParameters->workingDirectory(), $cmdParams->workingDirectory());
+        static::assertEquals($defaultParameters->reports(), $cmdParams->reports());
     }
 
-    public function testOverridingDefault() {
-        $input = new StringInput('--name nginx --tag latest --dockerfile Dockerfile_new --workingdirectory /tmp');
+    public function testDefiningAllParams() {
+        $input = new StringInput('--name nginx --tag latest --dockerfile Dockerfile_new --workingdirectory /tmp --report teamcity');
         $input->bind(ConsoleInputConfiguration::createInputDefinition());
         $cmdParams = new ConsoleInputConfiguration($input);
 
-        $this->assertEquals("nginx", $cmdParams->imageName());
-        $this->assertEquals(["latest"], $cmdParams->imageTags());
-        $this->assertEquals("Dockerfile_new", $cmdParams->dockerFilePath());
-        $this->assertEquals('/tmp', $cmdParams->workingDirectory());
+        static::assertEquals("nginx", $cmdParams->imageName());
+        static::assertEquals(["latest"], $cmdParams->imageTags());
+        static::assertEquals("Dockerfile_new", $cmdParams->dockerFilePath());
+        static::assertEquals('/tmp', $cmdParams->workingDirectory());
+        static::assertEquals(['teamcity'], $cmdParams->reports());
     }
 }

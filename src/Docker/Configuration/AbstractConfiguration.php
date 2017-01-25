@@ -37,6 +37,11 @@ abstract class AbstractConfiguration implements IConfiguration
     protected $workingDirectory;
 
     /**
+     * @var string
+     */
+    protected $reports;
+
+    /**
      * @var IConfiguration;
      */
     protected $overridenConfig;
@@ -114,6 +119,18 @@ abstract class AbstractConfiguration implements IConfiguration
 
         return $wd;
     }
+
+    public function reports()
+    {
+        if (null != $this->reports) {
+            $reports = $this->reports;
+        } else {
+            $reports = $this->overridenConfig->reports();
+        }
+
+        return $reports;
+    }
+
 
 
 }
