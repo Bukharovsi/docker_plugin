@@ -22,11 +22,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 class DockerImageBuilderApplication
 {
     /**
-     * @var IConfigurator
-     */
-    private $configurator;
-
-    /**
      * @var RootPackageInterface
      */
     private $packageInfo;
@@ -48,8 +43,8 @@ class DockerImageBuilderApplication
 
     public function buildDockerImage(InputInterface $input, OutputInterface $output)
     {
-        $this->configurator = new ComposerProjectConfigurator($input, $this->packageInfo);
-        $configuraton = $this->configurator->makeConfiguration();
+        $configuratator = new ComposerProjectConfigurator($input, $this->packageInfo);
+        $configuraton = $configuratator->makeConfiguration();
 
         $image = new DockerImage($configuraton, $this->commandBuilder);
 
@@ -61,8 +56,8 @@ class DockerImageBuilderApplication
 
     public function pushDockerImage(InputInterface $input)
     {
-        $this->configurator = new ComposerProjectConfigurator($input, $this->packageInfo);
-        $configuraton = $this->configurator->makeConfiguration();
+        $configuratator = new ComposerProjectConfigurator($input, $this->packageInfo);
+        $configuraton = $configuratator->makeConfiguration();
 
         $image = new DockerImage($configuraton, $this->commandBuilder);
 
