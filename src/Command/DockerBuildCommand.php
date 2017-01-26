@@ -53,5 +53,6 @@ class DockerBuildCommand extends BaseDockerCommand
             $dockerConfig->getImageTag() .
             "']");
         $output->writeln('docker image has "'.$dockerConfig->getImageTag() .'" successfully built');
+        $output->writeln('docker command was executed: ' . $command);
     }
 }

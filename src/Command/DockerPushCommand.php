@@ -45,5 +45,6 @@ class DockerPushCommand extends BaseDockerCommand
         }
 
         $output->writeln('docker image has \"'.$dockerConfig->getImageTag() .'\"  successfully pushed');
+        $output->writeln('docker command was executed: ' . $command);
     }
 }
