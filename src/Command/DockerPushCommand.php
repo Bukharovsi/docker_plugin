@@ -10,6 +10,7 @@ namespace Bukharovsi\DockerPlugin\Command;
 
 use Bukharovsi\DockerPlugin\Docker\DockerCommandPush;
 use Bukharovsi\DockerPlugin\Command\Exceptions\DockerExecutionException;
+use Bukharovsi\DockerPlugin\Docker\Tag\Tag;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -33,8 +34,14 @@ class DockerPushCommand extends BaseDockerCommand
         $dockerConfig = $this->getDockerConfig($input);
 
         $dockerPushCommand = new DockerCommandPush();
-        $dockerPushCommand->setImageName($dockerConfig->getImageName());
+        $dockerPushCommand->setImageName(
+            new Tag(
+                $dockerConfig->getImageName(),
+                $dockerConfig->getImageTag()
+            )
+        );
         $command = $dockerPushCommand->buildCommand();
+        $output->writeln('docker command will be executed: ' . $command);
 
         $exitCode = null;
         $execOutput = [];

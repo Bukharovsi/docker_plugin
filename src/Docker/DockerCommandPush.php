@@ -8,6 +8,8 @@
 
 namespace Bukharovsi\DockerPlugin\Docker;
 
+use Bukharovsi\DockerPlugin\Docker\Tag\Tag;
+
 /**
  * Class DockerCommandPush
  *
@@ -16,21 +18,21 @@ namespace Bukharovsi\DockerPlugin\Docker;
 class DockerCommandPush
 {
     /**
-     * @var string
+     * @var Tag
      */
-    private $imageName = '';
+    private $tag;
 
     /**
-     * @param $imageName
+     * @param $tag
      */
-    public function setImageName($imageName)
+    public function setImageName($tag)
     {
-        $this->imageName = $imageName;
+        $this->tag = $tag;
     }
 
     public function buildCommand()
     {
-        $command = 'docker push ' . $this->imageName;
+        $command = 'docker push ' . $this->tag;
 
         return $command;
     }
