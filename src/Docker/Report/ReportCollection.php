@@ -67,7 +67,7 @@ class ReportCollection implements IReport
     private function constructDefaultReports(BuiltImage $builtImage, Output $output)
     {
         $this->registeredReports = [
-            'console' => new SimpleOutputReport($builtImage, $output),
+            'console' => new LogOutputReport($builtImage, $output),
             'teamcity' => new TeamcityBuiltImageVersionReport($builtImage, $output, new TeamcityVariableCollection())
         ];
     }
