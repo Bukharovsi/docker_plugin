@@ -45,7 +45,7 @@ class DefaultConfiguration implements IConfiguration
 
     public function reports()
     {
-        return [];
+        return ['console'];
     }
 
 

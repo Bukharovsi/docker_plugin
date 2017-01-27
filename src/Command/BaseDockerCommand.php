@@ -32,13 +32,14 @@ abstract class BaseDockerCommand extends BaseCommand
      * @var DockerImageBuilderApplication;
      */
     protected $dockerImageApplication;
-    /**
-     * BaseDockerCommand constructor.
-     */
-    public function __construct()
+
+
+
+    protected function initialize(InputInterface $input, OutputInterface $output)
     {
+        parent::initialize($input, $output);
         $this->dockerImageApplication = new DockerImageBuilderApplication(
-            $this->getComposer()->getPackage(),
+            $this->getComposer(true, true)->getPackage(),
             new ConsoleCommandBuilder()
         );
     }

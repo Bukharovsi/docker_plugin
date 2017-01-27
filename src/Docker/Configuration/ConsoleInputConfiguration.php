@@ -51,7 +51,7 @@ class ConsoleInputConfiguration extends AbstractConfiguration
         );
 
         $definition->addOption(
-            new InputOption(static::NAME, 'n',
+            new InputOption(static::NAME, null,
                 InputOption::VALUE_OPTIONAL,
                 "Set name of image"
             )
@@ -59,7 +59,7 @@ class ConsoleInputConfiguration extends AbstractConfiguration
 
         $definition->addOption(
             new InputOption(
-                static::DOCKERFILE, 'd',
+                static::DOCKERFILE, null,
                 InputOption::VALUE_OPTIONAL,
                 "Specify dockerfile"
             )
