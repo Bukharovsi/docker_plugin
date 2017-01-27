@@ -20,7 +20,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Bukharovsi\\DockerPlugin\\": "src/"
+      "Bukharovsi\\DockerPlugin\\": "src/",
+      "Bukharovsi\\DockerPlugin\\Test\\": "test/"
     }
   },
   "extra": {

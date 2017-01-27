@@ -11,8 +11,10 @@ use Bukharovsi\DockerPlugin\Docker\Configuration\ComposerProjectConfigurator;
 use Bukharovsi\DockerPlugin\Docker\Configuration\IConfigurator;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ICommandBuilder;
 use Bukharovsi\DockerPlugin\Docker\Image\DockerImage;
+use Bukharovsi\DockerPlugin\Docker\Report\ReportCollection;
 use Composer\Package\RootPackageInterface;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\Output;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -41,7 +43,7 @@ class DockerImageBuilderApplication
         $this->commandBuilder = $commandBuilder;
     }
 
-    public function buildDockerImage(InputInterface $input, OutputInterface $output)
+    public function buildDockerImage(InputInterface $input, Output $output)
     {
         $configuratator = new ComposerProjectConfigurator($input, $this->packageInfo);
         $configuraton = $configuratator->makeConfiguration();

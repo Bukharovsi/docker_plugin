@@ -11,15 +11,16 @@ namespace Bukharovsi\DockerPlugin\Test\Docker\Report\Teamcity;
 
 use Bukharovsi\DockerPlugin\Docker\Image\BuiltImage;
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
+use Bukharovsi\DockerPlugin\Docker\Report\Teamcity\TeamcityBuiltImageVersionReport;
 use Bukharovsi\DockerPlugin\Docker\Report\Teamcity\TeamcityVariableCollection;
-use Symfony\Component\Console\Output\Output;
+use Bukharovsi\DockerPlugin\Test\Docker\FakeObjects\FakeOutput;
 
-class TeamcityBuiltImageVersionReport extends \PHPUnit_Framework_TestCase
+class TeamcityBuiltImageVersionReportTest extends \PHPUnit_Framework_TestCase
 {
     public function testReport()
     {
         $builtImage = new BuiltImage([new Tag('nginx', '2.1'), new Tag('nginx', 'latest')]);
-        $output = new TestOutput();
+        $output = new FakeOutput();
         $report = new TeamcityBuiltImageVersionReport($builtImage, $output, new TeamcityVariableCollection());
 
         $report->make();
@@ -30,18 +31,4 @@ class TeamcityBuiltImageVersionReport extends \PHPUnit_Framework_TestCase
     }
 }
 
-class TestOutput extends Output
-{
-    public $output = '';
-
-    public function clear()
-    {
-        $this->output = '';
-    }
-
-    protected function doWrite($message, $newline)
-    {
-        $this->output .= $message.($newline ? "\n" : '');
-    }
-}
 

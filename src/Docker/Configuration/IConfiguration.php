@@ -11,17 +11,7 @@ namespace Bukharovsi\DockerPlugin\Docker\Configuration;
  * Interface IConfiguration
  * @package Bukharovsi\DockerPlugin\Docker\Configuration
  */
-interface IConfiguration
+interface IConfiguration extends IDockerImageConfiguration, IReportConfiguration
 {
     public function override(IConfiguration $configuration);
-
-    public function imageName();
-
-    public function imageTags();
-
-    public function dockerFilePath();
-
-    public function workingDirectory();
-
-    public function reports();
 }

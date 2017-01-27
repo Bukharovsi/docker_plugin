@@ -13,7 +13,7 @@ use Bukharovsi\DockerPlugin\Docker\Image\BuiltImage;
 use Symfony\Component\Console\Output\Output;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class SimpleOutputReport implements IReport
+class LogOutputReport implements IReport
 {
     /**
      * @var BuiltImage;
@@ -39,7 +39,7 @@ class SimpleOutputReport implements IReport
     public function make()
     {
         foreach ($this->builtImage->tags() as $tag) {
-            $this->output->writeln("Image with tag $tag has been created");
+            $this->output->writeln("Image with tag $tag has been created\n");
         }
     }
 

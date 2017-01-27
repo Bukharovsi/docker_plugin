@@ -39,7 +39,7 @@ class BuildImageCommand implements IExecutable, IBuildImageCommand
     /**
      * BuildImageCommand constructor.
      * @param string $dockerfile
-     * @param Tag $tags
+     * @param Tag[] $tags
      * @param string $workingDirectory
      */
     public function __construct($dockerfile, $workingDirectory, array $tags)

@@ -10,6 +10,7 @@ namespace Bukharovsi\DockerPlugin\Docker\Image;
 
 
 use Bukharovsi\DockerPlugin\Docker\Configuration\IConfiguration;
+use Bukharovsi\DockerPlugin\Docker\Configuration\IDockerImageConfiguration;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\BuildImageCommand;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\IBuildImageCommand;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ICommandBuilder;
@@ -49,7 +50,7 @@ class DockerImage
      * @param IConfiguration $configuration
      * @param ICommandBuilder $commandBuilder
      */
-    public function __construct(IConfiguration $configuration, ICommandBuilder $commandBuilder)
+    public function __construct(IDockerImageConfiguration $configuration, ICommandBuilder $commandBuilder)
     {
         $this->commandBuilder = $commandBuilder;
         $this->dockerfile = $configuration->dockerFilePath();
