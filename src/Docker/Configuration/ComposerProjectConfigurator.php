@@ -21,12 +21,6 @@ use Symfony\Component\Console\Input\InputInterface;
  */
 class ComposerProjectConfigurator implements IConfigurator
 {
-
-    /**
-     * @var InputInterface
-     */
-    private $input;
-
     /**
      * @var RootPackageInterface
      */
@@ -34,23 +28,22 @@ class ComposerProjectConfigurator implements IConfigurator
 
     /**
      * Configurator constructor.
-     * @param InputInterface $input
      * @param RootPackageInterface $packageInfo
      */
-    public function __construct(InputInterface $input, RootPackageInterface $packageInfo)
+    public function __construct(RootPackageInterface $packageInfo)
     {
-        $this->input = $input;
         $this->packageInfo = $packageInfo;
     }
 
 
     /**
+     * @param InputInterface $input
      * @return IConfiguration
      */
-    public function makeConfiguration() {
+    public function makeConfiguration(InputInterface $input) {
         $composerDefaultParameters = new DefaultComposerConfiguration($this->packageInfo);
         $composerJsonParameters = new ComposerJsonConfiguration($this->packageInfo->getExtra());
-        $cmdParameters = new ConsoleInputConfiguration($this->input);
+        $cmdParameters = new ConsoleInputConfiguration($input);
 
         $composerJsonParameters->override($composerDefaultParameters);
         $cmdParameters->override($composerJsonParameters);

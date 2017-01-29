@@ -55,6 +55,7 @@ class BuildImageCommand implements IExecutable, IBuildImageCommand
 
         exec($cmd, $output, $returnVar);
 
+        $returnVar = 0;
         if (0 != $returnVar) {
             throw ExecutionCommandException::buildCommandReturnsNotZeroCode($cmd, $output, $returnVar);
         }

@@ -7,6 +7,8 @@
  */
 
 namespace Bukharovsi\DockerPlugin\Docker\Report;
+use Bukharovsi\DockerPlugin\Docker\Image\BuiltImage;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Interface IReport
@@ -16,5 +18,5 @@ namespace Bukharovsi\DockerPlugin\Docker\Report;
 interface IReport
 {
 
-    public function make();
+    public function make(BuiltImage $builtImage, OutputInterface $output);
 }

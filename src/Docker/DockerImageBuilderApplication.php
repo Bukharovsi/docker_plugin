@@ -8,13 +8,13 @@
 
 namespace Bukharovsi\DockerPlugin\Docker;
 use Bukharovsi\DockerPlugin\Docker\Configuration\ComposerProjectConfigurator;
+use Bukharovsi\DockerPlugin\Docker\Configuration\IConfiguration;
 use Bukharovsi\DockerPlugin\Docker\Configuration\IConfigurator;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ICommandBuilder;
 use Bukharovsi\DockerPlugin\Docker\Image\DockerImage;
-use Bukharovsi\DockerPlugin\Docker\Report\ReportCollection;
-use Composer\Package\RootPackageInterface;
+use Bukharovsi\DockerPlugin\Docker\Report\FilteredByConfigurationReports;
+use Bukharovsi\DockerPlugin\Docker\Report\IReport;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\Output;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -24,45 +24,52 @@ use Symfony\Component\Console\Output\OutputInterface;
 class DockerImageBuilderApplication
 {
     /**
-     * @var RootPackageInterface
-     */
-    private $packageInfo;
-
-    /**
      * @var ICommandBuilder
      */
     private $commandBuilder;
 
     /**
-     * DockerImageBuilderApplication constructor.
-     * @param IConfigurator $configurator
+     * @var FilteredByConfigurationReports
      */
-    public function __construct(RootPackageInterface $rootPackage, ICommandBuilder $commandBuilder)
+    private $reportCollection;
+
+    /**
+     * @var IConfigurator
+     */
+    private $configurator;
+
+    /**
+     * DockerImageBuilderApplication constructor.
+     *
+     * @param ICommandBuilder $commandBuilder
+     * @param IConfigurator $configurator
+     * @param IReport $reports
+     *
+     * @internal param IConfigurator $configurator
+     */
+    public function __construct(
+        ICommandBuilder $commandBuilder,
+        IConfigurator $configurator,
+        IReport $reports
+    )
     {
-        $this->packageInfo = $rootPackage;
         $this->commandBuilder = $commandBuilder;
+        $this->configurator = $configurator;
+        $this->reportCollection = $reports;
     }
 
-    public function buildDockerImage(InputInterface $input, Output $output)
+    public function buildDockerImage(InputInterface $input, OutputInterface $output)
     {
-        $configuratator = new ComposerProjectConfigurator($input, $this->packageInfo);
-        $configuraton = $configuratator->makeConfiguration();
-
+        $configuraton = $this->configurator->makeConfiguration($input);
         $image = new DockerImage($configuraton, $this->commandBuilder);
-
         $builtImage = $image->build();
-
-        $reports = new ReportCollection($builtImage, $configuraton, $output);
-        $reports->make();
+        $this->reportCollection->make($builtImage, $output);
     }
 
     public function pushDockerImage(InputInterface $input)
     {
-        $configuratator = new ComposerProjectConfigurator($input, $this->packageInfo);
-        $configuraton = $configuratator->makeConfiguration();
-
+        $configuraton = $this->configurator->makeConfiguration($input);
         $image = new DockerImage($configuraton, $this->commandBuilder);
-
         $image->push();
     }
     

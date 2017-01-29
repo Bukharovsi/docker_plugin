@@ -30,33 +30,26 @@ class TeamcityBuiltImageVersionReport implements IReport
     private $teamcityVariables;
 
     /**
-     * @var BuiltImage;
-     */
-    private $builtImage;
-
-    /**
-     * @var OutputInterface
-     */
-    private $output;
-
-    /**
      * TeamcityReport constructor.
-     * @param BuiltImage $builtImage
-     * @param Output $output
+     *
      * @param TeamcityVariableCollection $tcVariables
      */
-    public function __construct(BuiltImage $builtImage, Output $output, TeamcityVariableCollection $tcVariables)
+    public function __construct(TeamcityVariableCollection $tcVariables)
     {
-        $this->builtImage = $builtImage;
-        $this->output = $output;
         $this->teamcityVariables = $tcVariables;
     }
 
-    public function make()
+    /**
+     * Make a report
+     *
+     * @param BuiltImage $builtImage
+     * @param OutputInterface $output
+     */
+    public function make(BuiltImage $builtImage, OutputInterface $output)
     {
         $this->teamcityVariables->rewind();
-        foreach ($this->builtImage->versions() as $version) {
-            $this->output->writeln(
+        foreach ($builtImage->versions() as $version) {
+            $output->writeln(
                 "##teamcity[setParameter name='".$this->teamcityVariables->next()."' value='" .$version. "']"
             );
         }

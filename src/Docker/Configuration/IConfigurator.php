@@ -8,6 +8,7 @@
 namespace Bukharovsi\DockerPlugin\Docker\Configuration;
 
 use Composer\Package\RootPackageInterface;
+use Symfony\Component\Console\Input\Input;
 use Symfony\Component\Console\Input\InputInterface;
 
 
@@ -18,7 +19,9 @@ use Symfony\Component\Console\Input\InputInterface;
 interface IConfigurator
 {
     /**
+     * @param InputInterface $input
+     *
      * @return IConfiguration
      */
-    public function makeConfiguration();
+    public function makeConfiguration(InputInterface $input);
 }
