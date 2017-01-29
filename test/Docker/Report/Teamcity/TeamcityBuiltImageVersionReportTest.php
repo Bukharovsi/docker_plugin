@@ -21,9 +21,9 @@ class TeamcityBuiltImageVersionReportTest extends \PHPUnit_Framework_TestCase
     {
         $builtImage = new BuiltImage([new Tag('nginx', '2.1'), new Tag('nginx', 'latest')]);
         $output = new FakeOutput();
-        $report = new TeamcityBuiltImageVersionReport($builtImage, $output, new TeamcityVariableCollection());
+        $report = new TeamcityBuiltImageVersionReport(new TeamcityVariableCollection());
 
-        $report->make();
+        $report->make($builtImage, $output);
         static::assertContains('##teamcity[setParameter name=\'env.BuildTag\'', $output->output);
         static::assertContains('value=\'2.1\'', $output->output);
         static::assertContains('##teamcity[setParameter name=\'env.BuildTag.1\'', $output->output);

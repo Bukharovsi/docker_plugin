@@ -22,9 +22,9 @@ class LogOutputReportTest extends \PHPUnit_Framework_TestCase
         $tag2 =  new Tag('nginx', 'latest');
         $builtImage = new BuiltImage([$tag1, $tag2]);
         $output = new FakeOutput();
-        $report = new LogOutputReport($builtImage, $output);
+        $report = new LogOutputReport();
 
-        $report->make();
+        $report->make($builtImage, $output);
 
         static::assertContains($tag1->__toString(), $output->output);
         static::assertContains($tag2->__toString(), $output->output);

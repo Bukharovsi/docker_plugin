@@ -21,8 +21,8 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
         $input->bind(ConsoleInputConfiguration::createInputDefinition());
 
         $package = $this->getRootPackageMock('nginx', '1.0', []);
-        $builder = new ComposerProjectConfigurator($input, $package);
-        $configuration = $builder->makeConfiguration();
+        $builder = new ComposerProjectConfigurator($package);
+        $configuration = $builder->makeConfiguration($input);
 
         $this->assertEquals('nginx', $configuration->imageName(), 'image name is provided by command line. Hegher order');
         $this->assertEquals(['latest'], $configuration->imageTags());
