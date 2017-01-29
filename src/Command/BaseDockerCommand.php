@@ -9,6 +9,7 @@
 namespace Bukharovsi\DockerPlugin\Command;
 
 use Bukharovsi\DockerPlugin\Command\Exceptions\DockerExecutionException;
+use Bukharovsi\DockerPlugin\DI\DefaultDI;
 use Bukharovsi\DockerPlugin\Docker\Config\DockerConfig;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ComposerProjectConfigurator;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ConsoleInputConfiguration;
@@ -45,23 +46,8 @@ abstract class BaseDockerCommand extends BaseCommand
     {
         parent::initialize($input, $output);
 
-        // reports bean construction
-        $registeredReports = new ReportFullCollection();
-        $registeredReports->register('console', new LogOutputReport());
-        $registeredReports->register('teamcity', new TeamcityBuiltImageVersionReport(new TeamcityVariableCollection()));
-
-        //report collection bean construction
-//        $reportApp = new ReportFullCollection($registeredReports, $configuratation);
-
-        // configurator bean construction
-        $configuratator = new ComposerProjectConfigurator($this->getComposer(true, true)->getPackage());
-
-        // bean construction
-        $this->dockerImageApplication = new DockerImageBuilderApplication(
-            new ConsoleCommandBuilder(),
-            $configuratator,
-            $registeredReports
-        );
+        $di = new DefaultDI();
+        $this->dockerImageApplication = $di->application($this->getComposer()->getPackage());
     }
 
 

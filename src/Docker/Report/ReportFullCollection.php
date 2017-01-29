@@ -19,7 +19,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  *
  * @package Bukharovsi\DockerPlugin\Docker\Report
  */
-class ReportFullCollection implements IReport
+class ReportFullCollection implements IMutableReportCollection
 {
     /**
      * @var IReport[]
@@ -45,6 +45,17 @@ class ReportFullCollection implements IReport
     {
         $this->registeredReports[$alias] = $report;
     }
+
+    public function add($reportName)
+    {
+        // TODO: Implement add() method.
+    }
+
+    public function reject($reportName)
+    {
+        // TODO: Implement reject() method.
+    }
+
 
     /**
      * Make a reports
