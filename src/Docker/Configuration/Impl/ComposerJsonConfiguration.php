@@ -6,7 +6,8 @@
  * Time: 10:17
  */
 
-namespace Bukharovsi\DockerPlugin\Docker\Configuration;
+namespace Bukharovsi\DockerPlugin\Docker\Configuration\Impl;
+use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\AbstractConfiguration;
 
 /**
  * Class ComposerJsonConfiguration

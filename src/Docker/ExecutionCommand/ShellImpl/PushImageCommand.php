@@ -6,9 +6,10 @@
  * Time: 0:08
  */
 
-namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand;
+namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl;
 
 
+use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\IPushImageCommand;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Exceptions\ExecutionCommandException;
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
 

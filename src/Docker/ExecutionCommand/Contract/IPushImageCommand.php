@@ -5,13 +5,15 @@
  * Date: 20.01.17
  * Time: 17:46
  */
-namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand;
+namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract;
+use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\IExecutable;
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
 
 
 /**
- * Class PushImageCommand
- * @package Bukharovsi\DockerPlugin\Docker\ExecutionCommand
+ * Defines contract for docker push command
+ *
+ * It needs image tags
  */
 interface IPushImageCommand extends IExecutable
 {
@@ -21,5 +23,10 @@ interface IPushImageCommand extends IExecutable
      */
     public function __construct(Tag $tag);
 
+    /**
+     * run doker push command
+     *
+     * @return void
+     */
     public function execute();
 }

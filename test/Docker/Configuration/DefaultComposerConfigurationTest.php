@@ -9,7 +9,7 @@
 namespace Bukharovsi\DockerPlugin\Test\Docker\Configuration;
 
 
-use Bukharovsi\DockerPlugin\Docker\Configuration\DefaultComposerConfiguration;
+use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\DefaultComposerConfiguration;
 use Composer\Package\RootPackageInterface;
 
 class DefaultComposerConfigurationTest extends \PHPUnit_Framework_TestCase

@@ -9,7 +9,7 @@
 namespace Bukharovsi\DockerPlugin\Test\Docker\Configuration;
 
 
-use Bukharovsi\DockerPlugin\Docker\Configuration\ConsoleInputConfiguration;
+use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ConsoleInputConfiguration;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputDefinition;

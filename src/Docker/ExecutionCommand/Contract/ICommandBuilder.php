@@ -3,13 +3,13 @@
  * Created by PhpStorm.
  * User: sergey
  * Date: 20.01.17
- * Time: 17:40
+ * Time: 17:44
  */
-
-namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand;
-
-
+namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract;
+use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\IBuildImageCommand;
+use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\IPushImageCommand;
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
+
 
 /**
  * Class ConsoleCommandBuilder
@@ -18,7 +18,7 @@ use Bukharovsi\DockerPlugin\Docker\Image\Tag;
  *
  * @package Bukharovsi\DockerPlugin\Docker\ExecutionCommand
  */
-class ConsoleCommandBuilder implements ICommandBuilder
+interface ICommandBuilder
 {
     /**
      * make build image command
@@ -29,10 +29,7 @@ class ConsoleCommandBuilder implements ICommandBuilder
      *
      * @return IBuildImageCommand
      */
-    public function createBuildImageCommand($dockerfile, $workingDirectory, array $tags)
-    {
-        return new BuildImageCommand($dockerfile, $workingDirectory, $tags);
-    }
+    public function createBuildImageCommand($dockerfile, $workingDirectory, array $tags);
 
     /**
      * Create push command
@@ -40,9 +37,5 @@ class ConsoleCommandBuilder implements ICommandBuilder
      * @param Tag $tag
      * @return IPushImageCommand
      */
-    public function createPushImageCommand(Tag $tag)
-    {
-        return new PushImageCommand($tag);
-    }
-
+    public function createPushImageCommand(Tag $tag);
 }

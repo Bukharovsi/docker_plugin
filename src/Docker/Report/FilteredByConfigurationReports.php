@@ -8,7 +8,7 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\Report;
 
-use Bukharovsi\DockerPlugin\Docker\Configuration\IReportConfiguration;
+use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IReportConfiguration;
 use Bukharovsi\DockerPlugin\Docker\Image\BuiltImage;
 use Symfony\Component\Console\Output\OutputInterface;
 

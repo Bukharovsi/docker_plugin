@@ -6,7 +6,9 @@
  * Time: 0:34
  */
 
-namespace Bukharovsi\DockerPlugin\Docker\Configuration;
+namespace Bukharovsi\DockerPlugin\Docker\Configuration\Impl;
+use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfiguration;
+use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\DefaultConfiguration;
 
 /**
  * Class AbstractConfiguration

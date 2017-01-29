@@ -9,7 +9,7 @@
 namespace Bukharovsi\DockerPlugin\VCS;
 
 
-use Bukharovsi\DockerPlugin\Docker\Configuration\IConfiguration;
+use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfiguration;
 
 /**
  * Class VscConfigurationDecorator

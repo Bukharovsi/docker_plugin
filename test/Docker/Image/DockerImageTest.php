@@ -9,10 +9,10 @@
 namespace Bukharovsi\DockerPlugin\Test\Docker\Image;
 
 
-use Bukharovsi\DockerPlugin\Docker\Configuration\ManualConfiguration;
-use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\BuildImageCommand;
-use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ConsoleCommandBuilder;
-use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\PushImageCommand;
+use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ManualConfiguration;
+use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\BuildImageCommand;
+use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\ConsoleCommandBuilder;
+use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\PushImageCommand;
 use Bukharovsi\DockerPlugin\Docker\Image\DockerImage;
 use phpDocumentor\Reflection\Types\This;
 use phpmock\phpunit\PHPMock;

@@ -10,11 +10,11 @@ namespace Bukharovsi\DockerPlugin\Command;
 
 use Bukharovsi\DockerPlugin\Command\Exceptions\DockerExecutionException;
 use Bukharovsi\DockerPlugin\Docker\Config\DockerConfig;
-use Bukharovsi\DockerPlugin\Docker\Configuration\ComposerProjectConfigurator;
-use Bukharovsi\DockerPlugin\Docker\Configuration\ConsoleInputConfiguration;
+use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ComposerProjectConfigurator;
+use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ConsoleInputConfiguration;
 use Bukharovsi\DockerPlugin\Docker\DockerConfigBuilder;
 use Bukharovsi\DockerPlugin\Docker\DockerImageBuilderApplication;
-use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ConsoleCommandBuilder;
+use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\ConsoleCommandBuilder;
 use Bukharovsi\DockerPlugin\Docker\Report\LogOutputReport;
 use Bukharovsi\DockerPlugin\Docker\Report\FilteredByConfigurationReports;
 use Bukharovsi\DockerPlugin\Docker\Report\ReportFullCollection;

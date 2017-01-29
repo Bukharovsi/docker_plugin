@@ -6,9 +6,11 @@
  * Time: 0:06
  */
 
-namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand;
+namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl;
 
 
+use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\IBuildImageCommand;
+use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\IExecutable;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Exceptions\ExecutionCommandException;
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
 

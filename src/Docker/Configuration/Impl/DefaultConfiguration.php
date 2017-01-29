@@ -6,9 +6,10 @@
  * Time: 23:22
  */
 
-namespace Bukharovsi\DockerPlugin\Docker\Configuration;
+namespace Bukharovsi\DockerPlugin\Docker\Configuration\Impl;
 
 
+use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfiguration;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Exceptions\DefaultCommandParametersOverridingException;
 
 /**

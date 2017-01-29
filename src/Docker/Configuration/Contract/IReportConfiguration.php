@@ -6,7 +6,7 @@
  * Time: 1:04
  */
 
-namespace Bukharovsi\DockerPlugin\Docker\Configuration;
+namespace Bukharovsi\DockerPlugin\Docker\Configuration\Contract;
 
 
 interface IReportConfiguration

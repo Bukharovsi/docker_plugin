@@ -9,8 +9,8 @@
 namespace Bukharovsi\DockerPlugin\Test\Docker\Configuration;
 
 
-use Bukharovsi\DockerPlugin\Docker\Configuration\ComposerProjectConfigurator;
-use Bukharovsi\DockerPlugin\Docker\Configuration\ConsoleInputConfiguration;
+use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ComposerProjectConfigurator;
+use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ConsoleInputConfiguration;
 use Composer\Package\RootPackageInterface;
 use Symfony\Component\Console\Input\StringInput;
 

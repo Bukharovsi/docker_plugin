@@ -9,7 +9,7 @@
 namespace Bukharovsi\DockerPlugin\Test\Docker\ExecutionCommand;
 
 
-use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\BuildImageCommand;
+use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\BuildImageCommand;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Exceptions\ExecutionCommandException;
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
 use phpmock\phpunit\PHPMock;

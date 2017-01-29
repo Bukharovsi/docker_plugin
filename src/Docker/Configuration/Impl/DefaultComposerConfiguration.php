@@ -6,10 +6,10 @@
  * Time: 0:34
  */
 
-namespace Bukharovsi\DockerPlugin\Docker\Configuration;
+namespace Bukharovsi\DockerPlugin\Docker\Configuration\Impl;
 
 
-use Bukharovsi\DockerPlugin\Docker\Configuration\AbstractConfiguration;
+use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\AbstractConfiguration;
 use Composer\Package\RootPackageInterface;
 
 /**

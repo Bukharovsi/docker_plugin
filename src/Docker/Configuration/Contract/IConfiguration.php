@@ -5,7 +5,7 @@
  * Date: 16.01.17
  * Time: 23:21
  */
-namespace Bukharovsi\DockerPlugin\Docker\Configuration;
+namespace Bukharovsi\DockerPlugin\Docker\Configuration\Contract;
 
 /**
  * Interface IConfiguration

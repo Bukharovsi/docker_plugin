@@ -7,10 +7,10 @@
  */
 
 namespace Bukharovsi\DockerPlugin\Docker;
-use Bukharovsi\DockerPlugin\Docker\Configuration\ComposerProjectConfigurator;
-use Bukharovsi\DockerPlugin\Docker\Configuration\IConfiguration;
-use Bukharovsi\DockerPlugin\Docker\Configuration\IConfigurator;
-use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ICommandBuilder;
+use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ComposerProjectConfigurator;
+use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfiguration;
+use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfigurator;
+use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\ICommandBuilder;
 use Bukharovsi\DockerPlugin\Docker\Image\DockerImage;
 use Bukharovsi\DockerPlugin\Docker\Report\FilteredByConfigurationReports;
 use Bukharovsi\DockerPlugin\Docker\Report\IReport;

@@ -6,20 +6,21 @@
  * Time: 23:11
  */
 
-namespace Bukharovsi\DockerPlugin\Docker\Configuration;
+namespace Bukharovsi\DockerPlugin\Docker\Configuration\Impl;
 
+
+use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\AbstractConfiguration;
+use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\DefaultConfiguration;
 
 class ManualConfiguration extends AbstractConfiguration
 {
-
-
     /**
      * CommandParameters constructor.
-     * @param $imageName
-     * @param $imageTag
-     * @param $dockerFilePath
-     * @param $workingDirectory
-     * @param null $reports
+     * @param string $imageName
+     * @param string[] $imageTag
+     * @param string $dockerFilePath
+     * @param string $workingDirectory
+     * @param string[] $reports
      */
     public function __construct($imageName = null, $imageTag = null, $dockerFilePath = null, $workingDirectory = null, $reports = null) {
        $this->overridenConfig = new DefaultConfiguration();
