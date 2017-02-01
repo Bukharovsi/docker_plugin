@@ -25,7 +25,9 @@
     "php-mock/php-mock-phpunit": "^1.1",
     "squizlabs/php_codesniffer": "*@dev",
     "pdepend/pdepend": "*@dev",
-    "phpmd/phpmd": "*@dev"
+    "phpmd/phpmd": "*@dev",
+    "fzaninotto/faker": "*@dev",
+    "mockery/mockery": "*@dev"
   },
   "autoload": {
     "psr-4": {
