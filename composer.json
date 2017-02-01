@@ -2,21 +2,30 @@
   "name": "bukharovsi/docker_plugin",
   "type": "composer-plugin",
   "description": "This is plugin for building docker images with composer",
-  "minimum-stability": "stable",
-  "license": "proprietary",
+  "license": "Apache 2.0",
   "authors": [
     {
       "name": "Sergey Bukharov",
       "email": "Bukharovsi@gmail.com"
     }
   ],
+  "repositories": [
+    {
+      "type": "git",
+      "url": "git@github.com:Bukharovsi/php-shell-wrapper.git"
+    }
+  ],
   "require": {
     "composer-plugin-api": "^1.1",
-    "symfony/console": "^3.2"
+    "symfony/console": "^3.2",
+    "adambrett/shell-wrapper": "dev-extendingRunnerInterface"
   },
   "require-dev": {
     "phpunit/phpunit": "5.5.*",
-    "php-mock/php-mock-phpunit": "^1.1"
+    "php-mock/php-mock-phpunit": "^1.1",
+    "squizlabs/php_codesniffer": "*@dev",
+    "pdepend/pdepend": "*@dev",
+    "phpmd/phpmd": "*@dev"
   },
   "autoload": {
     "psr-4": {

@@ -9,11 +9,8 @@
 namespace Bukharovsi\DockerPlugin\Docker\Configuration\Impl;
 
 
-use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ConsoleInputConfiguration;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfiguration;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfigurator;
-use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\DefaultComposerConfiguration;
-use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ComposerJsonConfiguration;
 use Composer\Package\RootPackageInterface;
 use Symfony\Component\Console\Input\InputInterface;
 

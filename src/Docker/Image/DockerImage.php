@@ -11,10 +11,7 @@ namespace Bukharovsi\DockerPlugin\Docker\Image;
 
 use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfiguration;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IDockerImageConfiguration;
-use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\BuildImageCommand;
-use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\IBuildImageCommand;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\ICommandBuilder;
-use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\PushImageCommand;
 
 /**
  * Class DockerImage

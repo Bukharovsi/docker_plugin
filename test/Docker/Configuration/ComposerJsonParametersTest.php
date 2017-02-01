@@ -9,9 +9,9 @@
 namespace Bukharovsi\DockerPlugin\Test\Docker\Configuration;
 
 
+use Bukharovsi\DockerPlugin\Docker\Configuration\Exceptions\DefaultCommandParametersOverridingException;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ComposerJsonConfiguration;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\DefaultConfiguration;
-use Bukharovsi\DockerPlugin\Docker\Configuration\Exceptions\DefaultCommandParametersOverridingException;
 
 class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
 {

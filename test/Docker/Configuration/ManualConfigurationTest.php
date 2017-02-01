@@ -8,9 +8,9 @@
 
 namespace Bukharovsi\DockerPlugin\Test\Docker\Configuration;
 
-use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ManualConfiguration;
-use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\DefaultConfiguration;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Exceptions\DefaultCommandParametersOverridingException;
+use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\DefaultConfiguration;
+use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ManualConfiguration;
 
 /**
  * Class CommandParametersTest

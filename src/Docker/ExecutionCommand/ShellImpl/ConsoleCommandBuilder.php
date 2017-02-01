@@ -9,11 +9,11 @@
 namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl;
 
 
+use AdamBrett\ShellWrapper\Runners\Runner;
+use AdamBrett\ShellWrapper\Runners\RunnerWithStandardOut;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\IBuildImageCommand;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\ICommandBuilder;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\IPushImageCommand;
-use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\PushImageCommand;
-use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\BuildImageCommand;
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
 
 /**
@@ -25,6 +25,22 @@ use Bukharovsi\DockerPlugin\Docker\Image\Tag;
  */
 class ConsoleCommandBuilder implements ICommandBuilder
 {
+
+    /**
+     * @var Runner
+     */
+    private $commandRunner;
+
+    /**
+     * ConsoleCommandBuilder constructor.
+     * @param RunnerWithStandardOut $commandRunner
+     */
+    public function __construct(RunnerWithStandardOut $commandRunner)
+    {
+        $this->commandRunner = $commandRunner;
+    }
+
+
     /**
      * make build image command
      *
@@ -36,7 +52,7 @@ class ConsoleCommandBuilder implements ICommandBuilder
      */
     public function createBuildImageCommand($dockerfile, $workingDirectory, array $tags)
     {
-        return new BuildImageCommand($dockerfile, $workingDirectory, $tags);
+        return new BuildImageCommand($this->commandRunner, $dockerfile, $workingDirectory, $tags);
     }
 
     /**
@@ -47,7 +63,7 @@ class ConsoleCommandBuilder implements ICommandBuilder
      */
     public function createPushImageCommand(Tag $tag)
     {
-        return new PushImageCommand($tag);
+        return new PushImageCommand($this->commandRunner, $tag);
     }
 
 }

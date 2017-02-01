@@ -8,23 +8,11 @@
 
 namespace Bukharovsi\DockerPlugin\Command;
 
-use Bukharovsi\DockerPlugin\Command\Exceptions\DockerExecutionException;
 use Bukharovsi\DockerPlugin\DI\DefaultDI;
-use Bukharovsi\DockerPlugin\Docker\Config\DockerConfig;
-use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ComposerProjectConfigurator;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ConsoleInputConfiguration;
-use Bukharovsi\DockerPlugin\Docker\DockerConfigBuilder;
 use Bukharovsi\DockerPlugin\Docker\DockerImageBuilderApplication;
-use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\ConsoleCommandBuilder;
-use Bukharovsi\DockerPlugin\Docker\Report\LogOutputReport;
-use Bukharovsi\DockerPlugin\Docker\Report\FilteredByConfigurationReports;
-use Bukharovsi\DockerPlugin\Docker\Report\ReportFullCollection;
-use Bukharovsi\DockerPlugin\Docker\Report\Teamcity\TeamcityBuiltImageVersionReport;
-use Bukharovsi\DockerPlugin\Docker\Report\Teamcity\TeamcityVariableCollection;
 use Composer\Command\BaseCommand;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**

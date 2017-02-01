@@ -10,7 +10,6 @@ namespace Bukharovsi\DockerPlugin\Docker\Report;
 
 
 use Bukharovsi\DockerPlugin\Docker\Image\BuiltImage;
-use Symfony\Component\Console\Output\Output;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**

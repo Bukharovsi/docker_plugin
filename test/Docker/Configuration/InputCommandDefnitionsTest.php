@@ -10,10 +10,7 @@ namespace Bukharovsi\DockerPlugin\Test\Docker\Configuration;
 
 
 use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ConsoleInputConfiguration;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
-use Symfony\Component\Console\Input\InputDefinition;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\StringInput;
 
 class InputCommandDefnitionsTest extends \PHPUnit_Framework_TestCase

@@ -9,6 +9,9 @@
 namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl;
 
 
+use AdamBrett\ShellWrapper\Command;
+use AdamBrett\ShellWrapper\Runners\Runner;
+use AdamBrett\ShellWrapper\Runners\RunnerWithStandardOut;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\IBuildImageCommand;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\IExecutable;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Exceptions\ExecutionCommandException;
@@ -39,13 +42,20 @@ class BuildImageCommand implements IExecutable, IBuildImageCommand
     private $workingDirectory;
 
     /**
-     * BuildImageCommand constructor.
-     * @param string $dockerfile
-     * @param Tag[] $tags
-     * @param string $workingDirectory
+     * @var RunnerWithStandardOut;
      */
-    public function __construct($dockerfile, $workingDirectory, array $tags)
+    private $runner;
+
+    /**
+     * BuildImageCommand constructor.
+     * @param RunnerWithStandardOut $runner
+     * @param string $dockerfile
+     * @param string $workingDirectory
+     * @param Tag[] $tags
+     */
+    public function __construct(RunnerWithStandardOut $runner, $dockerfile, $workingDirectory, array $tags)
     {
+        $this->runner = $runner;
         $this->dockerfile = $dockerfile;
         $this->tags = $tags;
         $this->workingDirectory = $workingDirectory;
@@ -55,10 +65,12 @@ class BuildImageCommand implements IExecutable, IBuildImageCommand
     {
         $cmd = $this->buildCommand();
 
-        exec($cmd, $output, $returnVar);
+        $exitCode = $this->runner->run(new Command($cmd));
 
-        if (0 != $returnVar) {
-            throw ExecutionCommandException::buildCommandReturnsNotZeroCode($cmd, $output, $returnVar);
+        if (0 != $exitCode) {
+            throw ExecutionCommandException::buildCommandReturnsNotZeroCode(
+                $cmd, $this->runner->getStandardOut(), $exitCode
+            );
         }
     }
 

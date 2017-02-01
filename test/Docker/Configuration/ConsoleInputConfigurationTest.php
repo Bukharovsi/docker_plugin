@@ -9,9 +9,9 @@
 namespace Bukharovsi\DockerPlugin\Test\Docker\Configuration;
 
 
-use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\DefaultConfiguration;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Exceptions\DefaultCommandParametersOverridingException;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ConsoleInputConfiguration;
+use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\DefaultConfiguration;
 use Symfony\Component\Console\Input\StringInput;
 
 class ConsoleInputConfigurationTest extends \PHPUnit_Framework_TestCase

@@ -8,8 +8,6 @@
 
 namespace Bukharovsi\DockerPlugin\Command;
 
-use Bukharovsi\DockerPlugin\Docker\DockerCommandPush;
-use Bukharovsi\DockerPlugin\Command\Exceptions\DockerExecutionException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 

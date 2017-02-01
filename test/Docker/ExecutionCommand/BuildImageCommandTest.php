@@ -9,8 +9,10 @@
 namespace Bukharovsi\DockerPlugin\Test\Docker\ExecutionCommand;
 
 
-use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\BuildImageCommand;
+use AdamBrett\ShellWrapper\ExitCodes;
+use AdamBrett\ShellWrapper\Runners\FakeRunner;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Exceptions\ExecutionCommandException;
+use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\BuildImageCommand;
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
 use phpmock\phpunit\PHPMock;
 
@@ -21,56 +23,42 @@ class BuildImageCommandTest extends \PHPUnit_Framework_TestCase
 
     public function testCommandWithOneTag()
     {
-        $exec = $this->getFunctionMock((new \ReflectionClass(BuildImageCommand::class))->getNamespaceName(), "exec");
-        $exec->expects($this->once())->willReturnCallback(
-            function ($command, &$output, &$return_var) {
-                static::assertStringStartsWith('docker build', $command);
-                static::assertContains('-t nginx:latest', $command);
-                static::assertContains('-f Dockerfile', $command);
-                static::assertStringEndsWith('.', $command);
-                $output = ["image was created"];
-                $return_var = 0;
-            }
-        );
+        $fakeRunner = new FakeRunner();
 
         $nginxTag = new Tag('nginx');
-        $cmd = new BuildImageCommand('Dockerfile', '.', [$nginxTag]);
+        $cmd = new BuildImageCommand($fakeRunner, 'Dockerfile', '.', [$nginxTag]);
         $cmd->execute();
+
+        static::assertStringStartsWith('docker build', $fakeRunner->getExecutedCommand());
+        static::assertContains('-t nginx:latest', $fakeRunner->getExecutedCommand());
+        static::assertContains('-f Dockerfile', $fakeRunner->getExecutedCommand());
+        static::assertStringEndsWith('.', $fakeRunner->getExecutedCommand());
+
     }
 
     public function testCommandWithManyTag()
     {
-
-        $exec = $this->getFunctionMock((new \ReflectionClass(BuildImageCommand::class))->getNamespaceName(), "exec");
-        $exec->expects($this->once())->willReturnCallback(
-            function ($command, &$output, &$return_var) {
-                static::assertContains('-t nginx:latest', $command);
-                static::assertContains('-t nginx:1.0', $command);
-                $output = ["image was created"];
-                $return_var = 0;
-            }
-        );
+        $fakeRunner = new FakeRunner();
 
         $nginxTag = [new Tag('nginx', 'latest'), new Tag('nginx', '1.0')];
-        $cmd = new BuildImageCommand('Dockerfile', '.', $nginxTag);
+        $cmd = new BuildImageCommand($fakeRunner, 'Dockerfile', '.', $nginxTag);
         $cmd->execute();
+
+        static::assertContains('-t nginx:latest', $fakeRunner->getExecutedCommand());
+        static::assertContains('-t nginx:1.0', $fakeRunner->getExecutedCommand());
     }
 
 
     public function testCommandWithReturningNotZeroCode()
     {
-        $exec = $this->getFunctionMock((new \ReflectionClass(BuildImageCommand::class))->getNamespaceName(), "exec");
-        $exec->expects($this->once())->willReturnCallback(
-            function ($command, &$output, &$return_var) {
-                $output = ["image creating failure"];
-                $return_var = 1;
-            }
-        );
-        $this->expectException(ExecutionCommandException::class);
+        $outputMsg = 'something strange occurred';
+        $fakeRunner = new FakeRunner(ExitCodes::FATAL_ERROR_END, $outputMsg);
 
+        $this->expectException(ExecutionCommandException::class);
+        static::expectExceptionMessageRegExp("/.*$outputMsg.*/");
 
         $nginxTag = [new Tag('nginx', 'latest'), new Tag('nginx', '1.0')];
-        $cmd = new BuildImageCommand('Dockerfile', '.', $nginxTag);
+        $cmd = new BuildImageCommand($fakeRunner, 'Dockerfile', '.', $nginxTag);
         $cmd->execute();
     }
 }

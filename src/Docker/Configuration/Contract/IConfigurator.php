@@ -7,9 +7,6 @@
  */
 namespace Bukharovsi\DockerPlugin\Docker\Configuration\Contract;
 
-use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfiguration;
-use Composer\Package\RootPackageInterface;
-use Symfony\Component\Console\Input\Input;
 use Symfony\Component\Console\Input\InputInterface;
 
 

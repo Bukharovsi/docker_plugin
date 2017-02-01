@@ -9,8 +9,6 @@
 namespace Bukharovsi\DockerPlugin\Docker\Image;
 
 
-use Bukharovsi\DockerPlugin\Docker\Image\Tag;
-
 /**
  * Class BuiltImage
  *

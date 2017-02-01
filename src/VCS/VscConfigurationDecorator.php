@@ -49,10 +49,12 @@ class VscConfigurationDecorator implements IConfiguration
     {
         $tags = $this->decorate->imageTags();
         if (in_array('@vcs', $tags)) {
-            // todo return tags from VCS!
+            $version = '';
         } else {
-            return $tags;
+            $version = $tags;
         }
+
+        return $version;
     }
 
     public function dockerFilePath()
@@ -64,5 +66,11 @@ class VscConfigurationDecorator implements IConfiguration
     {
         return $this->decorate->workingDirectory();
     }
+
+    public function reports()
+    {
+        // TODO: Implement reports() method.
+    }
+
 
 }

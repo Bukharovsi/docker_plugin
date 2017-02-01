@@ -7,6 +7,8 @@
  */
 namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract;
 
+use AdamBrett\ShellWrapper\Runners\Runner;
+use AdamBrett\ShellWrapper\Runners\RunnerWithStandardOut;
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
 
 /**
@@ -19,11 +21,12 @@ interface IBuildImageCommand extends IExecutable
 {
     /**
      * BuildImageCommand constructor.
+     * @param RunnerWithStandardOut $runner
      * @param string $dockerfile
-     * @param Tag[] $tags
      * @param string $workingDirectory
+     * @param Tag[] $tags
      */
-    public function __construct($dockerfile, $workingDirectory, array $tags);
+    public function __construct(RunnerWithStandardOut $runner, $dockerfile, $workingDirectory, array $tags);
 
     /**
      * Run image building

@@ -1,7 +1,6 @@
 <?php
 namespace Bukharovsi\DockerPlugin\Command;
 
-use Bukharovsi\DockerPlugin\Command\Exceptions\DockerExecutionException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 

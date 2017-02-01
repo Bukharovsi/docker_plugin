@@ -9,7 +9,9 @@
 namespace Bukharovsi\DockerPlugin\DI;
 
 
-use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfiguration;
+use AdamBrett\ShellWrapper\Runners\Exec;
+use AdamBrett\ShellWrapper\Runners\RunnerWithStandardOut;
+use AdamBrett\ShellWrapper\Runners\ShellExec;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfigurator;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ComposerProjectConfigurator;
 use Bukharovsi\DockerPlugin\Docker\DockerImageBuilderApplication;
@@ -41,7 +43,7 @@ class DefaultDI implements IDIContainer
     public function application(RootPackageInterface $package)
     {
         $dockerImageApplication = new DockerImageBuilderApplication(
-            $this->CommandBuilder(),
+            $this->commandBuilder(),
             $this->configurator($package),
             $this->reports()
         );
@@ -78,9 +80,17 @@ class DefaultDI implements IDIContainer
     /**
      * @return ICommandBuilder
      */
-    public function CommandBuilder()
+    public function commandBuilder()
     {
-        return new ConsoleCommandBuilder();
+        return new ConsoleCommandBuilder($this->commandRunner());
+    }
+
+    /**
+     * @return RunnerWithStandardOut
+     */
+    public function commandRunner()
+    {
+        return new Exec();
     }
 
 

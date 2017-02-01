@@ -9,6 +9,9 @@
 namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl;
 
 
+use AdamBrett\ShellWrapper\Command;
+use AdamBrett\ShellWrapper\Runners\Runner;
+use AdamBrett\ShellWrapper\Runners\RunnerWithStandardOut;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\IPushImageCommand;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Exceptions\ExecutionCommandException;
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
@@ -25,21 +28,29 @@ class PushImageCommand implements IPushImageCommand
     private $tag;
 
     /**
-     * PushImageCommand constructor.
-     * @param Tag[] $tag
+     * @var Runner
      */
-    public function __construct(Tag $tag)
+    private $runner;
+
+    /**
+     * PushImageCommand constructor.
+     * @param RunnerWithStandardOut $runner command runner
+     * @param Tag|Tag[] $tag
+     */
+    public function __construct(RunnerWithStandardOut $runner, Tag $tag)
     {
+        $this->runner = $runner;
         $this->tag = $tag;
     }
 
     public function execute()
     {
         $cmd = "docker push $this->tag";
-        exec($cmd, $output, $returnCode);
 
-        if (0 != $returnCode) {
-            throw ExecutionCommandException::pushCommandReurnsNotZeroCode($cmd, $output, $returnCode);
+        $exitCode = $this->runner->run(new Command($cmd));
+
+        if (0 != $exitCode) {
+            throw ExecutionCommandException::pushCommandReurnsNotZeroCode($cmd, $this->runner->getStandardOut(), $exitCode);
         }
     }
 

@@ -6,7 +6,8 @@
  * Time: 17:46
  */
 namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract;
-use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\IExecutable;
+use AdamBrett\ShellWrapper\Runners\Runner;
+use AdamBrett\ShellWrapper\Runners\RunnerWithStandardOut;
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
 
 
@@ -19,9 +20,10 @@ interface IPushImageCommand extends IExecutable
 {
     /**
      * PushImageCommand constructor.
+     * @param RunnerWithStandardOut $runner
      * @param Tag $tag
      */
-    public function __construct(Tag $tag);
+    public function __construct(RunnerWithStandardOut $runner, Tag $tag);
 
     /**
      * run doker push command

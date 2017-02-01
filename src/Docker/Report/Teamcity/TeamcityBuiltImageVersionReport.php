@@ -11,8 +11,6 @@ namespace Bukharovsi\DockerPlugin\Docker\Report\Teamcity;
 
 use Bukharovsi\DockerPlugin\Docker\Image\BuiltImage;
 use Bukharovsi\DockerPlugin\Docker\Report\IReport;
-use Bukharovsi\DockerPlugin\Docker\Report\Teamcity\TeamcityVariableCollection;
-use Symfony\Component\Console\Output\Output;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**

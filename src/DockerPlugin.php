@@ -22,10 +22,17 @@ use Composer\Plugin\PluginInterface;
  */
 class DockerPlugin implements PluginInterface, Capable
 {
+    /**
+     * @param Composer $composer
+     * @param IOInterface $io
+     */
     public function activate(Composer $composer, IOInterface $io)
     {
     }
 
+    /**
+     * @return array
+     */
     public function getCapabilities()
     {
         return [

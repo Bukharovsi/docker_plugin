@@ -9,9 +9,6 @@
 namespace Bukharovsi\DockerPlugin\Docker\Configuration\Impl;
 
 
-use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\AbstractConfiguration;
-use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\DefaultConfiguration;
-
 class ManualConfiguration extends AbstractConfiguration
 {
     /**
@@ -23,7 +20,8 @@ class ManualConfiguration extends AbstractConfiguration
      * @param string[] $reports
      */
     public function __construct($imageName = null, $imageTag = null, $dockerFilePath = null, $workingDirectory = null, $reports = null) {
-       $this->overridenConfig = new DefaultConfiguration();
+       parent::__construct();
+        $this->overridenConfig = new DefaultConfiguration();
 
         $this->imageName = $imageName;
         $this->setTags($imageTag);

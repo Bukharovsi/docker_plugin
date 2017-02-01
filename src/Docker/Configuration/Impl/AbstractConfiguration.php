@@ -1,14 +1,14 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: sergey
+ * User: Sergey
  * Date: 17.01.17
  * Time: 0:34
  */
 
 namespace Bukharovsi\DockerPlugin\Docker\Configuration\Impl;
+
 use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfiguration;
-use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\DefaultConfiguration;
 
 /**
  * Class AbstractConfiguration
@@ -51,16 +51,19 @@ abstract class AbstractConfiguration implements IConfiguration
     /**
      * AbstractCommandParameters constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->overridenConfig = new DefaultConfiguration();
     }
 
 
-    public function override(IConfiguration $configuration) {
+    public function override(IConfiguration $configuration)
+    {
         $this->overridenConfig = $configuration;
     }
 
-    public function imageName() {
+    public function imageName()
+    {
         if (null != $this->imageName) {
             $imageName = $this->imageName;
         } else {
@@ -70,7 +73,8 @@ abstract class AbstractConfiguration implements IConfiguration
         return $imageName;
     }
 
-    public function imageTags() {
+    public function imageTags()
+    {
         if (null != $this->imageTags) {
             $imageTag = $this->imageTags;
         } else {
@@ -80,7 +84,8 @@ abstract class AbstractConfiguration implements IConfiguration
         return $imageTag;
     }
 
-    protected function addTag($tag) {
+    protected function addTag($tag)
+    {
         if (null == $tag) {
             return;
         }
@@ -95,14 +100,16 @@ abstract class AbstractConfiguration implements IConfiguration
     /**
      * @param string[]|string $tags
      */
-    protected function setTags($tags) {
-        if (!(null == $tags ||is_array($tags))) {
+    protected function setTags($tags)
+    {
+        if (!(null == $tags || is_array($tags))) {
             $tags = [$tags];
         }
         $this->imageTags = $tags;
     }
 
-    public function dockerFilePath() {
+    public function dockerFilePath()
+    {
         if (null != $this->dockerFilePath) {
             $dockerfile = $this->dockerFilePath;
         } else {
@@ -112,7 +119,8 @@ abstract class AbstractConfiguration implements IConfiguration
         return $dockerfile;
     }
 
-    public function workingDirectory() {
+    public function workingDirectory()
+    {
         if (null != $this->workingDirectory) {
             $wd = $this->workingDirectory;
         } else {
@@ -132,7 +140,4 @@ abstract class AbstractConfiguration implements IConfiguration
 
         return $reports;
     }
-
-
-
 }

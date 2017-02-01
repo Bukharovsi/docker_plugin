@@ -6,8 +6,6 @@
  * Time: 17:44
  */
 namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract;
-use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\IBuildImageCommand;
-use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\IPushImageCommand;
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
 
 

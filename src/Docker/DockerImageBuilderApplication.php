@@ -7,8 +7,6 @@
  */
 
 namespace Bukharovsi\DockerPlugin\Docker;
-use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ComposerProjectConfigurator;
-use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfiguration;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfigurator;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\ICommandBuilder;
 use Bukharovsi\DockerPlugin\Docker\Image\DockerImage;

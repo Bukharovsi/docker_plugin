@@ -7,7 +7,6 @@
  */
 
 namespace Bukharovsi\DockerPlugin\Docker\Configuration\Impl;
-use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\AbstractConfiguration;
 
 /**
  * Class ComposerJsonConfiguration

@@ -9,6 +9,8 @@
 namespace Bukharovsi\DockerPlugin\Test\Docker\ExecutionCommand;
 
 
+use AdamBrett\ShellWrapper\ExitCodes;
+use AdamBrett\ShellWrapper\Runners\FakeRunner;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Exceptions\ExecutionCommandException;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\PushImageCommand;
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
@@ -19,33 +21,22 @@ class PushImageCommandTest extends \PHPUnit_Framework_TestCase
     use PHPMock;
 
     public function testPushImage() {
-        $exec = $this->getFunctionMock((new \ReflectionClass(PushImageCommand::class))->getNamespaceName(), "exec");
-        $exec->expects($this->once())->willReturnCallback(
-            function ($command, &$output, &$return_var) {
-                $this->assertEquals("docker push nginx:latest", $command);
-                $output = ["image was created"];
-                $return_var = 0;
-            }
-        );
-
+        $fakeRunner = new FakeRunner();
         $nginxTag = new Tag('nginx');
-        $cmd = new PushImageCommand($nginxTag);
+        $cmd = new PushImageCommand($fakeRunner, $nginxTag);
         $cmd->execute();
+
+        static::assertEquals("docker push nginx:latest", $fakeRunner->getExecutedCommand());
     }
 
     public function testPushImageFailure() {
-        $exec = $this->getFunctionMock((new \ReflectionClass(PushImageCommand::class))->getNamespaceName(), "exec");
-        $exec->expects($this->once())->willReturnCallback(
-            function ($command, &$output, &$return_var) {
-                $output = ["image not pushed"];
-                $return_var = 1;
-            }
-        );
-
+        $errMsg = 'image has not pushed';
+        $fakeRunner = new FakeRunner(ExitCodes::FATAL_ERROR_END, $errMsg);
         $this->expectException(ExecutionCommandException::class);
+        static::expectExceptionMessageRegExp("/.*$errMsg.*/");
 
         $nginxTag = new Tag('nginx');
-        $cmd = new PushImageCommand($nginxTag);
+        $cmd = new PushImageCommand($fakeRunner, $nginxTag);
         $cmd->execute();
     }
 }
