@@ -15,12 +15,9 @@ use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\BuildImageCommand;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\ConsoleCommandBuilder;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\PushImageCommand;
 use Bukharovsi\DockerPlugin\Docker\Image\DockerImage;
-use phpmock\phpunit\PHPMock;
 
 class DockerImageTest extends \PHPUnit_Framework_TestCase
 {
-    use PHPMock;
-
     public function testImageBuild()
     {
         $fakeRunner = new FakeRunner();
@@ -29,9 +26,9 @@ class DockerImageTest extends \PHPUnit_Framework_TestCase
         $image->build();
 
         static::assertStringStartsWith('docker build', $fakeRunner->getExecutedCommand());
-        static::assertContains('-t nginx:latest', $fakeRunner->getExecutedCommand());
-        static::assertContains('-f Dockerfile', $fakeRunner->getExecutedCommand());
-        static::assertStringEndsWith('.', $fakeRunner->getExecutedCommand());
+        static::assertContains("--tag 'nginx:latest'", $fakeRunner->getExecutedCommand());
+        static::assertContains("--file 'Dockerfile'", $fakeRunner->getExecutedCommand());
+        static::assertStringEndsWith("'.'", $fakeRunner->getExecutedCommand());
     }
 
     public function testImagePush()

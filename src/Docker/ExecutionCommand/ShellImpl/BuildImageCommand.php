@@ -65,26 +65,27 @@ class BuildImageCommand implements IExecutable, IBuildImageCommand
     {
         $cmd = $this->buildCommand();
 
-        $exitCode = $this->runner->run(new Command($cmd));
+        $exitCode = $this->runner->run($cmd);
 
         if (0 != $exitCode) {
             throw ExecutionCommandException::buildCommandReturnsNotZeroCode(
-                $cmd, $this->runner->getStandardOut(), $exitCode
+                $cmd->__toString(), $this->runner->getStandardOut(), $exitCode
             );
         }
     }
 
     /**
-     * @return string
+     * @return Command
      */
     private function buildCommand()
     {
-        $cmd = "docker build";
+        $cmd = new Command("docker build");
         foreach ($this->tags as $tag) {
-            $cmd .= " -t $tag";
+            $cmd->addArgument(new Command\Argument('tag', $tag));
         }
-        $cmd .= ' -f '. $this->dockerfile;
-        $cmd .= ' ' . $this->workingDirectory;
+        $cmd->addArgument(new Command\Argument('file', $this->dockerfile));
+        $cmd->addParam(new Command\Param($this->workingDirectory));
+
         return $cmd;
     }
 

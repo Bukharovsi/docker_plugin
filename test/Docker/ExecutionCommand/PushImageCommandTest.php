@@ -14,19 +14,16 @@ use AdamBrett\ShellWrapper\Runners\FakeRunner;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Exceptions\ExecutionCommandException;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\PushImageCommand;
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
-use phpmock\phpunit\PHPMock;
 
 class PushImageCommandTest extends \PHPUnit_Framework_TestCase
 {
-    use PHPMock;
-
     public function testPushImage() {
         $fakeRunner = new FakeRunner();
         $nginxTag = new Tag('nginx');
         $cmd = new PushImageCommand($fakeRunner, $nginxTag);
         $cmd->execute();
 
-        static::assertEquals("docker push nginx:latest", $fakeRunner->getExecutedCommand());
+        static::assertEquals("docker push 'nginx:latest'", $fakeRunner->getExecutedCommand());
     }
 
     public function testPushImageFailure() {

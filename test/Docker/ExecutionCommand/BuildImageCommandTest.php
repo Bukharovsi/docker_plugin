@@ -14,12 +14,9 @@ use AdamBrett\ShellWrapper\Runners\FakeRunner;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Exceptions\ExecutionCommandException;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\BuildImageCommand;
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
-use phpmock\phpunit\PHPMock;
 
 class BuildImageCommandTest extends \PHPUnit_Framework_TestCase
 {
-
-    use PHPMock;
 
     public function testCommandWithOneTag()
     {
@@ -30,9 +27,9 @@ class BuildImageCommandTest extends \PHPUnit_Framework_TestCase
         $cmd->execute();
 
         static::assertStringStartsWith('docker build', $fakeRunner->getExecutedCommand());
-        static::assertContains('-t nginx:latest', $fakeRunner->getExecutedCommand());
-        static::assertContains('-f Dockerfile', $fakeRunner->getExecutedCommand());
-        static::assertStringEndsWith('.', $fakeRunner->getExecutedCommand());
+        static::assertContains("--tag 'nginx:latest'", $fakeRunner->getExecutedCommand());
+        static::assertContains("-file 'Dockerfile'", $fakeRunner->getExecutedCommand());
+        static::assertStringEndsWith("'.'", $fakeRunner->getExecutedCommand());
 
     }
 
@@ -44,8 +41,8 @@ class BuildImageCommandTest extends \PHPUnit_Framework_TestCase
         $cmd = new BuildImageCommand($fakeRunner, 'Dockerfile', '.', $nginxTag);
         $cmd->execute();
 
-        static::assertContains('-t nginx:latest', $fakeRunner->getExecutedCommand());
-        static::assertContains('-t nginx:1.0', $fakeRunner->getExecutedCommand());
+        static::assertContains("--tag 'nginx:latest'", $fakeRunner->getExecutedCommand());
+        static::assertContains("--tag 'nginx:1.0'", $fakeRunner->getExecutedCommand());
     }
 
 

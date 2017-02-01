@@ -12,7 +12,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:Bukharovsi/php-shell-wrapper.git",
-                "reference": "b4fa95a882bbb82b9e843c8ac7ee90f210d64ed8"
+                "reference": "35b31ce4b3ee652afb778d232c71a8195bd259fe"
             },
             "require-dev": {
                 "covex-nn/phpcb": "*@dev",
@@ -41,7 +41,7 @@
                 }
             ],
             "description": "An object oriented wrapper for shell commands",
-            "time": "2017-02-01 10:12:23"
+            "time": "2017-02-01 13:48:23"
         },
         {
             "name": "psr/log",
