@@ -10,7 +10,7 @@ namespace Bukharovsi\DockerPlugin\Docker\Report\Teamcity;
 
 
 use Bukharovsi\DockerPlugin\Docker\Image\BuiltImage;
-use Bukharovsi\DockerPlugin\Docker\Report\IReport;
+use Bukharovsi\DockerPlugin\Docker\Report\Contract\IReport;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -41,16 +41,17 @@ class TeamcityBuiltImageVersionReport implements IReport
      * Make a report
      *
      * @param BuiltImage $builtImage
-     * @param OutputInterface $output
+     * @return string
      */
-    public function make(BuiltImage $builtImage, OutputInterface $output)
+    public function make(BuiltImage $builtImage)
     {
+        $report = '';
         $this->teamcityVariables->rewind();
         foreach ($builtImage->versions() as $version) {
-            $output->writeln(
-                "##teamcity[setParameter name='".$this->teamcityVariables->next()."' value='" .$version. "']"
-            );
+            $report.="##teamcity[setParameter name='".$this->teamcityVariables->next()."' value='" .$version. "']";
         }
+
+        return $report;
 
     }
 

@@ -10,6 +10,7 @@ namespace Bukharovsi\DockerPlugin\Docker\Report;
 
 use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IReportConfiguration;
 use Bukharovsi\DockerPlugin\Docker\Image\BuiltImage;
+use Bukharovsi\DockerPlugin\Docker\Report\Contract\IReport;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class FilteredByConfigurationReports implements IReport

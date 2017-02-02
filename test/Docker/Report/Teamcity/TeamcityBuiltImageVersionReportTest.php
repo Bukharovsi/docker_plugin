@@ -20,14 +20,13 @@ class TeamcityBuiltImageVersionReportTest extends \PHPUnit_Framework_TestCase
     public function testReport()
     {
         $builtImage = new BuiltImage([new Tag('nginx', '2.1'), new Tag('nginx', 'latest')]);
-        $output = new FakeOutput();
         $report = new TeamcityBuiltImageVersionReport(new TeamcityVariableCollection());
 
-        $report->make($builtImage, $output);
-        static::assertContains('##teamcity[setParameter name=\'env.BuildTag\'', $output->output);
-        static::assertContains('value=\'2.1\'', $output->output);
-        static::assertContains('##teamcity[setParameter name=\'env.BuildTag.1\'', $output->output);
-        static::assertContains('value=\'latest\'', $output->output);
+        $reportOutput = $report->make($builtImage);
+        static::assertContains('##teamcity[setParameter name=\'env.BuildTag\'', $reportOutput);
+        static::assertContains('value=\'2.1\'', $reportOutput);
+        static::assertContains('##teamcity[setParameter name=\'env.BuildTag.1\'', $reportOutput);
+        static::assertContains('value=\'latest\'', $reportOutput);
     }
 }
 

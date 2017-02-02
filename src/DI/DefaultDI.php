@@ -19,6 +19,7 @@ use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\ICommandBuilder;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\ConsoleCommandBuilder;
 use Bukharovsi\DockerPlugin\Docker\Report\IMutableReportCollection;
 use Bukharovsi\DockerPlugin\Docker\Report\LogOutputReport;
+use Bukharovsi\DockerPlugin\Docker\Report\PrintableReport;
 use Bukharovsi\DockerPlugin\Docker\Report\ReportFullCollection;
 use Bukharovsi\DockerPlugin\Docker\Report\Teamcity\TeamcityBuiltImageVersionReport;
 use Bukharovsi\DockerPlugin\Docker\Report\Teamcity\TeamcityVariableCollection;
@@ -58,9 +59,14 @@ class DefaultDI implements IDIContainer
      */
     public function reports()
     {
-        $registeredReports = new ReportFullCollection();
-        $registeredReports->register('console', new LogOutputReport());
-        $registeredReports->register('teamcity', new TeamcityBuiltImageVersionReport(new TeamcityVariableCollection()));
+        $registeredReports = new ReportFullCollection([
+            'console' => new PrintableReport(new LogOutputReport()),
+            'teamcity' => new PrintableReport(
+                new TeamcityBuiltImageVersionReport(
+                    new TeamcityVariableCollection()
+                )
+            )
+        ]);
 
         return $registeredReports;
     }

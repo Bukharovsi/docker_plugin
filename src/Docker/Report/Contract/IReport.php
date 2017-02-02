@@ -6,7 +6,7 @@
  * Time: 16:13
  */
 
-namespace Bukharovsi\DockerPlugin\Docker\Report;
+namespace Bukharovsi\DockerPlugin\Docker\Report\Contract;
 use Bukharovsi\DockerPlugin\Docker\Image\BuiltImage;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -18,5 +18,5 @@ use Symfony\Component\Console\Output\OutputInterface;
 interface IReport
 {
 
-    public function make(BuiltImage $builtImage, OutputInterface $output);
+    public function make(BuiltImage $builtImage);
 }

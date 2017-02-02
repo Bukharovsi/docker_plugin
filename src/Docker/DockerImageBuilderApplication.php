@@ -10,8 +10,9 @@ namespace Bukharovsi\DockerPlugin\Docker;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfigurator;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\ICommandBuilder;
 use Bukharovsi\DockerPlugin\Docker\Image\DockerImage;
+use Bukharovsi\DockerPlugin\Docker\Report\Contract\IPrintableAndSavableReport;
 use Bukharovsi\DockerPlugin\Docker\Report\FilteredByConfigurationReports;
-use Bukharovsi\DockerPlugin\Docker\Report\IReport;
+use Bukharovsi\DockerPlugin\Docker\Report\Contract\IReport;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -27,7 +28,7 @@ class DockerImageBuilderApplication
     private $commandBuilder;
 
     /**
-     * @var FilteredByConfigurationReports
+     * @var IPrintableAndSavableReport
      */
     private $reportCollection;
 
@@ -41,14 +42,14 @@ class DockerImageBuilderApplication
      *
      * @param ICommandBuilder $commandBuilder
      * @param IConfigurator $configurator
-     * @param IReport $reports
+     * @param IPrintableAndSavableReport|IReport $reports
      *
      * @internal param IConfigurator $configurator
      */
     public function __construct(
         ICommandBuilder $commandBuilder,
         IConfigurator $configurator,
-        IReport $reports
+        IPrintableAndSavableReport $reports
     )
     {
         $this->commandBuilder = $commandBuilder;
@@ -61,7 +62,7 @@ class DockerImageBuilderApplication
         $configuraton = $this->configurator->makeConfiguration($input);
         $image = new DockerImage($configuraton, $this->commandBuilder);
         $builtImage = $image->build();
-        $this->reportCollection->make($builtImage, $output);
+        $this->reportCollection->make($builtImage, $output, './out/reports');
     }
 
     public function pushDockerImage(InputInterface $input)

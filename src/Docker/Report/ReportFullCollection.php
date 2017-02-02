@@ -10,6 +10,11 @@ namespace Bukharovsi\DockerPlugin\Docker\Report;
 
 
 use Bukharovsi\DockerPlugin\Docker\Image\BuiltImage;
+use Bukharovsi\DockerPlugin\Docker\Report\Contract\IPrintableAndSavableReport;
+use Bukharovsi\DockerPlugin\Docker\Report\Contract\IPrintableReport;
+use Bukharovsi\DockerPlugin\Docker\Report\Contract\IReport;
+use Bukharovsi\DockerPlugin\Docker\Report\Contract\ISavableReport;
+use Bukharovsi\DockerPlugin\Docker\Report\Exception\NotSupportableReportException;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -19,12 +24,17 @@ use Symfony\Component\Console\Output\OutputInterface;
  *
  * @package Bukharovsi\DockerPlugin\Docker\Report
  */
-class ReportFullCollection implements IMutableReportCollection
+class ReportFullCollection implements IPrintableAndSavableReport
 {
     /**
-     * @var IReport[]
+     * @var IPrintableReport[]|ISavableReport[]|IReport[]
      */
     private $registeredReports = [];
+
+    /**
+     * @var string[]
+     */
+    private $mustBeExecuted;
 
     /**
      * ReportFullCollection constructor.
@@ -35,20 +45,14 @@ class ReportFullCollection implements IMutableReportCollection
         $this->registeredReports = $registeredReports;
     }
 
-    /**
-     * Register new report
-     *
-     * @param string $alias
-     * @param IReport $report
-     */
-    public function register($alias, IReport $report)
+    public function markAllAsExecutable()
     {
-        $this->registeredReports[$alias] = $report;
+
     }
 
     public function add($reportName)
     {
-        // TODO: Implement add() method.
+
     }
 
     public function reject($reportName)
@@ -62,11 +66,24 @@ class ReportFullCollection implements IMutableReportCollection
      *
      * @param BuiltImage $builtImage
      * @param OutputInterface $output
+     * @param $outputDirectory
      * @return null
+     * @throws NotSupportableReportException
      */
-    public function make(BuiltImage $builtImage, OutputInterface $output)
+    public function make(BuiltImage $builtImage, OutputInterface $output, $outputDirectory)
     {
-        foreach ($this->registeredReports as $report) {
+        foreach ($this->registeredReports as $reportName => $report) {
+            if ($report instanceof IPrintableReport) {
+                $report->make($builtImage, $output);
+            } elseif ($report instanceof ISavableReport) {
+                $report->make($builtImage, $outputDirectory, $reportName);
+            }elseif ($report instanceof IReport) {
+                $report->make($builtImage);
+            }elseif ($report instanceof IPrintableAndSavableReport) {
+                $report->make($builtImage, $output, $outputDirectory);
+            } else {
+                throw NotSupportableReportException::cantRunReport($report);
+            }
             $report->make($builtImage, $output);
         }
     }

@@ -29,13 +29,12 @@ abstract class BaseDockerCommand extends BaseCommand
     protected $dockerImageApplication;
 
 
-
     protected function initialize(InputInterface $input, OutputInterface $output)
     {
         parent::initialize($input, $output);
 
-        $di = new DefaultDI();
-        $this->dockerImageApplication = $di->application($this->getComposer()->getPackage());
+        $dic = new DefaultDI();
+        $this->dockerImageApplication = $dic->application($this->getComposer()->getPackage());
     }
 
 

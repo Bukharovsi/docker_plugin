@@ -9,7 +9,10 @@
 namespace Bukharovsi\DockerPlugin\Docker\Report;
 
 
-interface IMutableReportCollection extends IReport
+use Bukharovsi\DockerPlugin\Docker\Report\Contract\IPrintableReport;
+use Bukharovsi\DockerPlugin\Docker\Report\Contract\IReport;
+
+interface IMutableReportCollection extends IPrintableReport
 {
     public function add($reportName);
 

@@ -15,6 +15,7 @@ use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ConsoleInputConfiguration;
 use Bukharovsi\DockerPlugin\Docker\DockerImageBuilderApplication;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\ConsoleCommandBuilder;
 use Bukharovsi\DockerPlugin\Docker\Report\LogOutputReport;
+use Bukharovsi\DockerPlugin\Docker\Report\PrintableReport;
 use Bukharovsi\DockerPlugin\Docker\Report\ReportFullCollection;
 use Bukharovsi\DockerPlugin\Docker\Report\Teamcity\TeamcityBuiltImageVersionReport;
 use Bukharovsi\DockerPlugin\Docker\Report\Teamcity\TeamcityVariableCollection;
@@ -33,8 +34,8 @@ class DockerImageBuilderApplicationTest extends \PHPUnit_Framework_TestCase
             ),
             new ComposerProjectConfigurator(RootPackageMockFactory::createMock('nginx', '1.0')),
             new ReportFullCollection([
-                new LogOutputReport(),
-                new TeamcityBuiltImageVersionReport(new TeamcityVariableCollection())
+                new PrintableReport(new LogOutputReport()),
+                new PrintableReport(new TeamcityBuiltImageVersionReport(new TeamcityVariableCollection()))
                 ])
         );
 
