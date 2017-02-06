@@ -51,7 +51,7 @@ class DefaultConfiguration implements IConfiguration
 
     public function outputReportPath()
     {
-        return getcwd();
+        return getcwd() . DIRECTORY_SEPARATOR . 'out';
     }
 
 
