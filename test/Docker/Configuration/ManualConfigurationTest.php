@@ -72,4 +72,10 @@ class ManualConfigurationTest extends \PHPUnit_Framework_TestCase
         static::assertEquals('/tmp', $cmdParams->workingDirectory());
         static::assertEquals(['teamcity'], $cmdParams->reports());
     }
+
+    public function testDefiningReportsOutputPath() {
+        $cmdParams = new ManualConfiguration(null, null, null, null, null, '/home');
+
+        static::assertEquals('/home', $cmdParams->outputReportPath());
+    }
 }

@@ -44,6 +44,11 @@ abstract class AbstractConfiguration implements IConfiguration
     protected $reports;
 
     /**
+     * @var string
+     */
+    protected $outputReportPath;
+
+    /**
      * @var IConfiguration;
      */
     protected $overridenConfig;
@@ -140,4 +145,17 @@ abstract class AbstractConfiguration implements IConfiguration
 
         return $reports;
     }
+
+    public function outputReportPath()
+    {
+        if (null != $this->outputReportPath) {
+            $outputReportPath = $this->outputReportPath;
+        } else {
+            $outputReportPath = $this->overridenConfig->outputReportPath();
+        }
+
+        return $outputReportPath;
+    }
+
+
 }

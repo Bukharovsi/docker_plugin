@@ -32,6 +32,8 @@ class ComposerJsonConfiguration extends AbstractConfiguration
 
     const REPORTS = 'reports';
 
+    const OUT_REPORT_PATH = 'out-report-path';
+
     private $extraDockerConfig = [];
 
 
@@ -94,6 +96,15 @@ class ComposerJsonConfiguration extends AbstractConfiguration
         }
 
         return parent::reports();
+    }
+
+    public function outputReportPath()
+    {
+        if (array_key_exists(static::OUT_REPORT_PATH, $this->extraDockerConfig)) {
+            $this->outputReportPath = $this->extraDockerConfig[static::OUT_REPORT_PATH];
+        }
+
+        return parent::outputReportPath();
     }
 
 

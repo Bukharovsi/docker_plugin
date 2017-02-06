@@ -49,5 +49,10 @@ class DefaultConfiguration implements IConfiguration
         return ['console'];
     }
 
+    public function outputReportPath()
+    {
+        return sys_get_temp_dir();
+    }
+
 
 }

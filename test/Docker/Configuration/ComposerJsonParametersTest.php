@@ -29,6 +29,7 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
         static::assertEquals($default->dockerFilePath(), $param->dockerFilePath());
         static::assertEquals($default->workingDirectory(), $param->workingDirectory());
         static::assertEquals($default->reports(), $param->reports());
+        static::assertEquals($default->outputReportPath(), $param->outputReportPath());
     }
 
     public function testSetImageName() {
@@ -45,6 +46,7 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
         static::assertEquals($default->dockerFilePath(), $param->dockerFilePath());
         static::assertEquals($default->workingDirectory(), $param->workingDirectory());
         static::assertEquals($default->reports(), $param->reports());
+        static::assertEquals($default->outputReportPath(), $param->outputReportPath());
     }
 
     public function testSetImageTag() {
@@ -62,6 +64,7 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
         static::assertEquals($default->dockerFilePath(), $param->dockerFilePath());
         static::assertEquals($default->workingDirectory(), $param->workingDirectory());
         static::assertEquals($default->reports(), $param->reports());
+        static::assertEquals($default->outputReportPath(), $param->outputReportPath());
     }
 
     public function testSetDockerfile() {
@@ -80,6 +83,7 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
         static::assertEquals('docker_override', $param->dockerFilePath());
         static::assertEquals($default->workingDirectory(), $param->workingDirectory());
         static::assertEquals($default->reports(), $param->reports());
+        static::assertEquals($default->outputReportPath(), $param->outputReportPath());
     }
 
     public function testSetWorkdir() {
@@ -99,10 +103,12 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
         static::assertEquals('docker_override', $param->dockerFilePath());
         static::assertEquals('/tmp', $param->workingDirectory());
         static::assertEquals($default->reports(), $param->reports());
+        static::assertEquals($default->outputReportPath(), $param->outputReportPath());
     }
 
 
-    public function testDefiningReports() {
+    public function testDefiningReports()
+    {
         $jsonConfig = [
             'docker' => [
                 'name' => 'nginx',
@@ -112,7 +118,20 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
         $param = new ComposerJsonConfiguration($jsonConfig);
 
         static::assertEquals(['teamcity'], $param->reports());
+    }
 
+    public function testReportOutputDir()
+    {
+        $jsonConfig = [
+            'docker' => [
+                'name' => 'nginx',
+                'reports' => ['teamcity'],
+                ComposerJsonConfiguration::OUT_REPORT_PATH => '/tmp'
+            ]
+        ];
+        $param = new ComposerJsonConfiguration($jsonConfig);
+
+        static::assertEquals('/tmp', $param->outputReportPath());
     }
 
     public function testTagAsArray() {

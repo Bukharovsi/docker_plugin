@@ -25,6 +25,7 @@ class ConsoleInputConfiguration extends AbstractConfiguration
     const DOCKERFILE='dockerfile';
     const WORKING_DIRECTORY='workingdirectory';
     const REPORTS = 'report';
+    const OUT_REPORT_PATH = 'out-report-path';
 
     /**
      * InputCommandParameters constructor.
@@ -38,6 +39,7 @@ class ConsoleInputConfiguration extends AbstractConfiguration
         $this->dockerFilePath = $input->getOption(static::DOCKERFILE);
         $this->workingDirectory = $input->getOption(static::WORKING_DIRECTORY);
         $this->reports = $input->getOption(static::REPORTS);
+        $this->outputReportPath = $input->getOption(static::OUT_REPORT_PATH);
     }
 
     public static function createInputDefinition() {
@@ -78,6 +80,14 @@ class ConsoleInputConfiguration extends AbstractConfiguration
                 static::REPORTS, 'r',
                 InputOption::VALUE_OPTIONAL|InputOption::VALUE_IS_ARRAY,
                 'Specify generated reports'
+            )
+        );
+
+        $definition->addOption(
+            new InputOption(
+                static::OUT_REPORT_PATH, 'out',
+                InputOption::VALUE_OPTIONAL,
+                'Specify output report path'
             )
         );
 

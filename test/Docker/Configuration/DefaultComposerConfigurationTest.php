@@ -16,16 +16,22 @@ use Composer\Package\RootPackageInterface;
 class DefaultComposerConfigurationTest extends \PHPUnit_Framework_TestCase
 {
     public function testAllParams() {
-        $params = new DefaultComposerConfiguration(RootPackageMockFactory::createMock('nginx', '1.0'));
+        $params = new DefaultComposerConfiguration(RootPackageMockFactory::createMock(
+            'nginx',
+            '1.0',
+            [],
+            '/tmp'
+        ));
 
-        $this->assertEquals('nginx', $params->imageName());
-        $this->assertEquals(['1.0'], $params->imageTags());
+        static::assertEquals('nginx', $params->imageName());
+        static::assertEquals(['1.0'], $params->imageTags());
+        static::assertEquals('/tmp/out', $params->outputReportPath());
     }
 
     public function testOnlyName() {
         $params = new DefaultComposerConfiguration(RootPackageMockFactory::createMock('nginx', null));
 
-        $this->assertEquals('nginx', $params->imageName());
-        $this->assertEquals(['latest'], $params->imageTags());
+        static::assertEquals('nginx', $params->imageName());
+        static::assertEquals(['latest'], $params->imageTags());
     }
 }

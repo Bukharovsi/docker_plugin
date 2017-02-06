@@ -32,7 +32,7 @@ class InputCommandDefnitionsTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testDefinitions() {
-        $input = new StringInput('--name nginx --tag latest --dockerfile dockerfile --workingdirectory /tmp --report teamcity');
+        $input = new StringInput('--name nginx --tag latest --dockerfile dockerfile --workingdirectory /tmp --report teamcity --out-report-path /home');
         $input->bind(ConsoleInputConfiguration::createInputDefinition());
 
         static::assertEquals('nginx', $input->getOption('name'));
@@ -40,5 +40,6 @@ class InputCommandDefnitionsTest extends \PHPUnit_Framework_TestCase
         static::assertEquals('dockerfile', $input->getOption('dockerfile'));
         static::assertEquals('/tmp', $input->getOption('workingdirectory'));
         static::assertEquals(['teamcity'], $input->getOption('report'));
+        static::assertEquals('/home', $input->getOption('out-report-path'));
     }
 }

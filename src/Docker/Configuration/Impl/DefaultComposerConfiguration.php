@@ -31,5 +31,6 @@ class DefaultComposerConfiguration extends AbstractConfiguration
 
         $this->imageName = $rootPackage->getName();
         $this->addTag($rootPackage->getVersion());
+        $this->outputReportPath = $rootPackage->getTargetDir() . DIRECTORY_SEPARATOR . 'out';
     }
 }

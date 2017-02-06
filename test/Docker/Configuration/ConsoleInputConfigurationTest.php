@@ -70,4 +70,12 @@ class ConsoleInputConfigurationTest extends \PHPUnit_Framework_TestCase
         static::assertEquals('/tmp', $cmdParams->workingDirectory());
         static::assertEquals(['teamcity'], $cmdParams->reports());
     }
+
+    public function testDefiningReportOutputDir() {
+        $input = new StringInput('--out-report-path /home/jhon');
+        $input->bind(ConsoleInputConfiguration::createInputDefinition());
+        $cmdParams = new ConsoleInputConfiguration($input);
+
+        static::assertEquals('/home/jhon', $cmdParams->outputReportPath());
+    }
 }

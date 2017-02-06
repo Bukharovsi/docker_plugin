@@ -13,7 +13,7 @@ use Composer\Package\RootPackageInterface;
 
 class RootPackageMockFactory
 {
-    public static function createMock($name, $version = null, $extra =[])
+    public static function createMock($name, $version = null, $extra =[], $targetDir = null)
     {
         $mock = \Mockery::mock(RootPackageInterface::class)
             ->shouldReceive('getName')
@@ -22,6 +22,8 @@ class RootPackageMockFactory
                 ->andReturn($version)
             ->shouldReceive('getExtra')
                 ->andReturn($extra)
+            ->shouldReceive('getTargetDir')
+                ->andReturn($targetDir)
             ->mock();
 
         return $mock;
