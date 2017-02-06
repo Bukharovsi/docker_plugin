@@ -18,14 +18,11 @@ class DefaultComposerConfigurationTest extends \PHPUnit_Framework_TestCase
     public function testAllParams() {
         $params = new DefaultComposerConfiguration(RootPackageMockFactory::createMock(
             'nginx',
-            '1.0',
-            [],
-            '/tmp'
+            '1.0'
         ));
 
         static::assertEquals('nginx', $params->imageName());
         static::assertEquals(['1.0'], $params->imageTags());
-        static::assertEquals('/tmp/out', $params->outputReportPath());
     }
 
     public function testOnlyName() {

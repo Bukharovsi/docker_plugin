@@ -51,7 +51,7 @@ class DefaultConfiguration implements IConfiguration
 
     public function outputReportPath()
     {
-        return sys_get_temp_dir();
+        return getcwd();
     }
 
 

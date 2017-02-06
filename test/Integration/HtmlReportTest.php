@@ -28,13 +28,13 @@ class HtmlReportTest extends \PHPUnit_Framework_TestCase
 {
     private function outputReportDirectory()
     {
-        return  sys_get_temp_dir().DIRECTORY_SEPARATOR.'docker-plugin-test';
+        return  sys_get_temp_dir().DIRECTORY_SEPARATOR.'docker-plugin-test'.DIRECTORY_SEPARATOR . 'out';
     }
 
     public function testGeneratingHtmlReport()
     {
         // check output directory dont exist
-        static::assertFalse(is_dir($this->outputReportDirectory().DIRECTORY_SEPARATOR.'out'));
+        static::assertFalse(is_dir($this->outputReportDirectory().DIRECTORY_SEPARATOR));
 
         $runner = new FakeRunner();
         $app = new DockerImageBuilderApplication(
@@ -44,8 +44,7 @@ class HtmlReportTest extends \PHPUnit_Framework_TestCase
             new ComposerProjectConfigurator(RootPackageMockFactory::createMock(
                 'nginx',
                 '1.0',
-                [],
-                $this->outputReportDirectory()
+                ['docker' => ['out-report-path' => $this->outputReportDirectory()]]
             )),
             new ReportFullCollection([
                 'BuiltImageHtmlReport' => new SavableReport(new HTMLReport(new Engine(HTMLReport::REPORT_TEMPLATE_PATH)))
@@ -59,8 +58,8 @@ class HtmlReportTest extends \PHPUnit_Framework_TestCase
         $app->buildDockerImage($input, $output);
 
 
-        $reportFilePath = $this->outputReportDirectory().DIRECTORY_SEPARATOR.'out'.DIRECTORY_SEPARATOR.'BuiltImageHtmlReport.html';
-        static::assertTrue(is_dir($this->outputReportDirectory().DIRECTORY_SEPARATOR.'out'));
+        $reportFilePath = $this->outputReportDirectory(). DIRECTORY_SEPARATOR.'BuiltImageHtmlReport.html';
+        static::assertTrue(is_dir($this->outputReportDirectory()));
         static::assertFileExists($reportFilePath);
 
         $generatedHtmlReport = file_get_contents($reportFilePath);

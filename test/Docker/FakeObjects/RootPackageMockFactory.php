@@ -22,8 +22,6 @@ class RootPackageMockFactory
                 ->andReturn($version)
             ->shouldReceive('getExtra')
                 ->andReturn($extra)
-            ->shouldReceive('getTargetDir')
-                ->andReturn($targetDir)
             ->mock();
 
         return $mock;
