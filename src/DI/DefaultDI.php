@@ -17,13 +17,16 @@ use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ComposerProjectConfigurato
 use Bukharovsi\DockerPlugin\Docker\DockerImageBuilderApplication;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\ICommandBuilder;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\ConsoleCommandBuilder;
+use Bukharovsi\DockerPlugin\Docker\Report\Html\HTMLReport;
 use Bukharovsi\DockerPlugin\Docker\Report\IMutableReportCollection;
 use Bukharovsi\DockerPlugin\Docker\Report\LogOutputReport;
 use Bukharovsi\DockerPlugin\Docker\Report\PrintableReport;
 use Bukharovsi\DockerPlugin\Docker\Report\ReportFullCollection;
+use Bukharovsi\DockerPlugin\Docker\Report\SavableReport;
 use Bukharovsi\DockerPlugin\Docker\Report\Teamcity\TeamcityBuiltImageVersionReport;
 use Bukharovsi\DockerPlugin\Docker\Report\Teamcity\TeamcityVariableCollection;
 use Composer\Package\RootPackageInterface;
+use League\Plates\Engine;
 
 /**
  * Class DefaultDI
@@ -65,6 +68,9 @@ class DefaultDI implements IDIContainer
                 new TeamcityBuiltImageVersionReport(
                     new TeamcityVariableCollection()
                 )
+            ),
+            'index' => new SavableReport(
+                new HTMLReport(new Engine(HTMLReport::REPORT_TEMPLATE_PATH))
             )
         ]);
 
