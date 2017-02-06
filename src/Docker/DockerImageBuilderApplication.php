@@ -62,7 +62,7 @@ class DockerImageBuilderApplication
         $configuraton = $this->configurator->makeConfiguration($input);
         $image = new DockerImage($configuraton, $this->commandBuilder);
         $builtImage = $image->build();
-        $this->reportCollection->make($builtImage, $output, './out/reports');
+        $this->reportCollection->make($builtImage, $output, '/tmp/out/reports');
     }
 
     public function pushDockerImage(InputInterface $input)

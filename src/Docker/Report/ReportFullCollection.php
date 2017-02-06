@@ -84,7 +84,6 @@ class ReportFullCollection implements IPrintableAndSavableReport
             } else {
                 throw NotSupportableReportException::cantRunReport($report);
             }
-            $report->make($builtImage, $output);
         }
     }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e44ccb19425eea6cc3cf85ea7369a2d1",
+    "content-hash": "3cf24efa097f45ac517a8892f65fad2a",
     "packages": [
         {
             "name": "adambrett/shell-wrapper",
@@ -42,6 +42,61 @@
             ],
             "description": "An object oriented wrapper for shell commands",
             "time": "2017-02-01 13:48:23"
+        },
+        {
+            "name": "league/plates",
+            "version": "3.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/plates.git",
+                "reference": "b1684b6f127714497a0ef927ce42c0b44b45a8af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/plates/zipball/b1684b6f127714497a0ef927ce42c0b44b45a8af",
+                "reference": "b1684b6f127714497a0ef927ce42c0b44b45a8af",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3 | ^7.0"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "^1.4",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~1.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Plates\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Reinink",
+                    "email": "jonathan@reinink.ca",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Plates, the native PHP template system that's fast, easy to use and easy to extend.",
+            "homepage": "http://platesphp.com",
+            "keywords": [
+                "league",
+                "package",
+                "templates",
+                "templating",
+                "views"
+            ],
+            "time": "2016-12-28T00:14:17+00:00"
         },
         {
             "name": "psr/log",
@@ -373,7 +428,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2017-02-01T09:18:35+00:00"
+            "time": "2017-02-01 09:18:35"
         },
         {
             "name": "hamcrest/hamcrest-php",
@@ -486,7 +541,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2017-01-31T15:02:05+00:00"
+            "time": "2017-01-31 15:02:05"
         },
         {
             "name": "myclabs/deep-copy",

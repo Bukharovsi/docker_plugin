@@ -29,9 +29,10 @@ class PrintableTag
 
     public function __toString()
     {
-        return <<<HTML
+        return
+            <<<HTML
 <div class="imageTag">
-    $this->tag->__toString()
+    $this->tag
 </div>
 HTML;
     }

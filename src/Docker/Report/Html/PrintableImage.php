@@ -15,7 +15,7 @@ class PrintableImage
 {
 
     /**
-     * @var PrintableTag
+     * @var PrintableTag[]
      */
     private $tags;
     /**
@@ -31,11 +31,11 @@ class PrintableImage
 
     public function __toString()
     {
-        $report = '<div class="docker-image">';
+        $report = '<div class="docker-image">'.PHP_EOL;
         foreach ($this->tags as $tag) {
-            $report .= $tag->__toString();
+            $report .= $tag;
         }
-        $report .= '</div>';
+        $report .= '</div>'.PHP_EOL;;
         return $report;
     }
 

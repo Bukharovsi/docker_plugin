@@ -30,6 +30,9 @@ class SavableReport implements ISavableReport
 
     public function make(BuiltImage $builtImage, $outputDirectory, $reportName)
     {
+        if (!is_dir($outputDirectory)) {
+            mkdir($outputDirectory, 0777, true);
+        }
         file_put_contents($outputDirectory.'/'.$reportName.'.html', $this->report->make($builtImage));
     }
 
