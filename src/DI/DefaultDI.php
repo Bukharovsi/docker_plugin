@@ -70,7 +70,7 @@ class DefaultDI implements IDIContainer
                 )
             ),
             'index' => new SavableReport(
-                new HTMLReport(new Engine(HTMLReport::REPORT_TEMPLATE_PATH))
+                new HTMLReport(new Engine(HTMLReport::$REPORT_TEMPLATE_PATH))
             )
         ]);
 

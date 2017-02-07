@@ -22,7 +22,7 @@ class HTMLReport implements IReport
      */
     private $templateEngine;
 
-    const REPORT_TEMPLATE_PATH = __DIR__ . '/Template';
+    public static $REPORT_TEMPLATE_PATH = __DIR__ . DIRECTORY_SEPARATOR .'Template';
 
     /**
      * HTMLReport constructor.
@@ -31,7 +31,6 @@ class HTMLReport implements IReport
     public function __construct(Engine $templateEngine)
     {
         $this->templateEngine = $templateEngine;
-        $this->templateEngine->addFolder('main', __DIR__ . '/Template');
     }
 
 
