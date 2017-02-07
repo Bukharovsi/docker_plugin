@@ -37,7 +37,7 @@ phpcpd:
 
 ### Testing
 test:
-	vendor/bin/phpunit -v --colors --coverage-text
+	vendor/bin/phpunit -v --colors
 
 .PHONY: test
 
