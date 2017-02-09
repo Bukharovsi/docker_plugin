@@ -67,7 +67,7 @@ class BuildImageCommand implements IExecutable, IBuildImageCommand
 
         $exitCode = $this->runner->run($cmd);
 
-        if (0 != $exitCode) {
+        if (0 != $exitCode || $this->runner->getReturnValue() !=0) {
             throw ExecutionCommandException::buildCommandReturnsNotZeroCode(
                 $cmd->__toString(), $this->runner->getStandardOut(), $exitCode
             );

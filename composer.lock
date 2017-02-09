@@ -4,15 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3cf24efa097f45ac517a8892f65fad2a",
+    "content-hash": "0451df71aefc79e378529cbd4a5a5f2d",
     "packages": [
         {
             "name": "adambrett/shell-wrapper",
-            "version": "dev-extendingRunnerInterface",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:Bukharovsi/php-shell-wrapper.git",
-                "reference": "35b31ce4b3ee652afb778d232c71a8195bd259fe"
+                "reference": "9532c47b708fe4781a406ebfcc673ab268cfb731"
             },
             "require-dev": {
                 "covex-nn/phpcb": "*@dev",
@@ -41,7 +41,7 @@
                 }
             ],
             "description": "An object oriented wrapper for shell commands",
-            "time": "2017-02-01 13:48:23"
+            "time": "2017-02-09 14:16:06"
         },
         {
             "name": "league/plates",

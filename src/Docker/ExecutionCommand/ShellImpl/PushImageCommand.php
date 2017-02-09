@@ -28,7 +28,7 @@ class PushImageCommand implements IPushImageCommand
     private $tag;
 
     /**
-     * @var Runner
+     * @var RunnerWithStandardOut
      */
     private $runner;
 
@@ -50,7 +50,7 @@ class PushImageCommand implements IPushImageCommand
 
         $exitCode = $this->runner->run($cmd);
 
-        if (0 != $exitCode) {
+        if (0 != $exitCode || $this->runner->getReturnValue() !=0) {
             throw ExecutionCommandException::pushCommandReurnsNotZeroCode($cmd, $this->runner->getStandardOut(), $exitCode);
         }
     }
