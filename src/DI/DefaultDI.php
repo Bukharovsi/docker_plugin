@@ -25,6 +25,7 @@ use Bukharovsi\DockerPlugin\Docker\Report\ReportFullCollection;
 use Bukharovsi\DockerPlugin\Docker\Report\SavableReport;
 use Bukharovsi\DockerPlugin\Docker\Report\Teamcity\TeamcityBuiltImageVersionReport;
 use Bukharovsi\DockerPlugin\Docker\Report\Teamcity\TeamcityVariableCollection;
+use Bukharovsi\DockerPlugin\VCS\Configuration\VCSConfiguratorDecorator;
 use Composer\Package\RootPackageInterface;
 use League\Plates\Engine;
 
@@ -85,6 +86,7 @@ class DefaultDI implements IDIContainer
     public function configurator(RootPackageInterface $package)
     {
         $configuratator = new ComposerProjectConfigurator($package);
+        $configuratator = new VCSConfiguratorDecorator($configuratator);
 
         return $configuratator;
     }

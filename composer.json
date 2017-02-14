@@ -13,13 +13,18 @@
     {
       "type": "git",
       "url": "git@github.com:Bukharovsi/php-shell-wrapper.git"
+    },
+    {
+      "type": "git",
+      "url": "git@github.com:Bukharovsi/GitElephant.git"
     }
   ],
   "require": {
     "composer-plugin-api": "^1.1",
     "symfony/console": "^2.6",
     "adambrett/shell-wrapper": "dev-master",
-    "league/plates": "3.*"
+    "league/plates": "3.*",
+    "cypresslab/gitelephant": "dev-develop"
   },
   "require-dev": {
     "phpunit/phpunit": "5.5.*",

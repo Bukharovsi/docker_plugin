@@ -43,12 +43,12 @@ class ComposerProjectConfigurator implements IConfigurator
      * @return IConfiguration
      */
     public function makeConfiguration(InputInterface $input) {
-        $composerDefaultParameters = new DefaultComposerConfiguration($this->packageInfo);
-        $composerJsonParameters = new ComposerJsonConfiguration($this->packageInfo->getExtra());
+        $composerDefaultConf = new DefaultComposerConfiguration($this->packageInfo);
+        $composerJsonConf = new ComposerJsonConfiguration($this->packageInfo->getExtra());
         $cmdParameters = new ConsoleInputConfiguration($input);
 
-        $composerJsonParameters->override($composerDefaultParameters);
-        $cmdParameters->override($composerJsonParameters);
+        $composerJsonConf->override($composerDefaultConf);
+        $cmdParameters->override($composerJsonConf);
 
         return $cmdParameters;
     }

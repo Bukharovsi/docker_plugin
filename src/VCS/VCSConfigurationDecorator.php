@@ -10,6 +10,8 @@ namespace Bukharovsi\DockerPlugin\VCS;
 
 
 use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfiguration;
+use Bukharovsi\DockerPlugin\VCS\Strategy\IVersionGenerationStrategy;
+use GitElephant\Repository;
 
 /**
  * Class VscConfigurationDecorator
@@ -18,20 +20,24 @@ use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfiguration;
  *
  * @package Bukharovsi\DockerPlugin\VCS
  */
-class VscConfigurationDecorator implements IConfiguration
+class VCSConfigurationDecorator implements IConfiguration
 {
     /**
      * @var IConfiguration
      */
     private $decorate;
 
+    private $versionGenerationStrategy;
+
     /**
      * VscConfigurationDecorator constructor.
      * @param IConfiguration $decorate
+     * @param IVersionGenerationStrategy $versionGenerationStrategy
      */
-    public function __construct(IConfiguration $decorate)
+    public function __construct(IConfiguration $decorate, IVersionGenerationStrategy $versionGenerationStrategy)
     {
         $this->decorate = $decorate;
+        $this->versionGenerationStrategy = $versionGenerationStrategy;
     }
 
 
@@ -49,12 +55,12 @@ class VscConfigurationDecorator implements IConfiguration
     {
         $tags = $this->decorate->imageTags();
         if (in_array('@vcs', $tags)) {
-            $version = '';
+            $versions = $this->versionGenerationStrategy->tags();
         } else {
-            $version = $tags;
+            $versions = $tags;
         }
 
-        return $version;
+        return $versions;
     }
 
     public function dockerFilePath()
@@ -69,7 +75,12 @@ class VscConfigurationDecorator implements IConfiguration
 
     public function reports()
     {
-        // TODO: Implement reports() method.
+        return $this->decorate->reports();
+    }
+
+    public function outputReportPath()
+    {
+        return $this->decorate->outputReportPath();
     }
 
 
