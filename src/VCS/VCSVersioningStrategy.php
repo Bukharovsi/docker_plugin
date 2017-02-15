@@ -39,7 +39,7 @@ class VCSVersioningStrategy implements IVersionGenerationStrategy
 
     public function versions()
     {
-        $branch = $this->repository->getMainBranch();
+        $branch = $this->repository->getMainBranch()->getName();
 
         foreach ($this->strategies as $strategy) {
             if ($strategy->isFit($branch)) {
