@@ -48,10 +48,13 @@ class PushImageCommand implements IPushImageCommand
         $cmd = new Command('docker push');
         $cmd->addParam(new Command\Param($this->tag));
 
-        $exitCode = $this->runner->run($cmd);
+        $this->runner->run($cmd);
 
-        if (0 != $exitCode || $this->runner->getReturnValue() !=0) {
-            throw ExecutionCommandException::pushCommandReurnsNotZeroCode($cmd, $this->runner->getStandardOut(), $exitCode);
+        if ($this->runner->getReturnValue() !=0) {
+            throw ExecutionCommandException::pushCommandReurnsNotZeroCode(
+                $cmd,
+                $this->runner->getStandardOut(),
+                $this->runner->getReturnValue());
         }
     }
 
