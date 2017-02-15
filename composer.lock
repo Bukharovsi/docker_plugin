@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5b61e78409fa6c79b76eb06dd9f1b11d",
+    "content-hash": "52245fcc0be7b30e2dff0acf8c30419e",
     "packages": [
         {
             "name": "adambrett/shell-wrapper",
@@ -45,7 +45,7 @@
         },
         {
             "name": "cypresslab/gitelephant",
-            "version": "dev-develop",
+            "version": "dev-commitsCanSearchOwnTags",
             "source": {
                 "type": "git",
                 "url": "git@github.com:Bukharovsi/GitElephant.git",
