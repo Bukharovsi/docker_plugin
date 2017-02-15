@@ -20,10 +20,45 @@ use Bukharovsi\DockerPlugin\VCS\VCSVersioningStrategy;
 
 class VCSVersioningStrategyTest extends \PHPUnit_Framework_TestCase
 {
-    public function testWorking()
+    public function testWorkingForMaster()
     {
         $currentBranch = 'master';
         $currentSha = 'ffff';
+        $strategy = $this->createDefaultStrategy($currentBranch, $currentSha);
+
+        static::assertCount(2, $strategy->versions());
+        static::assertContains('latest', $strategy->versions());
+        static::assertContains('2.0', $strategy->versions());
+    }
+
+    public function testWorkingForDev()
+    {
+        $currentBranch = 'dev';
+        $currentSha = 'ffff';
+        $strategy = $this->createDefaultStrategy($currentBranch, $currentSha);
+
+        static::assertCount(1, $strategy->versions());
+        static::assertContains('dev', $strategy->versions());
+    }
+
+    public function testWorkingForFeatureBranch()
+    {
+        $currentBranch = 'my_coolFeature';
+        $currentSha = 'ffff';
+        $strategy = $this->createDefaultStrategy($currentBranch, $currentSha);
+
+        static::assertCount(2, $strategy->versions());
+        static::assertContains($currentBranch, $strategy->versions());
+        static::assertContains($currentSha, $strategy->versions());
+    }
+
+    /**
+     * @param $currentBranch
+     * @param $currentSha
+     * @return VCSVersioningStrategy
+     */
+    private function createDefaultStrategy($currentBranch, $currentSha)
+    {
         $strategy = new VCSVersioningStrategy(FakeRepositoryBuilder::withBranchAndCommit($currentBranch, $currentSha),
             [
                 new IsEqualsStrategy(
@@ -38,14 +73,11 @@ class VCSVersioningStrategyTest extends \PHPUnit_Framework_TestCase
                 ),
                 new AlwaysTrueStrategy(
                     new VersionGenerationStrategyForFeatureBranch(
-                        FakeRepositoryBuilder::withBranchAndCommit('my_cool_feature', 'fff')
+                        FakeRepositoryBuilder::withBranchAndCommit($currentBranch, $currentSha)
                     )
                 )
             ]
         );
-
-        static::assertCount(2, $strategy->versions());
-        static::assertContains('latest', $strategy->versions());
-        static::assertContains('2.0', $strategy->versions());
+        return $strategy;
     }
 }
