@@ -55,7 +55,7 @@ class VCSConfigurationDecorator implements IConfiguration
     {
         $tags = $this->decorate->imageTags();
         if (in_array('@vcs', $tags)) {
-            $versions = $this->versionGenerationStrategy->tags();
+            $versions = $this->versionGenerationStrategy->versions();
         } else {
             $versions = $tags;
         }

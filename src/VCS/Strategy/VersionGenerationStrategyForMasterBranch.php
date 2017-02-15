@@ -14,39 +14,33 @@ use GitElephant\Repository;
 
 class VersionGenerationStrategyForMasterBranch implements IVersionGenerationStrategy
 {
-
     /**
-     * @var Repository
+     * @var IVersionGenerationStrategy
      */
-    private $repository;
-
     private $slaveStrategy;
 
     public static function createWithSlaveTagStrategy(Repository $repository)
     {
-        $strategy = new static($repository, new VersionGenerationStrategyForGitTag($repository));
+        $strategy = new static(new VersionGenerationStrategyForGitTag($repository));
         return $strategy;
     }
 
     /**
      * VersionGenerationStrategyForMasterBranch constructor.
-     * @param Repository $repository
      * @param IVersionGenerationStrategy $slaveStrategy
      */
-    public function __construct(Repository $repository, IVersionGenerationStrategy $slaveStrategy = null)
+    public function __construct(IVersionGenerationStrategy $slaveStrategy = null)
     {
-        $this->repository = $repository;
-
         if (null == $slaveStrategy) {
             $slaveStrategy = new VersionGenerationEmptyStrategy();
         }
         $this->slaveStrategy = $slaveStrategy;
     }
 
-    public function tags()
+    public function versions()
     {
-        $tags = $this->slaveStrategy->tags();
-        $tags[] = new Tag('latest');
+        $tags = $this->slaveStrategy->versions();
+        $tags[] = 'latest';
         return $tags;
     }
 

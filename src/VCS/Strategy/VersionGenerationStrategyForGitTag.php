@@ -28,11 +28,11 @@ class VersionGenerationStrategyForGitTag implements IVersionGenerationStrategy
         $this->repository = $repository;
     }
 
-    public function tags()
+    public function versions()
     {
         $versions = [];
         foreach ($this->repository->getCommit()->getTags() as $gitTag) {
-            $versions[] = new Tag($gitTag->getName());
+            $versions[] = $gitTag->getName();
         }
 
         return $versions;

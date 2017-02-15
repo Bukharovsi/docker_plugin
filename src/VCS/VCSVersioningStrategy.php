@@ -9,10 +9,8 @@
 namespace Bukharovsi\DockerPlugin\VCS;
 
 
+use Bukharovsi\DockerPlugin\VCS\ConditionsForVersioningStrategy\IVersionGenerationStrategyWithCondition;
 use Bukharovsi\DockerPlugin\VCS\Strategy\IVersionGenerationStrategy;
-use Bukharovsi\DockerPlugin\VCS\Strategy\VersionGenerationStrategyForDevBranch;
-use Bukharovsi\DockerPlugin\VCS\Strategy\VersionGenerationStrategyForFeatureBranch;
-use Bukharovsi\DockerPlugin\VCS\Strategy\VersionGenerationStrategyForMasterBranch;
 use GitElephant\Repository;
 
 class VCSVersioningStrategy implements IVersionGenerationStrategy
@@ -23,33 +21,30 @@ class VCSVersioningStrategy implements IVersionGenerationStrategy
     private $repository;
 
     /**
+     * @var IVersionGenerationStrategyWithCondition[]
+     */
+    private $strategies;
+
+    /**
      * VCSVersioningStrategy constructor.
      *
      * @param Repository $repository
      */
-    public function __construct(Repository $repository)
+    public function __construct(Repository $repository, $strategies)
     {
         $this->repository = $repository;
+        sort($strategies);
+        $this->strategies = $strategies;
     }
 
-    public function tags()
+    public function versions()
     {
         $branch = $this->repository->getMainBranch();
 
-        $strategy = null;
-        switch (true) {
-            case $branch == 'master' :
-                $strategy = VersionGenerationStrategyForMasterBranch::createWithSlaveTagStrategy($this->repository);
-                break;
-            case in_array($branch, ['dev', 'develop', 'development']):
-                $strategy = new VersionGenerationStrategyForDevBranch();
-                break;
-            default:
-                $strategy = new VersionGenerationStrategyForFeatureBranch($this->repository);
+        foreach ($this->strategies as $strategy) {
+            if ($strategy->isFit($branch)) {
+                return $strategy->versions();
+            }
         }
-
-        return $strategy->tags();
-
-
     }
 }

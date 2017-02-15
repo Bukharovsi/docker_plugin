@@ -11,5 +11,5 @@ namespace Bukharovsi\DockerPlugin\VCS\Strategy;
 
 interface IVersionGenerationStrategy
 {
-    public function tags();
+    public function versions();
 }

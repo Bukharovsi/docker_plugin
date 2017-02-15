@@ -30,11 +30,11 @@ class VersionGenerationStrategyForFeatureBranch implements IVersionGenerationStr
     }
 
 
-    public function tags()
+    public function versions()
     {
         return [
-            new Tag($this->repository->getMainBranch()->getName()),
-            new Tag($this->repository->getCommit()->getSha(true))
+            $this->repository->getMainBranch()->getName(),
+            $this->repository->getCommit()->getSha(true)
         ];
     }
 

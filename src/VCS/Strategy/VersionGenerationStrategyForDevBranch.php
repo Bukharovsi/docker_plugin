@@ -14,9 +14,9 @@ use Bukharovsi\DockerPlugin\Docker\Image\Tag;
 class VersionGenerationStrategyForDevBranch implements IVersionGenerationStrategy
 {
 
-    public function tags()
+    public function versions()
     {
-        return [new Tag('dev')];
+        return ['dev'];
     }
 
 }

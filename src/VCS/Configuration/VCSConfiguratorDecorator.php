@@ -24,12 +24,18 @@ class VCSConfiguratorDecorator implements IConfigurator
     private $decorated;
 
     /**
+     * @var VCSVersioningStrategy
+     */
+    private $vcsVersionStrategy;
+
+    /**
      * VCSConfiguratorDecorator constructor.
      * @param IConfigurator $decorated
      */
-    public function __construct(IConfigurator $decorated)
+    public function __construct(IConfigurator $decorated, VCSVersioningStrategy $versioningStrategy)
     {
         $this->decorated = $decorated;
+        $this->vcsVersionStrategy = $versioningStrategy;
     }
 
 
@@ -38,7 +44,7 @@ class VCSConfiguratorDecorator implements IConfigurator
         $conf = $this->decorated->makeConfiguration($input);
         $configuration = new VCSConfigurationDecorator(
             $conf,
-            new VCSVersioningStrategy(new Repository($conf->workingDirectory()))
+            $this->vcsVersionStrategy
         );
 
         return $configuration;
