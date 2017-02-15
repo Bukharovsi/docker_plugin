@@ -99,7 +99,7 @@ class DefaultDI implements IDIContainer
         $versioningStrategy = new VCSVersioningStrategy(
             $gitRepository,
             [
-                new IsEqualsStrategy('master', new VersionGenerationStrategyForMasterBranch($gitRepository)),
+                new IsEqualsStrategy('master', VersionGenerationStrategyForMasterBranch::createWithSlaveTagStrategy($gitRepository)),
                 new InStrategy(['dev', 'develop', 'development'], new VersionGenerationStrategyForDevBranch()),
                 new AlwaysTrueStrategy(new VersionGenerationStrategyForFeatureBranch($gitRepository))
             ]
