@@ -24,10 +24,9 @@
   },
   "require-dev": {
     "phpunit/phpunit": ">=5",
-    "php-mock/php-mock-phpunit": "^1.1",
     "squizlabs/php_codesniffer": "*@dev",
     "pdepend/pdepend": "*@dev",
-    "phpmd/phpmd": "*@dev",
+    "phpmd/phpmd": ">=2",
     "fzaninotto/faker": "*@dev",
     "mockery/mockery": "*@dev"
   },
