@@ -18,7 +18,7 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
         $builder = new ComposerProjectConfigurator($package);
         $configuration = $builder->makeConfiguration($input);
 
-        $this->assertEquals('nginx', $configuration->imageName(), 'image name is provided by command line. Hegher order');
+        $this->assertEquals('nginx', $configuration->imageName(), 'image name is provided by command line');
         $this->assertEquals(['latest'], $configuration->imageTags());
         $this->assertEquals('Dockerfile_new', $configuration->dockerFilePath());
     }

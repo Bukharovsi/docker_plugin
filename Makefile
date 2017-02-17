@@ -15,11 +15,12 @@ depend:
 .PHONY: depend
 
 ### QA
-qa: lint phpmd phpcs phpcpd
+qa: lint phpcs
+#qa: lint phpmd phpcs phpcpd
 
 lint:
 	find ./src -name "*.php" -exec /usr/bin/env php -l {} \; | grep "Parse error" > /dev/null && exit 1 || exit 0
-	find ./tests -name "*.php" -exec /usr/bin/env php -l {} \; | grep "Parse error" > /dev/null && exit 1 || exit 0
+	find ./test -name "*.php" -exec /usr/bin/env php -l {} \; | grep "Parse error" > /dev/null && exit 1 || exit 0
 
 phploc:
 	vendor/bin/phploc src
@@ -29,6 +30,9 @@ phpmd:
 
 phpcs:
 	vendor/bin/phpcs --standard=PSR2 --extensions=php src/ test/
+
+phpcbf:
+	vendor/bin/phpcbf --standard=PSR2 --extensions=php src/ test/
 
 phpcpd:
 	vendor/bin/phpcpd src/

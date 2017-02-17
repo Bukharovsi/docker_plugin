@@ -58,7 +58,11 @@ class DockerImage
 
     public function build()
     {
-        $buildCommand = $this->commandBuilder->createBuildImageCommand($this->dockerfile, $this->workingDirectory, $this->tags);
+        $buildCommand = $this->commandBuilder->createBuildImageCommand(
+            $this->dockerfile,
+            $this->workingDirectory,
+            $this->tags
+        );
         $buildCommand->execute();
 
         return new BuiltImage($this->tags);

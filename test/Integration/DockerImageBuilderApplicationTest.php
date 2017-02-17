@@ -68,7 +68,10 @@ class DockerImageBuilderApplicationTest extends \PHPUnit_Framework_TestCase
         $output = new FakeOutput();
         $app->buildDockerImage($input, $output);
 
-        static::assertEquals("docker build --tag 'my_pet_project:1.0' --tag 'my_pet_project:latest' --file 'Dockerfile.my' './api'", $runner->getExecutedCommand());
+        static::assertEquals(
+            "docker build --tag 'my_pet_project:1.0' --tag 'my_pet_project:latest' --file 'Dockerfile.my' './api'",
+            $runner->getExecutedCommand()
+        );
     }
 
     public function testAppGetInfoFromInput()
@@ -88,6 +91,9 @@ class DockerImageBuilderApplicationTest extends \PHPUnit_Framework_TestCase
         $output = new FakeOutput();
         $app->buildDockerImage($input, $output);
 
-        static::assertEquals("docker build --tag 'my_pet_project:1.0' --file 'Dockerfile.my' '.'", $runner->getExecutedCommand());
+        static::assertEquals(
+            "docker build --tag 'my_pet_project:1.0' --file 'Dockerfile.my' '.'",
+            $runner->getExecutedCommand()
+        );
     }
 }

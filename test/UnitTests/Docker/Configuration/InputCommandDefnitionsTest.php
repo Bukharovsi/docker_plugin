@@ -28,7 +28,13 @@ class InputCommandDefnitionsTest extends \PHPUnit_Framework_TestCase
 
     public function testDefinitions()
     {
-        $input = new StringInput('--name nginx --tag latest --dockerfile dockerfile --workingdirectory /tmp --report teamcity --out-report-path /home');
+        $input = new StringInput(
+            '--name nginx --tag latest '
+            .'--dockerfile dockerfile '
+            .'--workingdirectory /tmp '
+            .'--report teamcity '
+            .'--out-report-path /home'
+        );
         $input->bind(ConsoleInputConfiguration::createInputDefinition());
 
         static::assertEquals('nginx', $input->getOption('name'));

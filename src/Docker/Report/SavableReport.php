@@ -26,6 +26,9 @@ class SavableReport implements ISavableReport
         if (!is_dir($outputDirectory)) {
             mkdir($outputDirectory, 0777, true);
         }
-        file_put_contents($outputDirectory . DIRECTORY_SEPARATOR . $reportName.'.html', $this->report->make($builtImage));
+        file_put_contents(
+            $outputDirectory . DIRECTORY_SEPARATOR . $reportName.'.html',
+            $this->report->make($builtImage)
+        );
     }
 }

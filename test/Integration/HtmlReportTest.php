@@ -39,7 +39,11 @@ class HtmlReportTest extends \PHPUnit_Framework_TestCase
                 ['docker' => ['out-report-path' => $this->outputReportDirectory()]]
             )),
             new ReportFullCollection([
-                'BuiltImageHtmlReport' => new SavableReport(new HTMLReport(new Engine(HTMLReport::REPORT_TEMPLATE_PATH)))
+                'BuiltImageHtmlReport' => new SavableReport(
+                    new HTMLReport(
+                        new Engine(HTMLReport::REPORT_TEMPLATE_PATH)
+                    )
+                )
             ])
         );
 

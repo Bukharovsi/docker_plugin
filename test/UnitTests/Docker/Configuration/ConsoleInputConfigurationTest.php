@@ -58,7 +58,9 @@ class ConsoleInputConfigurationTest extends \PHPUnit_Framework_TestCase
 
     public function testDefiningAllParams()
     {
-        $input = new StringInput('--name nginx --tag latest --dockerfile Dockerfile_new --workingdirectory /tmp --report teamcity');
+        $input = new StringInput(
+            '--name nginx --tag latest --dockerfile Dockerfile_new --workingdirectory /tmp --report teamcity'
+        );
         $input->bind(ConsoleInputConfiguration::createInputDefinition());
         $cmdParams = new ConsoleInputConfiguration($input);
 
