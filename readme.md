@@ -1,11 +1,15 @@
 PHP Docker plugin
 =================
-PHP Docker plugin is a plugin for composer that helps build and push docker images. It is very useful for continuous integration.
+PHP Docker plugin is a plugin for composer that helps build and push docker images. 
+It is very useful for continuous integration.
 This plugin allow you to define image name, compute tags and generate reports.
+
+When you use this plugin you still need `Dockerfile`. The plugin only simplified automation build!
 
 Basic usage
 -----------
-Just install plugin and build image immediately and push it to docker registry
+If you already have `Dockerfile` and can build image manually just install plugin and build image immediately 
+and push it to docker registry
 ```
 php composer.phar require bukharovsi/docker_plugin
 php composer.phar docker:build
