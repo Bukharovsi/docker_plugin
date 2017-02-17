@@ -1,12 +1,61 @@
-### how to use
- build docker image with default name and latest tag
+PHP Docker plugin
+=================
+PHP Docker plugin is a plugin for composer that helps build and push docker images. It is very useful for continuous integration.
+This plugin allow you to define image name, compute tags and generate reports.
+
+Basic usage
+-----------
+Just install plugin and build image immediately and push it to docker registry
+```
+php composer.phar require bukharovsi/docker_plugin
+php composer.phar docker:build
+php composer.phar docker:push
+```
+You will get docker image with tag: <your_project_name>:<your_project_version>
+
+Advanced usage
+--------------
+###How to change project defaults? 
+Defaults can be changed in `composer.json` and with console arguments
+
+####Change project defaults in `composer.json`
+define in `composer.json` `extra` section:
+```
+    "extra": {
+        "docker": {
+             "name": "wine_the_pooh.com/honey",
+              "version": "1.0",
+              "dockerfile": "Dockerfile",
+              "workingdirectory": "."
+        }
+    },
+```
+all definitions are optional
+
+####Change project defaults with console arguments
+all arguments are optional
+```
+php composer.phar docker:build --name wine_the_pooh.com --tag latest --dockerfile Dockerfile --workingdirectory /var/www/wine_the_pooh
+```
+
+####Getting image version from git
+If you are using Git for version control or git flow you can generate image tag based on current Git branch or Git tag.
+For using this feature specify `"version":"@vcs"` in `composer.json` or add `--tag @vcs` to `composer docker:build` 
+and `composer docker:push` command 
+How does Git tag transforms to Docker tag?
+
+| Git branch                | Docker tag                                                                                    |
+|---------------------------|-----------------------------------------------------------------------------------------------|
+| master                    | latest, (*if commit has a git tag then it add docker tag that will be equals current git tag) |
+| dev, develop, development | dev                                                                                           |
+| <any_other_branch>        | <any_other_branch>, Commit SHA                                                                |
+
+### Integration with Teamcity
+Docker plugin can notify Teamcity about built image versions. This plugin use teamcity environment variables 
+ - `env.BuildTag`
+ - `env.BuildTag.1`
+ - `env.BuildTag.2`
+ - ...
+ - `env.BuildTag.n`
  
-    composer docker build
-
- build docker image with tag mypackage:latest
-
-    composer docker build -t mypackage:2.0
- 
- build docker image with default tag name and specified version
-
-    composer docker build -t :2.0
+ after running `composer docker:build` you can use `%env.BuildTag%` and other variables in your scripts
