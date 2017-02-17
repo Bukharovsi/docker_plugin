@@ -25,14 +25,14 @@ Defaults can be changed in `composer.json` and with console arguments
 ####Change project defaults in `composer.json`
 define in `composer.json` `extra` section:
 ```
-    "extra": {
-        "docker": {
-             "name": "wine_the_pooh.com/honey",
-              "version": "1.0",
-              "dockerfile": "Dockerfile",
-              "workingdirectory": "."
-        }
-    },
+"extra": {
+    "docker": {
+          "name": "wine_the_pooh.com/honey",
+          "version": "1.0",
+          "dockerfile": "Dockerfile",
+          "workingdirectory": "."
+    }
+}
 ```
 all definitions are optional
 
