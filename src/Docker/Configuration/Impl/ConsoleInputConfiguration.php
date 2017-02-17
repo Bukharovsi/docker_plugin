@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 17.01.17
- * Time: 11:49
- */
 
 namespace Bukharovsi\DockerPlugin\Docker\Configuration\Impl;
 

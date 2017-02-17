@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 02.02.17
- * Time: 12:28
- */
 
 namespace Bukharovsi\DockerPlugin\Docker\Report;
-
 
 use Bukharovsi\DockerPlugin\Docker\Image\BuiltImage;
 use Bukharovsi\DockerPlugin\Docker\Report\Contract\IReport;

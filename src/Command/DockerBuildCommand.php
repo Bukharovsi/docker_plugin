@@ -1,4 +1,5 @@
 <?php
+
 namespace Bukharovsi\DockerPlugin\Command;
 
 use Symfony\Component\Console\Input\InputInterface;

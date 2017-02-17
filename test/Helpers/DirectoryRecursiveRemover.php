@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 06.02.17
- * Time: 16:36
- */
 
 namespace Bukharovsi\DockerPlugin\Test\Helpers;
-
 
 class DirectoryRecursiveRemover
 {

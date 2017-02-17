@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 19.01.17
- * Time: 0:08
- */
 
 namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl;
 

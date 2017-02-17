@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 15.02.17
- * Time: 14:13
- */
 
 namespace Bukharovsi\DockerPlugin\Test\UnitTests\VCS\Strategy;
-
 
 use Bukharovsi\DockerPlugin\Test\UnitTests\VCS\FakeObject\FakeRepositoryBuilder;
 use Bukharovsi\DockerPlugin\VCS\Strategy\VersionGenerationStrategyForFeatureBranch;

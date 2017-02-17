@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 18.01.17
- * Time: 1:18
- */
 
 namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\Configuration;
-
 
 use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\DefaultComposerConfiguration;
 use Bukharovsi\DockerPlugin\Test\UnitTests\Docker\FakeObjects\RootPackageMockFactory;

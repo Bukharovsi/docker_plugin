@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 16.01.17
- * Time: 23:21
- */
+
 namespace Bukharovsi\DockerPlugin\Docker\Configuration\Contract;
 
 /**

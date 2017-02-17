@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 16.01.17
- * Time: 23:28
- */
 
 namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\Configuration;
 

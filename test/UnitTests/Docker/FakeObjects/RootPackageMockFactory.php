@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 01.02.17
- * Time: 17:09
- */
 
 namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\FakeObjects;
-
 
 use Composer\Package\RootPackageInterface;
 

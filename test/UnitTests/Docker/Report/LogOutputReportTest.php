@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 27.01.17
- * Time: 13:44
- */
 
 namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\Report;
-
 
 use Bukharovsi\DockerPlugin\Docker\Image\BuiltImage;
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;

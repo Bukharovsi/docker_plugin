@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 17.01.17
- * Time: 10:49
- */
 
 namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\Configuration;
-
 
 use Bukharovsi\DockerPlugin\Docker\Configuration\Exceptions\DefaultCommandParametersOverridingException;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ComposerJsonConfiguration;

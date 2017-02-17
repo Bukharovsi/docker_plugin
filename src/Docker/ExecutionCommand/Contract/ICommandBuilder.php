@@ -1,11 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 20.01.17
- * Time: 17:44
- */
+
 namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract;
+
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
 
 

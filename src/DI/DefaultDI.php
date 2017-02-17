@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 29.01.17
- * Time: 13:28
- */
 
 namespace Bukharovsi\DockerPlugin\DI;
 

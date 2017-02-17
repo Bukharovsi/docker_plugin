@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 22.01.17
- * Time: 18:16
- */
 
 namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\Image;
-
 
 use AdamBrett\ShellWrapper\Runners\FakeRunner;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ManualConfiguration;

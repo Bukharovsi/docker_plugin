@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 20.01.17
- * Time: 18:21
- */
 
 namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\ExecutionCommand;
-
 
 use AdamBrett\ShellWrapper\ExitCodes;
 use AdamBrett\ShellWrapper\Runners\FakeRunner;

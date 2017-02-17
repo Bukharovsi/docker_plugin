@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 02.02.17
- * Time: 11:54
- */
 
 namespace Bukharovsi\DockerPlugin\Docker\Report\Html;
 

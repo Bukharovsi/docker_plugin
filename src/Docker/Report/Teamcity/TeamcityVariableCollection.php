@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 25.01.17
- * Time: 15:12
- */
 
 namespace Bukharovsi\DockerPlugin\Docker\Report\Teamcity;
 

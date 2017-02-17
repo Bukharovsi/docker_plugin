@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 14.02.17
- * Time: 16:22
- */
 
 namespace Bukharovsi\DockerPlugin\VCS\Configuration;
-
 
 use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfigurator;
 use Bukharovsi\DockerPlugin\VCS\VCSConfigurationDecorator;

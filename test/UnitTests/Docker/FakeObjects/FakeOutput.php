@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 27.01.17
- * Time: 13:38
- */
 
 namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\FakeObjects;
-
 
 use Symfony\Component\Console\Output\Output;
 

@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 20.01.17
- * Time: 17:45
- */
+
 namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract;
 
 use AdamBrett\ShellWrapper\Runners\Runner;

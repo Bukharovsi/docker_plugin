@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 15.02.17
- * Time: 14:07
- */
 
 namespace Bukharovsi\DockerPlugin\Test\UnitTests\VCS\FakeObject;
 

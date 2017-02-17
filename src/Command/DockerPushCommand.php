@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Rinat Gizatullin
- * Date: 23.09.16
- * Time: 11:59
- */
 
 namespace Bukharovsi\DockerPlugin\Command;
 

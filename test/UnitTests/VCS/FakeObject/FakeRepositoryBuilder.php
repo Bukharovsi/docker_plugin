@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 15.02.17
- * Time: 13:36
- */
 
 namespace Bukharovsi\DockerPlugin\Test\UnitTests\VCS\FakeObject;
-
 
 use GitElephant\Objects\Branch;
 use GitElephant\Objects\Commit;
@@ -16,7 +9,6 @@ use GitElephant\Repository;
 
 class FakeRepositoryBuilder
 {
-
     /**
      * @param array $tagsNames
      * @return Repository

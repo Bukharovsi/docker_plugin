@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 30.01.17
- * Time: 0:00
- */
 
 namespace Bukharovsi\DockerPlugin\Test\Integration;
-
 
 use AdamBrett\ShellWrapper\Runners\FakeRunner;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ComposerProjectConfigurator;

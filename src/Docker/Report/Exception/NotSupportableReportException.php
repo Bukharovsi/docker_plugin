@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 02.02.17
- * Time: 15:52
- */
 
 namespace Bukharovsi\DockerPlugin\Docker\Report\Exception;
-
 
 use Bukharovsi\DockerPlugin\Docker\Report\Contract\IPrintableAndSavableReport;
 use Bukharovsi\DockerPlugin\Docker\Report\Contract\IPrintableReport;

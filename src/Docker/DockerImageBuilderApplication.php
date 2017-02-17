@@ -1,12 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 18.01.17
- * Time: 17:42
- */
 
 namespace Bukharovsi\DockerPlugin\Docker;
+
 use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfigurator;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\ICommandBuilder;
 use Bukharovsi\DockerPlugin\Docker\Image\DockerImage;

@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 15.02.17
- * Time: 13:21
- */
 
 namespace Bukharovsi\DockerPlugin\VCS\ConditionsForVersioningStrategy;
-
 
 use Bukharovsi\DockerPlugin\VCS\Strategy\IVersionGenerationStrategy;
 
