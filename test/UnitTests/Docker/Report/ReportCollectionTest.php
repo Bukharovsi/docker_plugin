@@ -6,13 +6,13 @@
  * Time: 17:04
  */
 
-namespace Bukharovsi\DockerPlugin\Test\Docker\Report;
+namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\Report;
 
 
 use Bukharovsi\DockerPlugin\Docker\Image\BuiltImage;
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
 use Bukharovsi\DockerPlugin\Docker\Report\ReportCollection;
-use Bukharovsi\DockerPlugin\Test\Docker\FakeObjects\FakeOutput;
+use Bukharovsi\DockerPlugin\Test\UnitTests\Docker\FakeObjects\FakeOutput;
 
 class ReportCollectionTest extends \PHPUnit_Framework_TestCase
 {

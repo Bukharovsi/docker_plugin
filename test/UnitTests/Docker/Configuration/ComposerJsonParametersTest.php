@@ -6,7 +6,7 @@
  * Time: 10:49
  */
 
-namespace Bukharovsi\DockerPlugin\Test\Docker\Configuration;
+namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\Configuration;
 
 
 use Bukharovsi\DockerPlugin\Docker\Configuration\Exceptions\DefaultCommandParametersOverridingException;

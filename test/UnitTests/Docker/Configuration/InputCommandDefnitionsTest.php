@@ -6,7 +6,7 @@
  * Time: 23:53
  */
 
-namespace Bukharovsi\DockerPlugin\Test\Docker\Configuration;
+namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\Configuration;
 
 
 use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ConsoleInputConfiguration;

@@ -6,7 +6,7 @@
  * Time: 17:09
  */
 
-namespace Bukharovsi\DockerPlugin\Test\Docker\FakeObjects;
+namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\FakeObjects;
 
 
 use Composer\Package\RootPackageInterface;

@@ -6,7 +6,7 @@
  * Time: 16:08
  */
 
-namespace Bukharovsi\DockerPlugin\Test\Docker\Report;
+namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\Report;
 
 
 use Bukharovsi\DockerPlugin\Docker\Image\BuiltImage;

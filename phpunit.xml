@@ -1,7 +1,7 @@
 <phpunit bootstrap="./test/bootstrap.php">
     <testsuites>
         <testsuite name="Unit Tests">
-            <directory>./test/Docker</directory>
+            <directory>./test/UnitTests</directory>
         </testsuite>
         <testsuite name="Integration Tests">
             <directory>./test/Integration</directory>

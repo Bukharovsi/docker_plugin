@@ -6,7 +6,7 @@
  * Time: 13:38
  */
 
-namespace Bukharovsi\DockerPlugin\Test\Docker\FakeObjects;
+namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\FakeObjects;
 
 
 use Symfony\Component\Console\Output\Output;

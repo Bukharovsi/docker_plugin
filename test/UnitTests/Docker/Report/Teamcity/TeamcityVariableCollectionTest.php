@@ -6,7 +6,7 @@
  * Time: 15:21
  */
 
-namespace Bukharovsi\DockerPlugin\Test\Docker\Report\Teamcity;
+namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\Report\Teamcity;
 
 
 use Bukharovsi\DockerPlugin\Docker\Report\Teamcity\TeamcityVariableCollection;

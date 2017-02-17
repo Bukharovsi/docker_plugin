@@ -6,7 +6,7 @@
  * Time: 18:16
  */
 
-namespace Bukharovsi\DockerPlugin\Test\Docker\Image;
+namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\Image;
 
 
 use AdamBrett\ShellWrapper\Runners\FakeRunner;

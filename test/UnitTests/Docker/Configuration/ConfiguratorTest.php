@@ -6,12 +6,12 @@
  * Time: 0:53
  */
 
-namespace Bukharovsi\DockerPlugin\Test\Docker\Configuration;
+namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\Configuration;
 
 
 use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ComposerProjectConfigurator;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ConsoleInputConfiguration;
-use Bukharovsi\DockerPlugin\Test\Docker\FakeObjects\RootPackageMockFactory;
+use Bukharovsi\DockerPlugin\Test\UnitTests\Docker\FakeObjects\RootPackageMockFactory;
 use Composer\Package\RootPackageInterface;
 use Symfony\Component\Console\Input\StringInput;
 

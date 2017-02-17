@@ -19,8 +19,8 @@ use Bukharovsi\DockerPlugin\Docker\Report\PrintableReport;
 use Bukharovsi\DockerPlugin\Docker\Report\ReportFullCollection;
 use Bukharovsi\DockerPlugin\Docker\Report\Teamcity\TeamcityBuiltImageVersionReport;
 use Bukharovsi\DockerPlugin\Docker\Report\Teamcity\TeamcityVariableCollection;
-use Bukharovsi\DockerPlugin\Test\Docker\FakeObjects\FakeOutput;
-use Bukharovsi\DockerPlugin\Test\Docker\FakeObjects\RootPackageMockFactory;
+use Bukharovsi\DockerPlugin\Test\UnitTests\Docker\FakeObjects\FakeOutput;
+use Bukharovsi\DockerPlugin\Test\UnitTests\Docker\FakeObjects\RootPackageMockFactory;
 use Symfony\Component\Console\Input\StringInput;
 
 class DockerImageBuilderApplicationTest extends \PHPUnit_Framework_TestCase

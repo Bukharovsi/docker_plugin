@@ -6,14 +6,14 @@
  * Time: 15:53
  */
 
-namespace Bukharovsi\DockerPlugin\Test\Docker\Report\Teamcity;
+namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\Report\Teamcity;
 
 
 use Bukharovsi\DockerPlugin\Docker\Image\BuiltImage;
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
 use Bukharovsi\DockerPlugin\Docker\Report\Teamcity\TeamcityBuiltImageVersionReport;
 use Bukharovsi\DockerPlugin\Docker\Report\Teamcity\TeamcityVariableCollection;
-use Bukharovsi\DockerPlugin\Test\Docker\FakeObjects\FakeOutput;
+use Bukharovsi\DockerPlugin\Test\UnitTests\Docker\FakeObjects\FakeOutput;
 
 class TeamcityBuiltImageVersionReportTest extends \PHPUnit_Framework_TestCase
 {
