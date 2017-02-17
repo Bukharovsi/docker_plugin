@@ -52,7 +52,7 @@ How does Git tag transforms to Docker tag?
 |---------------------------|-----------------------------------------------------------------------------------------------|
 | master                    | latest, (*if commit has a git tag then it add docker tag that will be equals current git tag) |
 | dev, develop, development | dev                                                                                           |
-| <any_other_branch>        | <any_other_branch>, Commit SHA                                                                |
+| any_other_branch          | any_other_branch, Commit SHA                                                                |
 
 ### Integration with Teamcity
 Docker plugin can notify Teamcity about built image versions. This plugin use teamcity environment variables 
