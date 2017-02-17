@@ -2,7 +2,7 @@ PHP Docker plugin
 =================
 [![Build Status](https://travis-ci.org/Bukharovsi/docker_plugin.svg?branch=master)](https://travis-ci.org/Bukharovsi/docker_plugin)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9dc4bc91426744b3b812cba54dc825d7)](https://www.codacy.com/app/bukharovSI/docker_plugin?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Bukharovsi/docker_plugin&amp;utm_campaign=Badge_Grade)
-
+[![Dependency Status](https://www.versioneye.com/user/projects/58a763664ca76f0047de1714/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/58a763664ca76f0047de1714)
 PHP Docker plugin is a plugin for composer that helps build and push docker images. 
 It is very useful for continuous integration.
 This plugin allow you to define image name, compute tags and generate reports.
