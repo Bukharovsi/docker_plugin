@@ -5,7 +5,6 @@ namespace Bukharovsi\DockerPlugin\VCS\Configuration;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfigurator;
 use Bukharovsi\DockerPlugin\VCS\VCSConfigurationDecorator;
 use Bukharovsi\DockerPlugin\VCS\VCSVersioningStrategy;
-use GitElephant\Repository;
 use Symfony\Component\Console\Input\InputInterface;
 
 class VCSConfiguratorDecorator implements IConfigurator

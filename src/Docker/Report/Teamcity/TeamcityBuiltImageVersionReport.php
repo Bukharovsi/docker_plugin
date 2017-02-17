@@ -5,7 +5,6 @@ namespace Bukharovsi\DockerPlugin\Docker\Report\Teamcity;
 
 use Bukharovsi\DockerPlugin\Docker\Image\BuiltImage;
 use Bukharovsi\DockerPlugin\Docker\Report\Contract\IReport;
-use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Class TeamcityReport

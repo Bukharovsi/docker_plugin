@@ -4,7 +4,6 @@ namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\Configuration;
 
 use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\DefaultComposerConfiguration;
 use Bukharovsi\DockerPlugin\Test\UnitTests\Docker\FakeObjects\RootPackageMockFactory;
-use Composer\Package\RootPackageInterface;
 
 class DefaultComposerConfigurationTest extends \PHPUnit_Framework_TestCase
 {

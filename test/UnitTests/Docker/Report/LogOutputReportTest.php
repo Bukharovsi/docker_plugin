@@ -5,7 +5,6 @@ namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\Report;
 use Bukharovsi\DockerPlugin\Docker\Image\BuiltImage;
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
 use Bukharovsi\DockerPlugin\Docker\Report\LogOutputReport;
-use Bukharovsi\DockerPlugin\Test\UnitTests\Docker\FakeObjects\FakeOutput;
 
 class LogOutputReportTest extends \PHPUnit_Framework_TestCase
 {

@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\Test\UnitTests\VCS\Strategy;
 
-use Bukharovsi\DockerPlugin\Docker\Image\Tag;
 use Bukharovsi\DockerPlugin\VCS\Strategy\VersionGenerationStrategyForDevBranch;
 
 class VersionGenerationStrategyForDevBranchTest extends \PHPUnit_Framework_TestCase

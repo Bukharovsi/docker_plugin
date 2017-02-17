@@ -4,7 +4,6 @@ namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl;
 
 
 use AdamBrett\ShellWrapper\Command;
-use AdamBrett\ShellWrapper\Runners\Runner;
 use AdamBrett\ShellWrapper\Runners\RunnerWithStandardOut;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\IBuildImageCommand;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\IExecutable;

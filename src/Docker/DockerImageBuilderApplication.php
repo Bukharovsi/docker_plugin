@@ -6,7 +6,6 @@ use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfigurator;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\ICommandBuilder;
 use Bukharovsi\DockerPlugin\Docker\Image\DockerImage;
 use Bukharovsi\DockerPlugin\Docker\Report\Contract\IPrintableAndSavableReport;
-use Bukharovsi\DockerPlugin\Docker\Report\FilteredByConfigurationReports;
 use Bukharovsi\DockerPlugin\Docker\Report\Contract\IReport;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;

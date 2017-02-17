@@ -4,7 +4,6 @@ namespace Bukharovsi\DockerPlugin\VCS;
 
 use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfiguration;
 use Bukharovsi\DockerPlugin\VCS\Strategy\IVersionGenerationStrategy;
-use GitElephant\Repository;
 
 /**
  * Class VscConfigurationDecorator

@@ -5,7 +5,6 @@ namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\Configuration;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ComposerProjectConfigurator;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ConsoleInputConfiguration;
 use Bukharovsi\DockerPlugin\Test\UnitTests\Docker\FakeObjects\RootPackageMockFactory;
-use Composer\Package\RootPackageInterface;
 use Symfony\Component\Console\Input\StringInput;
 
 class ConfiguratorTest extends \PHPUnit_Framework_TestCase

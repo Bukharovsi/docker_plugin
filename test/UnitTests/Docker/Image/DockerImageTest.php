@@ -4,9 +4,7 @@ namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\Image;
 
 use AdamBrett\ShellWrapper\Runners\FakeRunner;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ManualConfiguration;
-use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\BuildImageCommand;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\ConsoleCommandBuilder;
-use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\PushImageCommand;
 use Bukharovsi\DockerPlugin\Docker\Image\DockerImage;
 
 class DockerImageTest extends \PHPUnit_Framework_TestCase

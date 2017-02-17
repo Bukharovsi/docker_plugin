@@ -8,12 +8,11 @@ use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ConsoleInputConfiguration;
 use Bukharovsi\DockerPlugin\Docker\DockerImageBuilderApplication;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl\ConsoleCommandBuilder;
 use Bukharovsi\DockerPlugin\Docker\Report\Html\HTMLReport;
-use Bukharovsi\DockerPlugin\Docker\Report\PrintableReport;
 use Bukharovsi\DockerPlugin\Docker\Report\ReportFullCollection;
 use Bukharovsi\DockerPlugin\Docker\Report\SavableReport;
+use Bukharovsi\DockerPlugin\Test\Helpers\DirectoryRecursiveRemover;
 use Bukharovsi\DockerPlugin\Test\UnitTests\Docker\FakeObjects\FakeOutput;
 use Bukharovsi\DockerPlugin\Test\UnitTests\Docker\FakeObjects\RootPackageMockFactory;
-use Bukharovsi\DockerPlugin\Test\Helpers\DirectoryRecursiveRemover;
 use League\Plates\Engine;
 use Symfony\Component\Console\Input\StringInput;
 

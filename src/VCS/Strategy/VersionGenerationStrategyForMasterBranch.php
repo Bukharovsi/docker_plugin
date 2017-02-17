@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\VCS\Strategy;
 
-use Bukharovsi\DockerPlugin\Docker\Image\Tag;
 use GitElephant\Repository;
 
 class VersionGenerationStrategyForMasterBranch implements IVersionGenerationStrategy

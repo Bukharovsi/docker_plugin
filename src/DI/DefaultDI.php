@@ -5,7 +5,6 @@ namespace Bukharovsi\DockerPlugin\DI;
 
 use AdamBrett\ShellWrapper\Runners\Exec;
 use AdamBrett\ShellWrapper\Runners\RunnerWithStandardOut;
-use AdamBrett\ShellWrapper\Runners\ShellExec;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfigurator;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ComposerProjectConfigurator;
 use Bukharovsi\DockerPlugin\Docker\DockerImageBuilderApplication;
