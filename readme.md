@@ -1,5 +1,7 @@
 PHP Docker plugin
 =================
+[![Build Status](https://travis-ci.org/Bukharovsi/docker_plugin.svg?branch=master)](https://travis-ci.org/Bukharovsi/docker_plugin)
+
 PHP Docker plugin is a plugin for composer that helps build and push docker images. 
 It is very useful for continuous integration.
 This plugin allow you to define image name, compute tags and generate reports.
