@@ -32,5 +32,4 @@ class DockerImageTest extends \PHPUnit_Framework_TestCase
         static::assertStringStartsWith('docker push', $fakeRunner->getExecutedCommand());
         static::assertContains('nginx:latest', $fakeRunner->getExecutedCommand());
     }
-
 }

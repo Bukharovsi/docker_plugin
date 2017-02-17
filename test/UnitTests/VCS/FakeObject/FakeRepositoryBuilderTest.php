@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\Test\UnitTests\VCS\FakeObject;
 
-
 class FakeRepositoryBuilderTest extends \PHPUnit_Framework_TestCase
 {
     public function testWithTags()

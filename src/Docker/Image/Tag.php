@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\Image;
 
-
 class Tag
 {
     private $name;
@@ -26,9 +25,8 @@ class Tag
     }
 
 
-    public function __toString() {
+    public function __toString()
+    {
         return $this->name.':'.$this->version;
     }
-
-
 }

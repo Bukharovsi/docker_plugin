@@ -13,14 +13,16 @@ use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ManualConfiguration;
 class ManualConfigurationTest extends \PHPUnit_Framework_TestCase
 {
 
-    public function testAllParamsAreDefaults() {
+    public function testAllParamsAreDefaults()
+    {
         $cmdParams = new ManualConfiguration();
 
         $this->expectException(DefaultCommandParametersOverridingException::class);
         $cmdParams->imageName();
     }
 
-    public function testDefiningImageName() {
+    public function testDefiningImageName()
+    {
         $cmdParams = new ManualConfiguration('nginx');
 
         $defaultParameters = new DefaultConfiguration();
@@ -28,7 +30,8 @@ class ManualConfigurationTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($defaultParameters->imageTags(), $cmdParams->imageTags());
     }
 
-    public function testDefiningImageTag() {
+    public function testDefiningImageTag()
+    {
         $cmdParams = new ManualConfiguration('nginx', 'latest');
 
         $defaultParameters = new DefaultConfiguration();
@@ -37,7 +40,8 @@ class ManualConfigurationTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($defaultParameters->dockerFilePath(), $cmdParams->dockerFilePath());
     }
 
-    public function testDefiningDockerFile() {
+    public function testDefiningDockerFile()
+    {
         $cmdParams = new ManualConfiguration('nginx', 'latest', 'Dockerfile_new');
 
         $defaultParameters = new DefaultConfiguration();
@@ -48,7 +52,8 @@ class ManualConfigurationTest extends \PHPUnit_Framework_TestCase
     }
 
 
-    public function testDefiningWorkingDirectory() {
+    public function testDefiningWorkingDirectory()
+    {
         $cmdParams = new ManualConfiguration("nginx", "dev", "Dockerfile_new", '/tmp');
 
         static::assertEquals("nginx", $cmdParams->imageName());
@@ -57,7 +62,8 @@ class ManualConfigurationTest extends \PHPUnit_Framework_TestCase
         static::assertEquals('/tmp', $cmdParams->workingDirectory());
     }
 
-    public function testDefiningReports() {
+    public function testDefiningReports()
+    {
         $cmdParams = new ManualConfiguration("nginx", "dev", "Dockerfile_new", '/tmp', ['teamcity']);
 
         static::assertEquals("nginx", $cmdParams->imageName());
@@ -67,7 +73,8 @@ class ManualConfigurationTest extends \PHPUnit_Framework_TestCase
         static::assertEquals(['teamcity'], $cmdParams->reports());
     }
 
-    public function testDefiningReportsOutputPath() {
+    public function testDefiningReportsOutputPath()
+    {
         $cmdParams = new ManualConfiguration(null, null, null, null, null, '/home');
 
         static::assertEquals('/home', $cmdParams->outputReportPath());

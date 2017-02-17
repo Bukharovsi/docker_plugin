@@ -4,7 +4,6 @@ namespace Bukharovsi\DockerPlugin\Docker\Configuration\Contract;
 
 use Symfony\Component\Console\Input\InputInterface;
 
-
 /**
  * Class Configurator
  * @package Bukharovsi\DockerPlugin\Docker\Configuration

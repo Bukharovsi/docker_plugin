@@ -33,6 +33,4 @@ class InStrategy implements IVersionGenerationStrategyWithCondition
     {
         return in_array($branch, $this->branchNames);
     }
-
-
 }

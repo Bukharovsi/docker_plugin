@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract;
 
-
 /**
  * Interface IExecutable
  *

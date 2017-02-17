@@ -52,7 +52,8 @@ class VCSVersioningStrategyTest extends \PHPUnit_Framework_TestCase
      */
     private function createDefaultStrategy($currentBranch, $currentSha)
     {
-        $strategy = new VCSVersioningStrategy(FakeRepositoryBuilder::withBranchAndCommit($currentBranch, $currentSha),
+        $strategy = new VCSVersioningStrategy(
+            FakeRepositoryBuilder::withBranchAndCommit($currentBranch, $currentSha),
             [
                 new IsEqualsStrategy(
                     'master',

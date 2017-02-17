@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl;
 
-
 use AdamBrett\ShellWrapper\Command;
 use AdamBrett\ShellWrapper\Runners\ReturnValue;
 use AdamBrett\ShellWrapper\Runners\Runner;
@@ -50,9 +49,8 @@ class PushImageCommand implements IPushImageCommand
             throw ExecutionCommandException::pushCommandReurnsNotZeroCode(
                 $cmd,
                 $this->runner->getStandardOut(),
-                $this->runner->getReturnValue());
+                $this->runner->getReturnValue()
+            );
         }
     }
-
-
 }

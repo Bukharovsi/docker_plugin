@@ -28,6 +28,4 @@ class SavableReport implements ISavableReport
         }
         file_put_contents($outputDirectory . DIRECTORY_SEPARATOR . $reportName.'.html', $this->report->make($builtImage));
     }
-
-
 }

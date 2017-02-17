@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl;
 
-
 use AdamBrett\ShellWrapper\Runners\Runner;
 use AdamBrett\ShellWrapper\Runners\RunnerWithStandardOut;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\IBuildImageCommand;
@@ -59,5 +58,4 @@ class ConsoleCommandBuilder implements ICommandBuilder
     {
         return new PushImageCommand($this->commandRunner, $tag);
     }
-
 }

@@ -9,23 +9,25 @@ use Symfony\Component\Console\Input\StringInput;
 
 class InputCommandDefnitionsTest extends \PHPUnit_Framework_TestCase
 {
-    public function testEmptyCommand() {
+    public function testEmptyCommand()
+    {
         $input = new StringInput('');
         $input->bind(ConsoleInputConfiguration::createInputDefinition());
 
         static::assertNull($input->getOption('name'));
     }
 
-    public function testGettingNotDefinedArgument() {
+    public function testGettingNotDefinedArgument()
+    {
         $input = new StringInput('');
         $input->bind(ConsoleInputConfiguration::createInputDefinition());
 
         static::expectException(\Exception::class); //InvalidArgumentException
         $input->getOption('XXXXX');
-
     }
 
-    public function testDefinitions() {
+    public function testDefinitions()
+    {
         $input = new StringInput('--name nginx --tag latest --dockerfile dockerfile --workingdirectory /tmp --report teamcity --out-report-path /home');
         $input->bind(ConsoleInputConfiguration::createInputDefinition());
 

@@ -51,5 +51,4 @@ class FakeRepositoryBuilder
 
         return $repository;
     }
-
 }

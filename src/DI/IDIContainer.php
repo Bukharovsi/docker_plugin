@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\DI;
 
-
 use Composer\Package\RootPackageInterface;
 
 /**

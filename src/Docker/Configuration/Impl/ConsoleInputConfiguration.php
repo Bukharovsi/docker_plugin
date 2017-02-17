@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\Configuration\Impl;
 
-
 use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -25,7 +24,8 @@ class ConsoleInputConfiguration extends AbstractConfiguration
      * InputCommandParameters constructor.
      * @param InputInterface $input
      */
-    public function __construct(InputInterface $input) {
+    public function __construct(InputInterface $input)
+    {
         parent::__construct();
 
         $this->imageTags = $input->getOption(static::TAG);
@@ -36,18 +36,22 @@ class ConsoleInputConfiguration extends AbstractConfiguration
         $this->outputReportPath = $input->getOption(static::OUT_REPORT_PATH);
     }
 
-    public static function createInputDefinition() {
+    public static function createInputDefinition()
+    {
         $definition = new InputDefinition();
         $definition->addOption(
             new InputOption(
-                static::TAG, 't',
+                static::TAG,
+                't',
                 InputOption::VALUE_OPTIONAL|InputOption::VALUE_IS_ARRAY,
                 "Set the tag of image"
             )
         );
 
         $definition->addOption(
-            new InputOption(static::NAME, null,
+            new InputOption(
+                static::NAME,
+                null,
                 InputOption::VALUE_OPTIONAL,
                 "Set name of image"
             )
@@ -55,7 +59,8 @@ class ConsoleInputConfiguration extends AbstractConfiguration
 
         $definition->addOption(
             new InputOption(
-                static::DOCKERFILE, null,
+                static::DOCKERFILE,
+                null,
                 InputOption::VALUE_OPTIONAL,
                 "Specify dockerfile"
             )
@@ -63,7 +68,8 @@ class ConsoleInputConfiguration extends AbstractConfiguration
 
         $definition->addOption(
             new InputOption(
-                static::WORKING_DIRECTORY, 'wd',
+                static::WORKING_DIRECTORY,
+                'wd',
                 InputOption::VALUE_OPTIONAL,
                 'Specify working directory'
             )
@@ -71,7 +77,8 @@ class ConsoleInputConfiguration extends AbstractConfiguration
 
         $definition->addOption(
             new InputOption(
-                static::REPORTS, 'r',
+                static::REPORTS,
+                'r',
                 InputOption::VALUE_OPTIONAL|InputOption::VALUE_IS_ARRAY,
                 'Specify generated reports'
             )
@@ -79,7 +86,8 @@ class ConsoleInputConfiguration extends AbstractConfiguration
 
         $definition->addOption(
             new InputOption(
-                static::OUT_REPORT_PATH, 'out',
+                static::OUT_REPORT_PATH,
+                'out',
                 InputOption::VALUE_OPTIONAL,
                 'Specify output report path'
             )

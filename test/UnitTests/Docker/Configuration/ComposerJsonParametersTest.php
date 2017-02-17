@@ -8,7 +8,8 @@ use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\DefaultConfiguration;
 
 class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
 {
-    public function testEmptyJsonConfig() {
+    public function testEmptyJsonConfig()
+    {
         $jsonConfig = [
             'docker' => [
             ]
@@ -25,7 +26,8 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
         static::assertEquals($default->outputReportPath(), $param->outputReportPath());
     }
 
-    public function testSetImageName() {
+    public function testSetImageName()
+    {
         $jsonConfig = [
             'docker' => [
                 'name' => 'nginx'
@@ -42,7 +44,8 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
         static::assertEquals($default->outputReportPath(), $param->outputReportPath());
     }
 
-    public function testSetImageTag() {
+    public function testSetImageTag()
+    {
         $jsonConfig = [
             'docker' => [
                 'name' => 'nginx',
@@ -60,7 +63,8 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
         static::assertEquals($default->outputReportPath(), $param->outputReportPath());
     }
 
-    public function testSetDockerfile() {
+    public function testSetDockerfile()
+    {
         $jsonConfig = [
             'docker' => [
                 'name' => 'nginx',
@@ -79,7 +83,8 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
         static::assertEquals($default->outputReportPath(), $param->outputReportPath());
     }
 
-    public function testSetWorkdir() {
+    public function testSetWorkdir()
+    {
         $jsonConfig = [
             'docker' => [
                 'name' => 'nginx',
@@ -127,7 +132,8 @@ class ComposerJsonParametersTest extends \PHPUnit_Framework_TestCase
         static::assertEquals('/tmp', $param->outputReportPath());
     }
 
-    public function testTagAsArray() {
+    public function testTagAsArray()
+    {
         $jsonConfig = [
             'docker' => [
                 'name' => 'nginx',

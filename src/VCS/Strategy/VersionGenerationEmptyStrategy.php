@@ -8,5 +8,4 @@ class VersionGenerationEmptyStrategy implements IVersionGenerationStrategy
     {
         return [];
     }
-
 }

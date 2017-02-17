@@ -7,7 +7,6 @@ use AdamBrett\ShellWrapper\Runners\Runner;
 use AdamBrett\ShellWrapper\Runners\StandardOut;
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
 
-
 /**
  * Defines contract for docker push command
  *

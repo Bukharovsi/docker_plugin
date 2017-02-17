@@ -74,6 +74,4 @@ class VCSConfigurationDecorator implements IConfiguration
     {
         return $this->decorate->outputReportPath();
     }
-
-
 }

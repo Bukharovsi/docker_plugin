@@ -8,7 +8,6 @@
 
 namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\Report\Teamcity;
 
-
 use Bukharovsi\DockerPlugin\Docker\Report\Teamcity\TeamcityVariableCollection;
 
 class TeamcityVariableCollectionTest extends \PHPUnit_Framework_TestCase

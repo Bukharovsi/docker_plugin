@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\Configuration\Impl;
 
-
 use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfiguration;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfigurator;
 use Composer\Package\RootPackageInterface;
@@ -36,7 +35,8 @@ class ComposerProjectConfigurator implements IConfigurator
      * @param InputInterface $input
      * @return IConfiguration
      */
-    public function makeConfiguration(InputInterface $input) {
+    public function makeConfiguration(InputInterface $input)
+    {
         $composerDefaultConf = new DefaultComposerConfiguration($this->packageInfo);
         $composerJsonConf = new ComposerJsonConfiguration($this->packageInfo->getExtra());
         $cmdParameters = new ConsoleInputConfiguration($input);

@@ -20,6 +20,4 @@ class VersionGenerationFixVersionStrategy implements IVersionGenerationStrategy
     {
         return $this->versions;
     }
-
-
 }

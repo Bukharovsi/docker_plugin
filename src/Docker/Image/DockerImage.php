@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\Image;
 
-
 use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfiguration;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IDockerImageConfiguration;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\ICommandBuilder;
@@ -71,8 +70,5 @@ class DockerImage
             $pushCommand = $this->commandBuilder->createPushImageCommand($tag);
             $pushCommand->execute();
         }
-
     }
-
-
 }

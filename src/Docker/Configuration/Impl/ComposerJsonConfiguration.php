@@ -100,6 +100,4 @@ class ComposerJsonConfiguration extends AbstractConfiguration
 
         return parent::outputReportPath();
     }
-
-
 }

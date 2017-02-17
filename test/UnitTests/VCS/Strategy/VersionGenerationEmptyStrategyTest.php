@@ -11,5 +11,4 @@ class VersionGenerationEmptyStrategyTest extends \PHPUnit_Framework_TestCase
         $strategy = new VersionGenerationEmptyStrategy();
         static::assertEquals([], $strategy->versions());
     }
-
 }

@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl;
 
-
 use AdamBrett\ShellWrapper\Command;
 use AdamBrett\ShellWrapper\Runners\ReturnValue;
 use AdamBrett\ShellWrapper\Runners\Runner;
@@ -65,7 +64,9 @@ class BuildImageCommand implements IExecutable, IBuildImageCommand
 
         if ($this->runner->getReturnValue() !=0) {
             throw ExecutionCommandException::buildCommandReturnsNotZeroCode(
-                $cmd->__toString(), $this->runner->getStandardOut(), $this->runner->getReturnValue()
+                $cmd->__toString(),
+                $this->runner->getStandardOut(),
+                $this->runner->getReturnValue()
             );
         }
     }
@@ -82,6 +83,4 @@ class BuildImageCommand implements IExecutable, IBuildImageCommand
 
         return $cmd;
     }
-
-
 }

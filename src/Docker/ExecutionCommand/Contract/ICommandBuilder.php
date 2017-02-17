@@ -4,7 +4,6 @@ namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract;
 
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
 
-
 /**
  * Class ConsoleCommandBuilder
  *

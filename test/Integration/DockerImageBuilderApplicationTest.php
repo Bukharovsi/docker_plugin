@@ -90,7 +90,4 @@ class DockerImageBuilderApplicationTest extends \PHPUnit_Framework_TestCase
 
         static::assertEquals("docker build --tag 'my_pet_project:1.0' --file 'Dockerfile.my' '.'", $runner->getExecutedCommand());
     }
-
-
-
 }

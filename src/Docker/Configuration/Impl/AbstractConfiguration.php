@@ -150,6 +150,4 @@ abstract class AbstractConfiguration implements IConfiguration
 
         return $outputReportPath;
     }
-
-
 }

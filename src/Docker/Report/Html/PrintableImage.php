@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\Report\Html;
 
-
 use Bukharovsi\DockerPlugin\Docker\Image\BuiltImage;
 
 class PrintableImage
@@ -29,9 +28,8 @@ class PrintableImage
         foreach ($this->tags as $tag) {
             $report .= $tag;
         }
-        $report .= '</div>'.PHP_EOL;;
+        $report .= '</div>'.PHP_EOL;
+        ;
         return $report;
     }
-
-
 }

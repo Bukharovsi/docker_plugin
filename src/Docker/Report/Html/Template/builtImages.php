@@ -5,6 +5,6 @@
     $this->layout('main');
 ?>
 <div class="docker-html-report">
- <?=$printableImage?>
+    <?=$printableImage?>
 </div>
 

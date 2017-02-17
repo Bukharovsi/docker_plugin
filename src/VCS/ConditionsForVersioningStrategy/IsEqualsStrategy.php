@@ -33,6 +33,4 @@ class IsEqualsStrategy implements IVersionGenerationStrategyWithCondition
     {
         return $branch == $this->branchName;
     }
-
-
 }

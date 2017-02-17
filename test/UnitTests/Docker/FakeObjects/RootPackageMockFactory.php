@@ -6,7 +6,7 @@ use Composer\Package\RootPackageInterface;
 
 class RootPackageMockFactory
 {
-    public static function createMock($name, $version = null, $extra =[], $targetDir = null)
+    public static function createMock($name, $version = null, $extra = [], $targetDir = null)
     {
         $mock = \Mockery::mock(RootPackageInterface::class)
             ->shouldReceive('getName')

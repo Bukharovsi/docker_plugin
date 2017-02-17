@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\Configuration\Impl;
 
-
 use Composer\Package\RootPackageInterface;
 
 /**

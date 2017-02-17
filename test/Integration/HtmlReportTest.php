@@ -65,6 +65,4 @@ class HtmlReportTest extends \PHPUnit_Framework_TestCase
         DirectoryRecursiveRemover::rrmdir($this->outputReportDirectory());
         parent::tearDown();
     }
-
-
 }

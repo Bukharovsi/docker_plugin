@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\Configuration\Impl;
 
-
 class ManualConfiguration extends AbstractConfiguration
 {
     /**
@@ -21,7 +20,7 @@ class ManualConfiguration extends AbstractConfiguration
         $reports = null,
         $reportOutPath = null
     ) {
-       parent::__construct();
+        parent::__construct();
         $this->overridenConfig = new DefaultConfiguration();
 
         $this->imageName = $imageName;
@@ -31,5 +30,4 @@ class ManualConfiguration extends AbstractConfiguration
         $this->reports = $reports;
         $this->outputReportPath = $reportOutPath;
     }
-
 }

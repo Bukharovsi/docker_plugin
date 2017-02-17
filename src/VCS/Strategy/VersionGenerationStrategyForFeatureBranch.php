@@ -29,5 +29,4 @@ class VersionGenerationStrategyForFeatureBranch implements IVersionGenerationStr
             $this->repository->getCommit()->getSha(true)
         ];
     }
-
 }

@@ -10,7 +10,8 @@ use Bukharovsi\DockerPlugin\Docker\Image\Tag;
 
 class PushImageCommandTest extends \PHPUnit_Framework_TestCase
 {
-    public function testPushImage() {
+    public function testPushImage()
+    {
         $fakeRunner = new FakeRunner();
         $nginxTag = new Tag('nginx');
         $cmd = new PushImageCommand($fakeRunner, $nginxTag);
@@ -19,7 +20,8 @@ class PushImageCommandTest extends \PHPUnit_Framework_TestCase
         static::assertEquals("docker push 'nginx:latest'", $fakeRunner->getExecutedCommand());
     }
 
-    public function testPushImageFailure() {
+    public function testPushImageFailure()
+    {
         $errMsg = 'image has not pushed';
         $fakeRunner = new FakeRunner(ExitCodes::FATAL_ERROR_END, $errMsg);
         $this->expectException(ExecutionCommandException::class);

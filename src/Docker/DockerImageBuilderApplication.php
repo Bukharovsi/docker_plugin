@@ -44,8 +44,8 @@ class DockerImageBuilderApplication
         ICommandBuilder $commandBuilder,
         IConfigurator $configurator,
         IPrintableAndSavableReport $reports
-    )
-    {
+    ) {
+    
         $this->commandBuilder = $commandBuilder;
         $this->configurator = $configurator;
         $this->reportCollection = $reports;
@@ -65,5 +65,4 @@ class DockerImageBuilderApplication
         $image = new DockerImage($configuraton, $this->commandBuilder);
         $image->push();
     }
-    
 }

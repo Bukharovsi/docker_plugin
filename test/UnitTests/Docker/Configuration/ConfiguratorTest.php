@@ -9,7 +9,8 @@ use Symfony\Component\Console\Input\StringInput;
 
 class ConfiguratorTest extends \PHPUnit_Framework_TestCase
 {
-    public function testDefaultBuilder() {
+    public function testDefaultBuilder()
+    {
         $input = new StringInput('--name nginx --tag latest --dockerfile Dockerfile_new');
         $input->bind(ConsoleInputConfiguration::createInputDefinition());
 
@@ -21,5 +22,4 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(['latest'], $configuration->imageTags());
         $this->assertEquals('Dockerfile_new', $configuration->dockerFilePath());
     }
-
 }

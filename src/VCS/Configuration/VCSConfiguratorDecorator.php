@@ -41,5 +41,4 @@ class VCSConfiguratorDecorator implements IConfigurator
 
         return $configuration;
     }
-
 }

@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\Report\Teamcity;
 
-
 use Bukharovsi\DockerPlugin\Docker\Image\BuiltImage;
 use Bukharovsi\DockerPlugin\Docker\Report\Contract\IReport;
 
@@ -45,8 +44,5 @@ class TeamcityBuiltImageVersionReport implements IReport
         }
 
         return $report;
-
     }
-
-
 }

@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\DI;
 
-
 use AdamBrett\ShellWrapper\Runners\Exec;
 use AdamBrett\ShellWrapper\Runners\Runner;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfigurator;
@@ -117,6 +116,4 @@ class DefaultDI implements IDIContainer
     {
         return new Exec();
     }
-
-
 }

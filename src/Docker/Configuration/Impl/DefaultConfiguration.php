@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\Configuration\Impl;
 
-
 use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfiguration;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Exceptions\DefaultCommandParametersOverridingException;
 
@@ -47,6 +46,4 @@ class DefaultConfiguration implements IConfiguration
     {
         return getcwd() . DIRECTORY_SEPARATOR . 'out';
     }
-
-
 }

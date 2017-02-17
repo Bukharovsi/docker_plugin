@@ -8,7 +8,6 @@
 
 namespace Bukharovsi\DockerPlugin\Test\UnitTests\Docker\Report\Teamcity;
 
-
 use Bukharovsi\DockerPlugin\Docker\Image\BuiltImage;
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
 use Bukharovsi\DockerPlugin\Docker\Report\Teamcity\TeamcityBuiltImageVersionReport;
@@ -28,5 +27,3 @@ class TeamcityBuiltImageVersionReportTest extends \PHPUnit_Framework_TestCase
         static::assertContains('value=\'latest\'', $reportOutput);
     }
 }
-
-

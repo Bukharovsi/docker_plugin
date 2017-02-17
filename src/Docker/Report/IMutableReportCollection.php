@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\Report;
 
-
 use Bukharovsi\DockerPlugin\Docker\Report\Contract\IPrintableReport;
 
 interface IMutableReportCollection extends IPrintableReport

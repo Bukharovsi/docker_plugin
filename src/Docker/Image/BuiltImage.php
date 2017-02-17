@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\Image;
 
-
 /**
  * Class BuiltImage
  *
@@ -40,7 +39,4 @@ class BuiltImage
         }
         return $versions;
     }
-
-
-
 }

@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\Report\Teamcity;
 
-
 class TeamcityVariableCollection
 {
     /**
@@ -45,8 +44,4 @@ class TeamcityVariableCollection
     {
         $this->iterator->rewind();
     }
-
-
-
-
 }

@@ -35,5 +35,4 @@ class VersionGenerationStrategyForMasterBranch implements IVersionGenerationStra
         $tags[] = 'latest';
         return $tags;
     }
-
 }

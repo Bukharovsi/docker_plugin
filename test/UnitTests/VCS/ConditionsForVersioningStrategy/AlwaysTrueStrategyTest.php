@@ -13,5 +13,4 @@ class AlwaysTrueStrategyTest extends \PHPUnit_Framework_TestCase
         static::assertTrue($s->isFit('any'));
         static::assertEquals(['latest'], $s->versions());
     }
-
 }

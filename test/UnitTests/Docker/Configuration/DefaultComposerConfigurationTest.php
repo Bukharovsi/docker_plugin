@@ -7,7 +7,8 @@ use Bukharovsi\DockerPlugin\Test\UnitTests\Docker\FakeObjects\RootPackageMockFac
 
 class DefaultComposerConfigurationTest extends \PHPUnit_Framework_TestCase
 {
-    public function testAllParams() {
+    public function testAllParams()
+    {
         $params = new DefaultComposerConfiguration(RootPackageMockFactory::createMock(
             'nginx',
             '1.0'
@@ -17,7 +18,8 @@ class DefaultComposerConfigurationTest extends \PHPUnit_Framework_TestCase
         static::assertEquals(['1.0'], $params->imageTags());
     }
 
-    public function testOnlyName() {
+    public function testOnlyName()
+    {
         $params = new DefaultComposerConfiguration(RootPackageMockFactory::createMock('nginx', null));
 
         static::assertEquals('nginx', $params->imageName());

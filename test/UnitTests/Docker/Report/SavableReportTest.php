@@ -31,6 +31,4 @@ class SavableReportTest extends \PHPUnit_Framework_TestCase
             unlink($testFile);
         }
     }
-
-
 }

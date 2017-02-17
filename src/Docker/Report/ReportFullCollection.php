@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\Report;
 
-
 use Bukharovsi\DockerPlugin\Docker\Image\BuiltImage;
 use Bukharovsi\DockerPlugin\Docker\Report\Contract\IPrintableAndSavableReport;
 use Bukharovsi\DockerPlugin\Docker\Report\Contract\IPrintableReport;
@@ -41,12 +40,10 @@ class ReportFullCollection implements IPrintableAndSavableReport
 
     public function markAllAsExecutable()
     {
-
     }
 
     public function add($reportName)
     {
-
     }
 
     public function reject($reportName)
@@ -71,9 +68,9 @@ class ReportFullCollection implements IPrintableAndSavableReport
                 $report->make($builtImage, $output);
             } elseif ($report instanceof ISavableReport) {
                 $report->make($builtImage, $outputDirectory, $reportName);
-            }elseif ($report instanceof IReport) {
+            } elseif ($report instanceof IReport) {
                 $report->make($builtImage);
-            }elseif ($report instanceof IPrintableAndSavableReport) {
+            } elseif ($report instanceof IPrintableAndSavableReport) {
                 $report->make($builtImage, $output, $outputDirectory);
             } else {
                 throw NotSupportableReportException::cantRunReport($report);

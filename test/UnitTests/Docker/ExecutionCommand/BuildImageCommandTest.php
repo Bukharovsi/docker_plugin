@@ -23,7 +23,6 @@ class BuildImageCommandTest extends \PHPUnit_Framework_TestCase
         static::assertContains("--tag 'nginx:latest'", $fakeRunner->getExecutedCommand());
         static::assertContains("-file 'Dockerfile'", $fakeRunner->getExecutedCommand());
         static::assertStringEndsWith("'.'", $fakeRunner->getExecutedCommand());
-
     }
 
     public function testCommandWithManyTags()

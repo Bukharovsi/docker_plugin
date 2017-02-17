@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Exceptions;
 
-
 class ExecutionCommandException extends \Exception
 {
     public static function buildCommandReturnsNotZeroCode($command, $msg, $code)
@@ -20,5 +19,4 @@ class ExecutionCommandException extends \Exception
             .var_export($msg, true)
         );
     }
-
 }

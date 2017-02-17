@@ -37,11 +37,8 @@ class HTMLReport implements IReport
         $printableImage = new PrintableImage($builtImage);
 
         $template = $this->templateEngine->make('builtImages');
-        $template->data( ['printableImage' => $printableImage]);
+        $template->data(['printableImage' => $printableImage]);
 
         return $template->render();
     }
-
-
-
 }

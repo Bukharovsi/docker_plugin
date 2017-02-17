@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\Report\Html;
 
-
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
 
 class PrintableTag
@@ -30,6 +29,4 @@ class PrintableTag
 </div>
 HTML;
     }
-
-
 }

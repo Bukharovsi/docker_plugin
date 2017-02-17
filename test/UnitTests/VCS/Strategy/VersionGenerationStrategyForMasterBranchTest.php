@@ -23,5 +23,4 @@ class VersionGenerationStrategyForMasterBranchTest extends \PHPUnit_Framework_Te
         static::assertContains('latest', $strategy->versions());
         static::assertContains('2.0', $strategy->versions());
     }
-
 }

@@ -13,7 +13,8 @@ class NotSupportableReportException extends \Exception
     {
         return new static(
             sprintf(
-                "Report %s not supported. Report must implement one of interfaces %s"),
+                "Report %s not supported. Report must implement one of interfaces %s"
+            ),
                 get_class($report),
                 implode(', ', [IReport::class, IPrintableReport::class, ISavableReport::class, IPrintableAndSavableReport::class])
             );

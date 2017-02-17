@@ -2,7 +2,6 @@
 
 namespace Bukharovsi\DockerPlugin\VCS\Strategy;
 
-
 class VersionGenerationStrategyForDevBranch implements IVersionGenerationStrategy
 {
 
@@ -10,5 +9,4 @@ class VersionGenerationStrategyForDevBranch implements IVersionGenerationStrateg
     {
         return ['dev'];
     }
-
 }

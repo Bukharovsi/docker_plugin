@@ -9,7 +9,8 @@ use Symfony\Component\Console\Input\StringInput;
 
 class ConsoleInputConfigurationTest extends \PHPUnit_Framework_TestCase
 {
-    public function testAllParamsAreDefaults() {
+    public function testAllParamsAreDefaults()
+    {
         $input = new StringInput('');
         $input->bind(ConsoleInputConfiguration::createInputDefinition());
         $cmdParams = new ConsoleInputConfiguration($input);
@@ -18,7 +19,8 @@ class ConsoleInputConfigurationTest extends \PHPUnit_Framework_TestCase
         $cmdParams->imageName();
     }
 
-    public function testDefiningImageName() {
+    public function testDefiningImageName()
+    {
         $input = new StringInput('--name nginx');
         $input->bind(ConsoleInputConfiguration::createInputDefinition());
         $cmdParams = new ConsoleInputConfiguration($input);
@@ -28,7 +30,8 @@ class ConsoleInputConfigurationTest extends \PHPUnit_Framework_TestCase
         static::assertEquals($defaultParameters->imageTags(), $cmdParams->imageTags());
     }
 
-    public function testDefiningImageTag() {
+    public function testDefiningImageTag()
+    {
         $input = new StringInput('--name nginx --tag latest');
         $input->bind(ConsoleInputConfiguration::createInputDefinition());
         $cmdParams = new ConsoleInputConfiguration($input);
@@ -39,7 +42,8 @@ class ConsoleInputConfigurationTest extends \PHPUnit_Framework_TestCase
         static::assertEquals($defaultParameters->dockerFilePath(), $cmdParams->dockerFilePath());
     }
 
-    public function testDefiningDockerFile() {
+    public function testDefiningDockerFile()
+    {
         $input = new StringInput('--name nginx --tag latest --dockerfile Dockerfile_new');
         $input->bind(ConsoleInputConfiguration::createInputDefinition());
         $cmdParams = new ConsoleInputConfiguration($input);
@@ -52,7 +56,8 @@ class ConsoleInputConfigurationTest extends \PHPUnit_Framework_TestCase
         static::assertEquals($defaultParameters->reports(), $cmdParams->reports());
     }
 
-    public function testDefiningAllParams() {
+    public function testDefiningAllParams()
+    {
         $input = new StringInput('--name nginx --tag latest --dockerfile Dockerfile_new --workingdirectory /tmp --report teamcity');
         $input->bind(ConsoleInputConfiguration::createInputDefinition());
         $cmdParams = new ConsoleInputConfiguration($input);
@@ -64,7 +69,8 @@ class ConsoleInputConfigurationTest extends \PHPUnit_Framework_TestCase
         static::assertEquals(['teamcity'], $cmdParams->reports());
     }
 
-    public function testDefiningReportOutputDir() {
+    public function testDefiningReportOutputDir()
+    {
         $input = new StringInput('--out-report-path /home/jhon');
         $input->bind(ConsoleInputConfiguration::createInputDefinition());
         $cmdParams = new ConsoleInputConfiguration($input);

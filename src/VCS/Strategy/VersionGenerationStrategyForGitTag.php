@@ -29,6 +29,4 @@ class VersionGenerationStrategyForGitTag implements IVersionGenerationStrategy
 
         return $versions;
     }
-
-
 }
