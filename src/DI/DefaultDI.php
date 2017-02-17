@@ -4,7 +4,7 @@ namespace Bukharovsi\DockerPlugin\DI;
 
 
 use AdamBrett\ShellWrapper\Runners\Exec;
-use AdamBrett\ShellWrapper\Runners\RunnerWithStandardOut;
+use AdamBrett\ShellWrapper\Runners\Runner;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Contract\IConfigurator;
 use Bukharovsi\DockerPlugin\Docker\Configuration\Impl\ComposerProjectConfigurator;
 use Bukharovsi\DockerPlugin\Docker\DockerImageBuilderApplication;
@@ -72,7 +72,7 @@ class DefaultDI implements IDIContainer
                 )
             ),
             'index' => new SavableReport(
-                new HTMLReport(new Engine(HTMLReport::$REPORT_TEMPLATE_PATH))
+                new HTMLReport(new Engine(HTMLReport::REPORT_TEMPLATE_PATH))
             )
         ]);
 
@@ -111,7 +111,7 @@ class DefaultDI implements IDIContainer
     }
 
     /**
-     * @return RunnerWithStandardOut
+     * @return Runner
      */
     public function commandRunner()
     {

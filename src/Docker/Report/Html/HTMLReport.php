@@ -15,7 +15,7 @@ class HTMLReport implements IReport
      */
     private $templateEngine;
 
-    public static $REPORT_TEMPLATE_PATH = __DIR__ . DIRECTORY_SEPARATOR .'Template';
+    const REPORT_TEMPLATE_PATH = __DIR__ . DIRECTORY_SEPARATOR .'Template';
 
     /**
      * HTMLReport constructor.
