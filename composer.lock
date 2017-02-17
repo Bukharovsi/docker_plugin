@@ -4,15 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e9340e29e9d55b2ac084cd478a302a59",
+    "content-hash": "3583c43ce2407c8477f22571b5c67cc7",
     "packages": [
         {
             "name": "adambrett/shell-wrapper",
-            "version": "dev-extendingRunnerInterface",
+            "version": "dev-bukharov",
             "source": {
                 "type": "git",
                 "url": "git@github.com:Bukharovsi/php-shell-wrapper.git",
-                "reference": "88bc8c365f62991cdc8f71dc20f2602f34a14184"
+                "reference": "9532c47b708fe4781a406ebfcc673ab268cfb731"
             },
             "require-dev": {
                 "covex-nn/phpcb": "*@dev",
@@ -41,7 +41,7 @@
                 }
             ],
             "description": "An object oriented wrapper for shell commands",
-            "time": "2017-02-17 14:12:23"
+            "time": "2017-02-09 14:16:06"
         },
         {
             "name": "cypresslab/gitelephant",

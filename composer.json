@@ -22,7 +22,7 @@
   "require": {
     "composer-plugin-api": "^1.1",
     "symfony/console": ">=2.6",
-    "adambrett/shell-wrapper": "dev-extendingRunnerInterface",
+    "adambrett/shell-wrapper": "dev-bukharov",
     "league/plates": "3.*",
     "cypresslab/gitelephant": "dev-commitsCanSearchOwnTags"
   },
