@@ -21,6 +21,7 @@ class FilteredByConfigurationReports implements IReport
      * ReportApplication constructor.
      * @param ReportFullCollection $registeredReports
      * @param IReportConfiguration $reportConfiguration
+     * @SuppressWarnings(unused)
      */
     public function __construct(ReportFullCollection $registeredReports, IReportConfiguration $reportConfiguration)
     {

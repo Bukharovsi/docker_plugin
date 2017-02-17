@@ -25,6 +25,7 @@ class VCSConfigurationDecorator implements IConfiguration
      * VscConfigurationDecorator constructor.
      * @param IConfiguration $decorate
      * @param IVersionGenerationStrategy $versionGenerationStrategy
+     * @SuppressWarnings(long)
      */
     public function __construct(IConfiguration $decorate, IVersionGenerationStrategy $versionGenerationStrategy)
     {

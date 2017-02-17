@@ -16,6 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * Collection of registered Reports
  *
  * @package Bukharovsi\DockerPlugin\Docker\Report
+ * @SuppressWarnings(PHPMD)
  */
 class ReportFullCollection implements IPrintableAndSavableReport
 {

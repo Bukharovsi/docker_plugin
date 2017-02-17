@@ -26,6 +26,11 @@ class AlwaysTrueStrategy implements IVersionGenerationStrategyWithCondition
         return $this->strategy->versions();
     }
 
+    /**
+     * @param $branch
+     * @return bool
+     * @SuppressWarnings(unused)
+     */
     public function isFit($branch)
     {
         return true;

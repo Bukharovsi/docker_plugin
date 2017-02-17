@@ -20,7 +20,7 @@ abstract class BaseDockerCommand extends BaseCommand
     /**
      * @var DockerImageBuilderApplication;
      */
-    protected $dockerImageApplication;
+    protected $application;
 
 
     protected function initialize(InputInterface $input, OutputInterface $output)
@@ -28,7 +28,7 @@ abstract class BaseDockerCommand extends BaseCommand
         parent::initialize($input, $output);
 
         $dic = new DefaultDI();
-        $this->dockerImageApplication = $dic->application($this->getComposer()->getPackage());
+        $this->application = $dic->application($this->getComposer()->getPackage());
     }
 
 

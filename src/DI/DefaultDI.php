@@ -38,6 +38,7 @@ use League\Plates\Engine;
  * or make new one by IDIContainer
  *
  * @package Bukharovsi\DockerPlugin\DI
+ * @SuppressWarnings(coupling)
  */
 class DefaultDI implements IDIContainer
 {
@@ -47,13 +48,13 @@ class DefaultDI implements IDIContainer
      */
     public function application(RootPackageInterface $package)
     {
-        $dockerImageApplication = new DockerImageBuilderApplication(
+        $application = new DockerImageBuilderApplication(
             $this->commandBuilder(),
             $this->configurator($package),
             $this->reports()
         );
 
-        return $dockerImageApplication;
+        return $application;
     }
 
     /**

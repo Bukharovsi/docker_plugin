@@ -19,7 +19,7 @@ class DockerPlugin implements PluginInterface, Capable
     /**
      * @param Composer $composer
      * @param IOInterface $io
-     * @SupresWarnings
+     * @SuppressWarnings(PHPMD)
      */
     public function activate(Composer $composer, IOInterface $io)
     {

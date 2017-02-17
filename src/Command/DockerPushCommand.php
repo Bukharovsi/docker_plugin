@@ -22,6 +22,6 @@ class DockerPushCommand extends BaseDockerCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->dockerImageApplication->pushDockerImage($input);
+        $this->application->pushDockerImage($input);
     }
 }

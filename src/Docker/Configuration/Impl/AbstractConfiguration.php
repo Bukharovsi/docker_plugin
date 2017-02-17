@@ -121,12 +121,12 @@ abstract class AbstractConfiguration implements IConfiguration
     public function workingDirectory()
     {
         if (null != $this->workingDirectory) {
-            $wd = $this->workingDirectory;
+            $workingDirectory = $this->workingDirectory;
         } else {
-            $wd = $this->overridenConfig->workingDirectory();
+            $workingDirectory = $this->overridenConfig->workingDirectory();
         }
 
-        return $wd;
+        return $workingDirectory;
     }
 
     public function reports()
