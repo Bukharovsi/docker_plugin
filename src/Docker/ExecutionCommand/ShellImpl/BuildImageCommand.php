@@ -4,7 +4,10 @@ namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl;
 
 
 use AdamBrett\ShellWrapper\Command;
+use AdamBrett\ShellWrapper\Runners\ReturnValue;
+use AdamBrett\ShellWrapper\Runners\Runner;
 use AdamBrett\ShellWrapper\Runners\RunnerWithStandardOut;
+use AdamBrett\ShellWrapper\Runners\StandardOut;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\IBuildImageCommand;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\IExecutable;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Exceptions\ExecutionCommandException;
@@ -35,18 +38,18 @@ class BuildImageCommand implements IExecutable, IBuildImageCommand
     private $workingDirectory;
 
     /**
-     * @var RunnerWithStandardOut;
+     * @var Runner;
      */
     private $runner;
 
     /**
      * BuildImageCommand constructor.
-     * @param RunnerWithStandardOut $runner
+     * @param Runner|ReturnValue|StandardOut $runner
      * @param string $dockerfile
      * @param string $workingDirectory
      * @param Tag[] $tags
      */
-    public function __construct(RunnerWithStandardOut $runner, $dockerfile, $workingDirectory, array $tags)
+    public function __construct(Runner $runner, $dockerfile, $workingDirectory, array $tags)
     {
         $this->runner = $runner;
         $this->dockerfile = $dockerfile;
@@ -73,9 +76,7 @@ class BuildImageCommand implements IExecutable, IBuildImageCommand
     private function buildCommand()
     {
         $cmd = new Command("docker build");
-        foreach ($this->tags as $tag) {
-            $cmd->addArgument(new Command\Argument('tag', $tag));
-        }
+        $cmd->addArgument(new Command\Argument('tag', $this->tags));
         $cmd->addArgument(new Command\Argument('file', $this->dockerfile));
         $cmd->addParam(new Command\Param($this->workingDirectory));
 

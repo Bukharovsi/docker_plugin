@@ -27,9 +27,9 @@ class ConsoleCommandBuilder implements ICommandBuilder
 
     /**
      * ConsoleCommandBuilder constructor.
-     * @param RunnerWithStandardOut $commandRunner
+     * @param Runner $commandRunner
      */
-    public function __construct(RunnerWithStandardOut $commandRunner)
+    public function __construct(Runner $commandRunner)
     {
         $this->commandRunner = $commandRunner;
     }

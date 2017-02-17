@@ -4,15 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3583c43ce2407c8477f22571b5c67cc7",
+    "content-hash": "9b44e25290f9dbfa2b46be3045f6624d",
     "packages": [
         {
             "name": "adambrett/shell-wrapper",
-            "version": "dev-bukharov",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:Bukharovsi/php-shell-wrapper.git",
-                "reference": "9532c47b708fe4781a406ebfcc673ab268cfb731"
+                "url": "https://github.com/adambrett/php-shell-wrapper.git",
+                "reference": "0ca9c254a547313d4990d11d8aca8da3fb647e6e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/adambrett/php-shell-wrapper/zipball/0ca9c254a547313d4990d11d8aca8da3fb647e6e",
+                "reference": "0ca9c254a547313d4990d11d8aca8da3fb647e6e",
+                "shasum": ""
             },
             "require-dev": {
                 "covex-nn/phpcb": "*@dev",
@@ -31,6 +37,7 @@
                     "AdamBrett\\ShellWrapper\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BDS-3-Clause"
             ],
@@ -41,7 +48,7 @@
                 }
             ],
             "description": "An object oriented wrapper for shell commands",
-            "time": "2017-02-09 14:16:06"
+            "time": "2017-02-16 16:57:56"
         },
         {
             "name": "cypresslab/gitelephant",

@@ -4,7 +4,10 @@ namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand\ShellImpl;
 
 
 use AdamBrett\ShellWrapper\Command;
+use AdamBrett\ShellWrapper\Runners\ReturnValue;
+use AdamBrett\ShellWrapper\Runners\Runner;
 use AdamBrett\ShellWrapper\Runners\RunnerWithStandardOut;
+use AdamBrett\ShellWrapper\Runners\StandardOut;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract\IPushImageCommand;
 use Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Exceptions\ExecutionCommandException;
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
@@ -27,10 +30,10 @@ class PushImageCommand implements IPushImageCommand
 
     /**
      * PushImageCommand constructor.
-     * @param RunnerWithStandardOut $runner command runner
+     * @param Runner|ReturnValue|StandardOut $runner
      * @param Tag|Tag[] $tag
      */
-    public function __construct(RunnerWithStandardOut $runner, Tag $tag)
+    public function __construct(Runner $runner, Tag $tag)
     {
         $this->runner = $runner;
         $this->tag = $tag;

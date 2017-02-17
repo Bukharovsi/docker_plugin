@@ -26,7 +26,7 @@ class BuildImageCommandTest extends \PHPUnit_Framework_TestCase
 
     }
 
-    public function testCommandWithManyTag()
+    public function testCommandWithManyTags()
     {
         $fakeRunner = new FakeRunner();
 

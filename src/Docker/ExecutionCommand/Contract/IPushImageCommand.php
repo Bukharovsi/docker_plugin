@@ -2,7 +2,9 @@
 
 namespace Bukharovsi\DockerPlugin\Docker\ExecutionCommand\Contract;
 
-use AdamBrett\ShellWrapper\Runners\RunnerWithStandardOut;
+use AdamBrett\ShellWrapper\Runners\ReturnValue;
+use AdamBrett\ShellWrapper\Runners\Runner;
+use AdamBrett\ShellWrapper\Runners\StandardOut;
 use Bukharovsi\DockerPlugin\Docker\Image\Tag;
 
 
@@ -15,10 +17,10 @@ interface IPushImageCommand extends IExecutable
 {
     /**
      * PushImageCommand constructor.
-     * @param RunnerWithStandardOut $runner
+     * @param Runner|ReturnValue|StandardOut $runner
      * @param Tag $tag
      */
-    public function __construct(RunnerWithStandardOut $runner, Tag $tag);
+    public function __construct(Runner $runner, Tag $tag);
 
     /**
      * run doker push command
