@@ -26,7 +26,6 @@ class VCSVersioningStrategy implements IVersionGenerationStrategy
     public function __construct(Repository $repository, $strategies)
     {
         $this->repository = $repository;
-        sort($strategies);
         $this->strategies = $strategies;
     }
 
