@@ -23,10 +23,10 @@ You will get docker image with tag: <your_project_name>:<your_project_version>
 
 Advanced usage
 --------------
-###How to change project defaults? 
+### How to change project defaults? 
 Defaults can be changed in `composer.json` and with console arguments
 
-####Change project defaults in `composer.json`
+#### Change project defaults in `composer.json`
 define in `composer.json` `extra` section:
 ```
 "extra": {
@@ -40,13 +40,13 @@ define in `composer.json` `extra` section:
 ```
 all definitions are optional
 
-####Change project defaults with console arguments
+#### Change project defaults with console arguments
 all arguments are optional
 ```
 php composer.phar docker:build --name wine_the_pooh.com --tag latest --dockerfile Dockerfile --workingdirectory /var/www/wine_the_pooh
 ```
 
-####Getting image version from git
+#### Getting image version from git
 If you are using Git for version control or git flow you can generate image tag based on current Git branch or Git tag.
 For using this feature specify `"version":"@vcs"` in `composer.json` or add `--tag @vcs` to `composer docker:build` 
 and `composer docker:push` command 
